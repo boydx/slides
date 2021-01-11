@@ -14,8 +14,15 @@
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="../plugin/highlight/monokai.css" id="highlight-theme">
 		<style>
+            /* UK Colors: 
+                #c7c9c8 light gray 
+                #63666a dark gray
+                #15397f dark blue
+                #009bda light blue
+                #0033a0 official blue
+            */
 
-			.reveal::after {
+			.revealz::after {
 				content: "";
 				background: url('https://www.outragegis.com/weather/goes16/rgb.jpg') no-repeat fixed center;
 				background-size: cover;
@@ -34,9 +41,15 @@
 				position: absolute;
 				z-index: 200;
 				width: 300px;
-				font-size: 0.5em;
-				margin: 0 0 -40px -40px;
-			}
+				font-size: 0.4em;
+                margin: 0 0 -50px 10px;
+                font-style: italic;
+                text-align:left;
+            }
+            
+            .left {
+                text-align: left;
+            }
 		</style>
 	</head>
 	<body>
@@ -44,33 +57,98 @@
 			<div class="slides" >
 				
 				<section data-pre-load data-background-image="https://www.outragegis.com/weather/img/animation/yesterday/LookRock.gif" data-background-opacity="0.4">
-					<h1 class="r-fit-text">GEO 409</h1>
+					<h2 class="r-fit-text">Welcome!</h2>
 					<!-- <h2>Welcome</h2> -->
-					<div class='ll'>Yesterday in the Great Smokies</div>
-					
-				</section>
-				<section data-background-image='https://www.outragegis.com/weather/goes16/rgb.jpg' data-background-opacity="0.4"><h2 class="r-fit-text">Slide 2</h2></section>
-				<section align='left'><h3 >Slide 3</h3>
+					<div class='ll'>Yesterday in the Great Smokies<br>Webcam view from Look Rock</div>
+                </section>
+                <section data-background-image='https://www.outragegis.com/weather/img/NewGap.jpg' data-background-opacity="0.3">
+                    <h2 >GEO 409</h2>
+                    <h3 >Advanced Topics in GIS</h3>
+                    <h5 class='fragment' style='font-size: 1.5em;color:#009bda;'>With a distinct Kentucky flavor</h5>
+                </section>
+                <section data-background-image='https://www.outragegis.com/weather/img/NewGap.jpg' data-background-opacity="0.3">
+                    <h4 >Instructor</h4>
+                    <h2 >Boyd Shearer</h2>
+                    <h6 style='font-size: 1.2em;'>Contact information in syllabus</h6>
+                </section>
+                <section data-background-image='https://www.outragegis.com/weather/img/NewGap.jpg' data-background-opacity="0.3">
+                    <h6 style='font-size: 1.5em;' >What helps me teach</h6>
+                    <h2 class="r-fit-text" style='margin-top:-20px;'>GIS & MAPPING?</h2>
+                </section>
+				<section data-background-image='https://live.staticflickr.com/7480/27309184576_80b7d25ff0_o.jpg' data-background-opacity="0.2" class='left'>
+                    <h3 >Make maps</h3>
 					<ul >
 						<li class='fragment' >
-							GIS and information-intensive projects have many assets that sprawl across directories.
+							25+ years designing maps for print and web
 						</li>
 						<li class='fragment' >
-							We'll download a lot of data.
+							<a href='https://outrageGIS.com'>outrageGIS.com</a>
 						</li>
 					</ul>
-					
-				
+                </section>
+                <section class='left' data-background-image='https://c1.staticflickr.com/1/390/31713088315_f0326f577c_k.jpg' data-background-opacity="0.2">
+                    <h3 >photograph</h3>
+					<ul >
+						<li class='fragment' >
+							a map represents a real place
+						</li>
+						<li class='fragment' >
+							with real processes & people.
+						</li>
+					</ul>
+                </section>
+                <section class='left' data-background-image='https://c1.staticflickr.com/6/5324/30627102241_3cde14d218_o.jpg' data-background-opacity="0.2">
+                    <h3 >explore</h3>
+					<ul >
+						<li class='fragment' >
+							personal adventures
+						</li>
+						<li class='fragment' >
+							inspire.
+						</li>
+					</ul>
+                </section>
+                <section class='left' data-background-image='https://farm2.staticflickr.com/1769/42671081904_40c84be780_h.jpg' data-background-opacity="0.2">
+                    <h3 >experiment</h3>
+					<ul >
+						<li class='fragment' >
+							with new tools and methods
+						</li>
+						<li class='fragment' >
+							to creative a unique style.
+						</li>
+					</ul>
+                </section>
+                <section class='left' data-background-image='https://c1.staticflickr.com/6/5697/31017969892_6a6f41ec25_o.jpg' data-background-opacity="0.4">
+                    <h3 >sunsets</h3>
+					<ul >
+						<li class='fragment' >
+							field trips!
+						</li>
+					</ul>
+                </section>
+                <section data-background-iframe='https://kuula.co/share/7Y4wL' data-background-interactive data-background-opacity="0.4">
+                    <h6 class="r-fit-text">Measuring arches</h6>
 				</section>
-				<section><h6 class="r-fit-text">Slide 5</h6>
-					<img src='https://www.outragegis.com/weather/goes16/rgb.jpg' class="r-stretch">
-				</section>
-				<section><h6 class="r-fit-text">Slide 5</h6>
-					Hello!
-				</section>
+				<section data-background-video="https://player.vimeo.com/external/301603400.hd.mp4?s=0374c6616666a6754297bdc434a915425e57c6ca&profile_id=174" data-background-size='cover'>
+                    
+                </section>
+                
+                <section data-background-video="https://player.vimeo.com/external/292571411.hd.mp4?s=d7b9a9f14d28c8fa7fe3230a3b2516b04c5be6f9&profile_id=175" data-background-size='cover'>
+                </section>
 				<section><h5 class="r-fit-text">Slide 5</h5>
-					Hello!
-				</section>
+					<h6 class="r-fit-text">Slide 5</h6>
+					<img src='https://www.outragegis.com/weather/goes16/rgb.jpg' class="r-stretch">
+                </section>
+                
+                <section data-background-iframe='https://www.youtube.com/embed/nFV8ftGN0aM' data-background-interactive data-background-opacity="1">
+                </section>
+                <section data-background-iframe='https://reece2ke.github.io/geo409_site' data-background-interactive data-background-opacity="1" data-background-color="white">
+                </section>
+
+                <section data-background-iframe='https://cesium.com/ion/stories/viewer/?id=35037375-cab3-4db5-89bb-2098c4b29cf4' data-background-interactive data-background-opacity="1" data-background-color="white">
+                </section>
+
 			</div>
 		</div>
 
