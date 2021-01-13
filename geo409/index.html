@@ -357,14 +357,14 @@
                 </ul>
             </section>
 
-            <section class='left' data-background-image='https://farm9.staticflickr.com/8062/29138854162_85f7e68158_h.jpg'
-                data-background-opacity="0.6"
-                data-background-size='contain'
-                data-background-color='#000'>
+            <section class='left'
+                data-background-image='https://farm9.staticflickr.com/8062/29138854162_85f7e68158_h.jpg'
+                data-background-opacity="0.6" data-background-size='contain' data-background-color='#000'>
                 <h3>Lidar <a href="https://farm9.staticflickr.com/8062/29138854162_1cd274d646_o.jpg">example</a></h3>
                 <ul>
                     <li class='fragment'>
-                        Aerial lidar for entire state <img src='images/ky-black.svg' width='200px' style='display: inline-block;transform: translate(0px, 40px);'>
+                        Aerial lidar for entire state <img src='images/ky-black.svg' width='200px'
+                            style='display: inline-block;transform: translate(0px, 40px);'>
                     </li>
                     <li class='fragment'>
                         Ground and above-ground features
@@ -375,8 +375,7 @@
                 </ul>
             </section>
 
-            <section class='left' data-background-image='images/terrabytes27.gif'
-                data-background-opacity="0.6">
+            <section class='left' data-background-image='images/terrabytes27.gif' data-background-opacity="0.6">
                 <h3>Lidar data</h3>
                 <ul>
                     <li class='fragment'>
@@ -394,8 +393,7 @@
                 </ul>
             </section>
 
-            <section class='left' data-background-image='images/terrabytes27.gif'
-                data-background-opacity="0.4">
+            <section class='left' data-background-image='images/terrabytes27.gif' data-background-opacity="0.4">
                 <h3>Python</h3>
                 <ul>
                     <li class='fragment'>
@@ -410,38 +408,38 @@
                 </ul>
             </section>
 
-             <!-- Code -->
+            <!-- Code -->
 
-             <section data-pre-load data-background-image="https://www.outragegis.com/weather/img/NewGap.jpg"
-             data-background-opacity="0.4">
-             <h1 class="r-fit-text">Code > Visualize</h1>
-         </section>
+            <section data-pre-load data-background-image="https://www.outragegis.com/weather/img/NewGap.jpg"
+                data-background-opacity="0.4">
+                <h1 class="r-fit-text">Code > Visualize</h1>
+            </section>
 
-         <section class='left' data-background-image='https://www.outragegis.com/weather/img/NewGap.jpg'
-         data-background-opacity="0.3">
-         <h3>Code examples</h3>
-         <ul>
-             <li class='fragment'>
-                First challenge in learning code is understanding syntax. 
+            <section class='left' data-background-image='https://www.outragegis.com/weather/img/NewGap.jpg'
+                data-background-opacity="0.3">
+                <h3>Code examples</h3>
                 <ul>
                     <li class='fragment'>
-                        Comments are not read by program
-                    </li>
-                    <li class='fragment'>
-                        Data
-                    </li>
-                    <li class='fragment'>
-                        Instructions
+                        First challenge in learning code is understanding syntax.
+                        <ul>
+                            <li class='fragment'>
+                                Comments
+                            </li>
+                            <li class='fragment'>
+                                Data
+                            </li>
+                            <li class='fragment'>
+                                Instructions
+                            </li>
+                        </ul>
                     </li>
                 </ul>
-             </li>
-         </ul>
-     </section>
-     <section data-markdown data-separator="---" data-background-color=#2D2D2D>
-        <textarea data-template>
+            </section>
+            <section data-markdown data-separator="---" data-background-color=#2D2D2D>
+                <textarea data-template>
             Examples
             ---
-            ```sql 
+            ```sql [1|3-4|5-6]
             /* Select Kentucky from polygon layer of states. */
 
             SELECT * FROM
@@ -451,41 +449,162 @@
 
             /* That's it! */
             ```
-            ---
-            ---
-```markdown
-## My Project
-### of little kitties 🐱✊🏻
 
-This page hosts my mapping project assets:
-* Visit my instagram page [@cats_of_instagram](https://www.instagram.com/cats_of_instagram) 
-* *A fun fact* I have over 10 million follwers!
+            ---
+            ```markdown [1-2|4-6|8]
+            ## My Project
+            ### of little kitties 🐱✊🏻
 
-\![Cats of Instagram](images/01/cats_of_instagram.jpg)
-```
+            This page hosts my mapping project assets:
+            * Visit my instagram page [@cats_of_instagram](https://www.instagram.com/cats_of_instagram) 
+            * *A fun fact* I have over 10 million follwers!
+
+            ![Cats of Instagram](images/cats_of_instagram.jpg)
+            ```
+
+            ---
+            ## Renders
+            in the browsers to
+
+            ---
+            ## My Project
+            ### of little kitties 🐱✊🏻
+
+            This page hosts my mapping project assets:
+            * Visit my instagram page [@cats_of_instagram](https://www.instagram.com/cats_of_instagram) 
+            * *A fun fact:* I have over 10 million follwers!
+
+            ![Cats of Instagram](images/cats_of_instagram.jpg)
+
+            ---
+            That was
+            ## Markdown
+            One of the most popular markup languages to make well-formatted documentation.
+
+            ---
+            Let's try
+            ## Python
+
+            ---
+            ```python [1|2-4|5-7|8-19|20-22]
+            # What's your letter grade this semester?
+            number_grade = input("Enter value between 0 and 100: ")
+            try:
+                x = float(number_grade)
+            except:
+                print("Please enter a NUMBER value between 0 and 100")
+                quit()
+            if x > 100:
+                print("Please use a value between 0 and 100")
+            elif x < 0:
+                print("Please use a value between 0 and 100")
+            elif x >= 90:
+                print("A")
+            elif x >= 80:
+                print("B")
+            elif x >= 70:
+                print("C")
+            elif x >= 60:
+                print("D")
+            else:
+                print(":''(")
+                print(':\'(')
+            print("All done, friends! Should it be rounded up?")
+            ```
+            [Run](https://trinket.io/python3/af47398bef)
+
             </textarea>
-     </section>
+            </section>
 
-            <section
-                data-background-video="https://player.vimeo.com/external/292571411.hd.mp4?s=d7b9a9f14d28c8fa7fe3230a3b2516b04c5be6f9&profile_id=175"
-                data-background-size='cover'>
+            <section class='left' data-background-image='https://www.outragegis.com/weather/img/NewGap.jpg'
+                data-background-opacity="0.3">
+                <h3>Git</h3>
+                <ul>
+                    <li class='fragment'>
+                        Project management and backup
+                    </li>
+                    <li class='fragment'>
+                        Develop and share your code
+                    </li>
+                    <li class='fragment'>
+                        Learn basic web page development with Markdown and HTML
+                    </li>
+                    <li class='fragment'>
+                        Publish public web page portfolios of your maps 😀😀 
+                    </li>
+                </ul>
             </section>
-            <section>
-                <h5 class="r-fit-text">Slide 5</h5>
-                <h6 class="r-fit-text">Slide 5</h6>
-                <img src='https://www.outragegis.com/weather/goes16/rgb.jpg' class="r-stretch">
+
+            <section data-background-image='https://www.outragegis.com/weather/img/NewGap.jpg'
+                data-background-opacity="0.3">
+                <h1 class="r-fit-text">Theme</h1>
             </section>
+
+            <section class='left' data-background-image='https://www.outragegis.com/weather/img/NewGap.jpg'
+                data-background-opacity="0.3">
+                <h2>Lidar measurements of</h2>
+                <ul>
+                    <li class='fragment'>
+                        Features in the Red River Gorge
+                    </li>
+                    <li class='fragment'>
+                        Paint by Trees Tour
+                    </li>
+                    <li class='fragment'>
+                        Any feature that you want to visualize and measure
+                    </li>
+                </ul>
+            </section>
+
+            <section class='left' data-background-image='https://www.outragegis.com/weather/img/NewGap.jpg'
+                data-background-opacity="0.3">
+                <h2>Final project</h2>
+                <ul>
+                    <li class='fragment'>
+                        Make 3D site map
+                        <ul>
+                            <li class='fragment'>
+                                <a href="https://potree.github.io">Potree</a> point cloud renderer
+                            </li>
+                            <li class='fragment'>
+                                <a href="https://cesium.com/">Cesium Ion</a> web platform
+                            </li>
+                        </ul>
+                    </li>
+                    <li class='fragment'>
+                        Publish online
+                    </li>
+                </ul>
+            </section>
+
+            <section data-background-iframe='https://outragegis.com/pointclouds/lex' data-background-interactive
+                data-background-opacity="1">
+                <!-- <h6 class="r-fit-text">Measuring arches</h6> -->
+            </section>
+
+            <section data-background-iframe='https://outragegis.com/pointclouds/legacy' data-background-interactive
+                data-background-opacity="1">
+                <!-- <h6 class="r-fit-text">Measuring arches</h6> -->
+            </section>
+
+            <section data-background-iframe='https://cesium.com/ion/stories/viewer/?id=35037375-cab3-4db5-89bb-2098c4b29cf4' data-background-interactive
+            data-background-opacity="1">
+            <!-- <h6 class="r-fit-text">Measuring arches</h6> -->
+            </section>
+
 
             <section data-background-iframe='https://www.youtube.com/embed/nFV8ftGN0aM' data-background-interactive
                 data-background-opacity="1">
             </section>
 
-
-            <section
-                data-background-iframe='https://cesium.com/ion/stories/viewer/?id=35037375-cab3-4db5-89bb-2098c4b29cf4'
-                data-background-interactive data-background-opacity="1" data-background-color="white">
+            <section data-background-iframe='https://www.youtube.com/embed/BVVCe_BSsT4' data-background-interactive
+                data-background-opacity="1">
             </section>
 
+            <section data-background-image='https://www.outragegis.com/weather/img/NewGap.jpg'
+            data-background-opacity="0.3">
+            <h1 class="r-fit-text">Let's Map!</h1>
+        </section>
         </div>
     </div>
 
