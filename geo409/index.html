@@ -1,20 +1,20 @@
-
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>Welcome to GEO409</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="../dist/reset.css">
-		<link rel="stylesheet" href="../dist/reveal.css">
-		<link rel="stylesheet" href="../dist/theme/league-alt.css" id="theme">
+    <title>Welcome to GEO409</title>
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="../plugin/highlight/monokai.css" id="highlight-theme">
-		<style>
-            /* UK Colors: 
+    <link rel="stylesheet" href="../dist/reset.css">
+    <link rel="stylesheet" href="../dist/reveal.css">
+    <link rel="stylesheet" href="../dist/theme/league-alt.css" id="theme">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="../plugin/highlight/tom-night-80.css" id="highlight-theme">
+    <style>
+        /* UK Colors: 
                 #c7c9c8 light gray 
                 #63666a dark gray
                 #15397f dark blue
@@ -22,156 +22,494 @@
                 #0033a0 official blue
             */
 
-			.revealz::after {
-				content: "";
-				background: url('https://www.outragegis.com/weather/goes16/rgb.jpg') no-repeat fixed center;
-				background-size: cover;
-				opacity: 0.35;
-				top: 0;
-				left: 0;
-				bottom: 0;
-				right: 0;
-				position: absolute;
-				z-index: -1;   
-				}
+        .revealz::after {
+            content: "";
+            background: url('https://www.outragegis.com/weather/goes16/rgb.jpg') no-repeat fixed center;
+            background-size: cover;
+            opacity: 0.35;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            position: absolute;
+            z-index: -1;
+        }
 
-			.ll {
-				bottom: 0px;
-				left: 0px;
-				position: absolute;
-				z-index: 200;
-				width: 300px;
-				font-size: 0.4em;
-                margin: 0 0 -50px 10px;
-                font-style: italic;
-                text-align:left;
-            }
-            
-            .left {
-                text-align: left;
-            }
-		</style>
-	</head>
-	<body>
-		<div class="reveal" >
-			<div class="slides" >
-				
-				<section data-pre-load data-background-image="https://www.outragegis.com/weather/img/animation/yesterday/LookRock.gif" data-background-opacity="0.4">
-					<h2 class="r-fit-text">Welcome!</h2>
-					<!-- <h2>Welcome</h2> -->
-					<div class='ll'>Yesterday in the Great Smokies<br>Webcam view from Look Rock</div>
-                </section>
-                <section data-background-image='https://www.outragegis.com/weather/img/NewGap.jpg' data-background-opacity="0.3">
-                    <h2 >GEO 409</h2>
-                    <h3 >Advanced Topics in GIS</h3>
-                    <h5 class='fragment' style='font-size: 1.5em;color:#009bda;'>With a distinct Kentucky flavor</h5>
-                </section>
-                <section data-background-image='https://www.outragegis.com/weather/img/NewGap.jpg' data-background-opacity="0.3">
-                    <h4 >Instructor</h4>
-                    <h2 >Boyd Shearer</h2>
-                    <h6 style='font-size: 1.2em;'>Contact information in syllabus</h6>
-                </section>
-                <section data-background-image='https://www.outragegis.com/weather/img/NewGap.jpg' data-background-opacity="0.3">
-                    <h6 style='font-size: 1.5em;' >What helps me teach</h6>
-                    <h2 class="r-fit-text" style='margin-top:-20px;'>GIS & MAPPING?</h2>
-                </section>
-				<section data-background-image='https://live.staticflickr.com/7480/27309184576_80b7d25ff0_o.jpg' data-background-opacity="0.2" class='left'>
-                    <h3 >Make maps</h3>
-					<ul >
-						<li class='fragment' >
-							25+ years designing maps for print and web
-						</li>
-						<li class='fragment' >
-							<a href='https://outrageGIS.com'>outrageGIS.com</a>
-						</li>
-					</ul>
-                </section>
-                <section class='left' data-background-image='https://c1.staticflickr.com/1/390/31713088315_f0326f577c_k.jpg' data-background-opacity="0.2">
-                    <h3 >photograph</h3>
-					<ul >
-						<li class='fragment' >
-							a map represents a real place
-						</li>
-						<li class='fragment' >
-							with real processes & people.
-						</li>
-					</ul>
-                </section>
-                <section class='left' data-background-image='https://c1.staticflickr.com/6/5324/30627102241_3cde14d218_o.jpg' data-background-opacity="0.2">
-                    <h3 >explore</h3>
-					<ul >
-						<li class='fragment' >
-							personal adventures
-						</li>
-						<li class='fragment' >
-							inspire.
-						</li>
-					</ul>
-                </section>
-                <section class='left' data-background-image='https://farm2.staticflickr.com/1769/42671081904_40c84be780_h.jpg' data-background-opacity="0.2">
-                    <h3 >experiment</h3>
-					<ul >
-						<li class='fragment' >
-							with new tools and methods
-						</li>
-						<li class='fragment' >
-							to creative a unique style.
-						</li>
-					</ul>
-                </section>
-                <section class='left' data-background-image='https://c1.staticflickr.com/6/5697/31017969892_6a6f41ec25_o.jpg' data-background-opacity="0.4">
-                    <h3 >sunsets</h3>
-					<ul >
-						<li class='fragment' >
-							field trips!
-						</li>
-					</ul>
-                </section>
-                <section data-background-iframe='https://kuula.co/share/7Y4wL' data-background-interactive data-background-opacity="0.4">
-                    <h6 class="r-fit-text">Measuring arches</h6>
-				</section>
-				<section data-background-video="https://player.vimeo.com/external/301603400.hd.mp4?s=0374c6616666a6754297bdc434a915425e57c6ca&profile_id=174" data-background-size='cover'>
-                    
-                </section>
-                
-                <section data-background-video="https://player.vimeo.com/external/292571411.hd.mp4?s=d7b9a9f14d28c8fa7fe3230a3b2516b04c5be6f9&profile_id=175" data-background-size='cover'>
-                </section>
-				<section><h5 class="r-fit-text">Slide 5</h5>
-					<h6 class="r-fit-text">Slide 5</h6>
-					<img src='https://www.outragegis.com/weather/goes16/rgb.jpg' class="r-stretch">
-                </section>
-                
-                <section data-background-iframe='https://www.youtube.com/embed/nFV8ftGN0aM' data-background-interactive data-background-opacity="1">
-                </section>
-                <section data-background-iframe='https://reece2ke.github.io/geo409_site' data-background-interactive data-background-opacity="1" data-background-color="white">
-                </section>
+        .ll {
+            bottom: 0px;
+            left: 0px;
+            position: absolute;
+            z-index: 200;
+            width: 300px;
+            font-size: 0.4em;
+            margin: 0 0 -50px 10px;
+            font-style: italic;
+            text-align: left;
+        }
 
-                <section data-background-iframe='https://cesium.com/ion/stories/viewer/?id=35037375-cab3-4db5-89bb-2098c4b29cf4' data-background-interactive data-background-opacity="1" data-background-color="white">
-                </section>
+        .left {
+            text-align: left;
+        }
 
-			</div>
-		</div>
+        .custom-counter {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
 
-		<script src="../dist/reveal.js"></script>
-		<script src="../plugin/notes/notes.js"></script>
-		<script src="../plugin/markdown/markdown.js"></script>
-		<script src="../plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
-				backgroundTransition: 'fade',
-				// Transition style
-				transition: 'fade', // none/fade/slide/convex/concave/zoom
+        .custom-counter li {
+            counter-increment: step-counter;
+            margin-bottom: 10px;
+        }
 
-				// Transition speed
-				transitionSpeed: 'fast', // default/fast/slow
+        .custom-counter li::before {
+            content: counter(step-counter);
+            margin-right: 5px;
+            font-size: 80%;
+            background-color: #ffbb00;
+            color: white;
+            font-weight: bold;
+            padding: 3px 8px;
+            border-radius: 3px;
+        }
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+        li {
+            /* list-style-type: "✨ ";  */
+            list-style-image: url('images/map-pin.png');
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <section data-pre-load
+                data-background-image="https://www.outragegis.com/weather/img/animation/yesterday/LookRock.gif"
+                data-background-opacity="0.4">
+                <h2 class="r-fit-text">Welcome!</h2>
+                <!-- <h2>Welcome</h2> -->
+                <div class='ll'>Yesterday in the Great Smokies<br>Webcam view from Look Rock</div>
+            </section>
+            <section data-background-image='https://www.outragegis.com/weather/img/NewGap.jpg'
+                data-background-opacity="0.3">
+                <h2 class='title'>GEO 409</h2>
+                <h3>Advanced Topics in GIS</h3>
+                <h5 class='fragment' style='font-size: 1.5em;color:#009bda;'>With a distinct Kentucky flavor</h5>
+            </section>
+            <section data-background-image='https://www.outragegis.com/weather/img/NewGap.jpg'
+                data-background-opacity="0.3">
+                <h4>Instructor</h4>
+                <h2>Boyd Shearer</h2>
+                <h6 style='font-size: 1.2em;'>Contact information in syllabus</h6>
+            </section>
+            <section data-background-image='https://www.outragegis.com/weather/img/NewGap.jpg'
+                data-background-opacity="0.3">
+                <h6 style='font-size: 1.5em;'>What helps me teach</h6>
+                <h2 class="r-fit-text" style='margin-top:-20px;'>GIS & MAPPING?</h2>
+            </section>
+            <section data-background-image='https://live.staticflickr.com/7480/27309184576_80b7d25ff0_o.jpg'
+                data-background-opacity="0.2" class='left'>
+                <h3>Make maps</h3>
+                <ul>
+                    <li class='fragment'>
+                        25+ years designing maps for print and web
+                    </li>
+                    <li class='fragment'>
+                        <a href='https://outrageGIS.com'>outrageGIS.com</a>
+                    </li>
+                </ul>
+            </section>
+            <section class='left' data-background-image='https://c1.staticflickr.com/1/390/31713088315_f0326f577c_k.jpg'
+                data-background-opacity="0.2">
+                <h3>photograph</h3>
+                <ul>
+                    <li class='fragment'>
+                        a map represents a real place
+                    </li>
+                    <li class='fragment'>
+                        with real processes & people.
+                    </li>
+                </ul>
+            </section>
+            <section class='left'
+                data-background-image='https://c1.staticflickr.com/6/5324/30627102241_3cde14d218_o.jpg'
+                data-background-opacity="0.2">
+                <h3>explore</h3>
+                <ul>
+                    <li class='fragment'>
+                        personal adventures
+                    </li>
+                    <li class='fragment'>
+                        inspire.
+                    </li>
+                </ul>
+            </section>
+            <section class='left'
+                data-background-image='https://farm2.staticflickr.com/1769/42671081904_40c84be780_h.jpg'
+                data-background-opacity="0.2">
+                <h3>experiment</h3>
+                <ul>
+                    <li class='fragment'>
+                        with new tools and methods
+                    </li>
+                    <li class='fragment'>
+                        to creative a unique style.
+                    </li>
+                </ul>
+            </section>
+            <section class='left'
+                data-background-image='https://farm5.staticflickr.com/4175/34413343182_c906452c0b_h.jpg'
+                data-background-opacity="0.4">
+                <h3>& field trips!</h3>
+                <ul>
+                    <li class='fragment'>
+                        to measure and test our maps.
+                    </li>
+                </ul>
+            </section>
+
+            <section data-background-iframe='https://kuula.co/share/7Y4wL' data-background-interactive
+                data-background-opacity="0.4">
+                <h6 class="r-fit-text">Measuring arches</h6>
+            </section>
+
+            <section class='left'
+                data-background-image='https://live.staticflickr.com/65535/50827784978_5e0c297a61_k.jpg'
+                data-background-opacity="0.4">
+                <h6 class="r-fit-text">Measuring bridges</h6>
+            </section>
+
+            <section
+                data-background-iframe='https://nyc3.digitaloceanspaces.com/astoria/xyz/st-suspension-bridge/index.html'
+                data-background-interactive data-background-opacity="0.4">
+                <h6 class="r-fit-text">Lidar scanner</h6>
+            </section>
+
+            <section class='left' data-background-image='https://www.outragegis.com/weather/img/NewGap.jpg'
+                data-background-opacity="0.3">
+                <h3>Past courses</h3>
+                <ul>
+                    <li class='fragment'>
+                        Stay local
+                    </li>
+                    <li class='fragment'>
+                        make snazzy visuals
+                    </li>
+                    <li class='fragment'>
+                        summary measurements
+                    </li>
+                    <li class='fragment'>
+                        and tell a story.
+                    </li>
+                </ul>
+            </section>
+            <section class='left' data-background-image='https://www.outragegis.com/weather/img/NewGap.jpg'
+                data-background-opacity="0.3">
+                <h3>A map is </h3>
+                <ul>
+                    <li class='fragment'>
+                        An artistic rendering of Earth.
+                    </li>
+                    <li class='fragment'>
+                        A measurement of our environment.
+                    </li>
+                    <li class='fragment'>
+                        A tool for remembering the past and navigating the unknown.
+                    </li>
+                </ul>
+            </section>
+
+
+
+            <!-- Examples -->
+
+            <section data-pre-load data-background-image="https://www.outragegis.com/weather/img/NewGap.jpg"
+                data-background-opacity="0.4">
+                <h1 class="r-fit-text">EXAMPLES</h1>
+            </section>
+            <section data-background-iframe='https://reece2ke.github.io/geo409_site' data-background-interactive
+                data-background-opacity="1" data-background-color="white">
+            </section>
+            <section data-background-iframe='https://kuula.co/share/7lLKn' data-background-interactive
+                data-background-opacity="0.4">
+                <h6 class="r-fit-text">The team</h6>
+            </section>
+            <section data-background-iframe='https://rvirto01.github.io/NRE355_Tree_canopy_study'
+                data-background-interactive data-background-opacity="1" data-background-color="white">
+            </section>
+            <section
+                data-background-image='https://geography.as.uky.edu/sites/default/files/BoydShearer_Lab3_ArboretumWoodsTreeCensus.jpg'
+                data-background-interactive data-background-opacity="1" data-background-color="white"
+                data-background-size='contain'>
+            </section>
+
+            <section
+                data-background-image='https://geography.as.uky.edu/sites/default/files/RobinsonForestCamp_TrailMap.jpg'
+                data-background-interactive data-background-opacity="1" data-background-color="white"
+                data-background-size='contain'>
+            </section>
+
+
+            <section data-background-iframe='https://boydx.github.io/wildfires/' data-background-interactive
+                data-background-opacity="1" data-background-color="white">
+            </section>
+            <section data-background-iframe='https://boydx.github.io/collisions' data-background-interactive
+                data-background-opacity="1" data-background-color="white">
+            </section>
+
+            <section data-background-iframe='http://sweb.uky.edu/~blshea1/nre355/pksnp' data-background-interactive
+                data-background-opacity="1" data-background-color="white">
+            </section>
+
+            <section data-background-iframe='http://sweb.uky.edu/~blshea1/nre355/pine-mountain-canopy-tour'
+                data-background-interactive data-background-opacity="1" data-background-color="white">
+            </section>
+
+            <section data-background-iframe='http://sweb.uky.edu/~blshea1/nre355/pine-mountain-canopy-tour'
+                data-background-interactive data-background-opacity="1" data-background-color="white">
+            </section>
+
+
+            <section data-background-iframe='https://uky-gis.github.io/maps/student-projects'
+                data-background-interactive data-background-opacity="1" data-background-color="white">
+            </section>
+            <section
+                data-background-video="https://player.vimeo.com/external/301603400.hd.mp4?s=0374c6616666a6754297bdc434a915425e57c6ca&profile_id=174"
+                data-background-size='cover'>
+
+            </section>
+
+            <!-- Goals -->
+
+            <section data-pre-load data-background-image="https://www.outragegis.com/weather/img/NewGap.jpg"
+                data-background-opacity="0.4">
+                <h1 class="r-fit-text">GOALS</h1>
+            </section>
+
+            <section class='left' data-background-image='https://www.outragegis.com/weather/img/NewGap.jpg'
+                data-background-opacity="0.3">
+                <h3>We will</h3>
+                <ul>
+                    <li class='fragment'>
+                        Work in cutting-edge technology and data
+                        <ul>
+                            <li class='fragment'>
+                                ArcGIS Pro
+                            </li>
+                            <li class='fragment'>
+                                Lidar
+                            </li>
+                            <li class='fragment'>
+                                Python
+                            </li>
+                        </ul>
+
+                    </li>
+                    <li class='fragment'>
+                        Map a site in exquisite detail
+                        <ul>
+                            <li class='fragment'>
+                                From feet to inches in resolution
+                            </li>
+                        </ul>
+                    </li>
+                    <li class='fragment'>
+                        Create a portfolio
+                    </li>
+                    <li class='fragment'>
+                        Publish and promote
+                    </li>
+
+                </ul>
+            </section>
+            <section class='left' data-background-image='https://www.outragegis.com/weather/img/NewGap.jpg'
+                data-background-opacity="0.3">
+                <h3>ArcGIS Pro (AP)</h3>
+                <ul>
+                    <li class='fragment'>
+                        Leading GIS & mapping software (looks good on a resume)
+                    </li>
+                    <li class='fragment'>
+                        Well-documented help and extensive support
+                    </li>
+                    <li class='fragment'>
+                        We can stay almost entirely in AP
+                    </li>
+                    <li class='fragment'>
+                        Not free (like QGIS) and runs only on Windows OS 😞
+                    </li>
+                </ul>
+            </section>
+            <section class='left' data-background-image='https://www.outragegis.com/weather/img/NewGap.jpg'
+                data-background-opacity="0.3">
+                <h3>Lidar</h3>
+                <ul>
+                    <li class='fragment'>
+                        LIght Detection And Ranging
+                    </li>
+                    <li class='fragment'>
+                        Point cloud is densely sampled features using infrared lasers
+                    </li>
+                    <li class='fragment'>
+                        New frontier in mapping and analysis
+                    </li>
+                </ul>
+            </section>
+
+            <section class='left' data-background-image='https://farm9.staticflickr.com/8062/29138854162_85f7e68158_h.jpg'
+                data-background-opacity="0.6"
+                data-background-size='contain'
+                data-background-color='#000'>
+                <h3>Lidar <a href="https://farm9.staticflickr.com/8062/29138854162_1cd274d646_o.jpg">example</a></h3>
+                <ul>
+                    <li class='fragment'>
+                        Aerial lidar for entire state <img src='images/ky-black.svg' width='200px' style='display: inline-block;transform: translate(0px, 40px);'>
+                    </li>
+                    <li class='fragment'>
+                        Ground and above-ground features
+                    </li>
+                    <li class='fragment'>
+                        New frontier in mapping and analysis
+                    </li>
+                </ul>
+            </section>
+
+            <section class='left' data-background-image='images/terrabytes27.gif'
+                data-background-opacity="0.6">
+                <h3>Lidar data</h3>
+                <ul>
+                    <li class='fragment'>
+                        Massive
+                    </li>
+                    <li class='fragment'>
+                        >20 TB for first edition
+                    </li>
+                    <li class='fragment'>
+                        State divided into 46,105 tiles
+                    </li>
+                    <li class='fragment'>
+                        How to handle so much data?
+                    </li>
+                </ul>
+            </section>
+
+            <section class='left' data-background-image='images/terrabytes27.gif'
+                data-background-opacity="0.4">
+                <h3>Python</h3>
+                <ul>
+                    <li class='fragment'>
+                        Among the most popular programming languages
+                    </li>
+                    <li class='fragment'>
+                        We'll start with no programming knowledge
+                    </li>
+                    <li class='fragment'>
+                        Text-based instructions (aka code) make working with big data a lot easier
+                    </li>
+                </ul>
+            </section>
+
+             <!-- Code -->
+
+             <section data-pre-load data-background-image="https://www.outragegis.com/weather/img/NewGap.jpg"
+             data-background-opacity="0.4">
+             <h1 class="r-fit-text">Code > Visualize</h1>
+         </section>
+
+         <section class='left' data-background-image='https://www.outragegis.com/weather/img/NewGap.jpg'
+         data-background-opacity="0.3">
+         <h3>Code examples</h3>
+         <ul>
+             <li class='fragment'>
+                First challenge in learning code is understanding syntax. 
+                <ul>
+                    <li class='fragment'>
+                        Comments are not read by program
+                    </li>
+                    <li class='fragment'>
+                        Data
+                    </li>
+                    <li class='fragment'>
+                        Instructions
+                    </li>
+                </ul>
+             </li>
+         </ul>
+     </section>
+     <section data-markdown data-separator="---" data-background-color=#2D2D2D>
+        <textarea data-template>
+            Examples
+            ---
+            ```sql 
+            /* Select Kentucky from polygon layer of states. */
+
+            SELECT * FROM
+                state_polygon_layer
+            WHERE
+                state_name = 'Kentucky'
+
+            /* That's it! */
+            ```
+            ---
+            ---
+```markdown
+## My Project
+### of little kitties 🐱✊🏻
+
+This page hosts my mapping project assets:
+* Visit my instagram page [@cats_of_instagram](https://www.instagram.com/cats_of_instagram) 
+* *A fun fact* I have over 10 million follwers!
+
+\![Cats of Instagram](images/01/cats_of_instagram.jpg)
+```
+            </textarea>
+     </section>
+
+            <section
+                data-background-video="https://player.vimeo.com/external/292571411.hd.mp4?s=d7b9a9f14d28c8fa7fe3230a3b2516b04c5be6f9&profile_id=175"
+                data-background-size='cover'>
+            </section>
+            <section>
+                <h5 class="r-fit-text">Slide 5</h5>
+                <h6 class="r-fit-text">Slide 5</h6>
+                <img src='https://www.outragegis.com/weather/goes16/rgb.jpg' class="r-stretch">
+            </section>
+
+            <section data-background-iframe='https://www.youtube.com/embed/nFV8ftGN0aM' data-background-interactive
+                data-background-opacity="1">
+            </section>
+
+
+            <section
+                data-background-iframe='https://cesium.com/ion/stories/viewer/?id=35037375-cab3-4db5-89bb-2098c4b29cf4'
+                data-background-interactive data-background-opacity="1" data-background-color="white">
+            </section>
+
+        </div>
+    </div>
+
+    <script src="../dist/reveal.js"></script>
+    <script src="../plugin/notes/notes.js"></script>
+    <script src="../plugin/markdown/markdown.js"></script>
+    <script src="../plugin/highlight/highlight.js"></script>
+    <script>
+        // More info about initialization & config:
+        // - https://revealjs.com/initialization/
+        // - https://revealjs.com/config/
+        Reveal.initialize({
+            hash: true,
+            backgroundTransition: 'fade',
+            // Transition style
+            transition: 'fade', // none/fade/slide/convex/concave/zoom
+
+            // Transition speed
+            transitionSpeed: 'fast', // default/fast/slow
+
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+        });
+    </script>
+</body>
+
 </html>

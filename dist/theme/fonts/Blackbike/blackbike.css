@@ -1,9 +1,10 @@
 @font-face {
     font-family: 'Blackbike';
-    src: url('./Blackbike-clean.eot');
-    src: url('./lackbike-clean.eot?#iefix') format('embedded-opentype'),
-         url('./lackbike-clean.woff') format('woff'),
-         url('./lackbike-clean.ttf') format('truetype');
+    src: url('./Blackbike-Clean.eot');
+    src: url('./Blackbike-Clean.eot?#iefix') format('embedded-opentype'),
+         url('./Blackbike-Clean.woff') format('woff'),
+         url('./Blackbike-Clean.woff2') format('woff2'),
+         url('./Blackbike-Clean.ttf') format('truetype');
 
     font-weight: normal;
     font-style: normal;
