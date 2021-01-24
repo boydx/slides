@@ -6,7 +6,7 @@
  * Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
  */
  @import url(https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;800;900);
- @import url(https://fonts.googleapis.com/css2?family=Condiment);
+ @import url(https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600);
  @import url(https://nyc3.digitaloceanspaces.com/astoria/geo409/fonts/Blackbike/blackbike.css);
  section.has-light-background, section.has-light-background h1, section.has-light-background h2, section.has-light-background h3, section.has-light-background h4, section.has-light-background h5, section.has-light-background h6 {
    color: #222; }
@@ -112,7 +112,7 @@
    font-size: 2em; }
  
  .reveal h5 {
-   font-family: "Blackbike", "Blackbike Clean", "Condiment", cursive;
+   font-family: "Blackbike", "Blackbike Clean", "Dancing Script", cursive;
    font-size: 2em;
    font-weight: normal; }
  
