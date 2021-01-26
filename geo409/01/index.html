@@ -1,30 +1,221 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>practice	</title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="/dist/reset.css">
-		<link rel="stylesheet" href="/dist/reveal.css">
-		<link rel="stylesheet" href="/dist/theme/league.css" id="theme">
+	<title>GEO 409: Module 01</title>
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="/plugin/highlight/monokai.css" id="highlight-theme">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>
-					<pre><code data-trim data-noescape javascript>
-						let r = 'type'
-						console.log(r)
-					</code></pre>
-				  </section>
-				<section data-markdown data-separator="---" data-transition="fade" data-transition-speed="fast">
-					<textarea data-template>
+	<link rel="stylesheet" href="../../dist/reset.css">
+	<link rel="stylesheet" href="../../dist/reveal.css">
+	<link rel="stylesheet" href="../../dist/theme/league-alt.css" id="theme">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="../../plugin/highlight/tom-night-80.css" id="highlight-theme">
+	<style>
+		/* UK Colors: 
+					 #c7c9c8 light gray 
+					 #63666a dark gray
+					 #15397f dark blue
+					 #009bda light blue
+					 #0033a0 official blue
+				 */
+
+		.revealz::after {
+			content: "";
+			background: url('https://www.outragegis.com/weather/goes16/rgb.jpg') no-repeat fixed center;
+			background-size: cover;
+			opacity: 0.35;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			position: absolute;
+			z-index: -1;
+		}
+
+		.ll {
+			bottom: 0px;
+			left: 0px;
+			position: absolute;
+			z-index: 200;
+			width: 300px;
+			font-size: 0.4em;
+			margin: 0 0 -50px 10px;
+			font-style: italic;
+			font-weight: 300;
+			text-align: left;
+		}
+
+		.lr {
+			bottom: 5px;
+			right: 0px;
+			position: absolute;
+			z-index: 200;
+			width: 300px;
+			font-size: 0.6em;
+			margin: 0 0 -50px 10px;
+			/* font-style: italic; */
+			text-align: right;
+		}
+
+		.left {
+			text-align: left;
+		}
+
+		.custom-counter {
+			margin: 0;
+			padding: 0;
+			list-style-type: none;
+		}
+
+		.custom-counter li {
+			counter-increment: step-counter;
+			margin-bottom: 10px;
+		}
+
+		.custom-counter li::before {
+			content: counter(step-counter);
+			margin-right: 5px;
+			font-size: 80%;
+			background-color: #ffbb00;
+			color: white;
+			font-weight: bold;
+			padding: 3px 8px;
+			border-radius: 3px;
+		}
+
+		li {
+			/* list-style-type: "✨ ";  */
+			list-style-image: url('../images/map-pin.png');
+		}
+
+		.plain{
+			/* list-style-type: "✨ ";  */
+			list-style-image: none;
+			list-style-type: none;
+		}
+
+		.number {
+			/* list-style-type: "✨ ";  */
+			list-style-image: none;
+			list-style-type: decimal;
+			list-style-position: inside;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section data-pre-load
+				data-background-image="https://www.outragegis.com/weather/img/animation/yesterday/LookRock.gif"
+				data-background-opacity="0.4">
+				<h5>Module 01</h5>
+				<h3>Building our collaborative workflow</h3>
+
+				<div class='ll'>Yesterday in the Great Smokies<br>Webcam <a
+						href="https://www.outragegis.com/weather/img/animation" target='_blank'>archive</a></div>
+						<!-- <h2>Welcome</h2> -->
+				<div class='lr'>GEO 409: Advanced GIS</div>
+			</section>
+			<section data-pre-load
+				data-background-image="https://www.outragegis.com/weather/img/animation/yesterday/LookRock.gif"
+				data-background-opacity="0.4">
+				<img width='100%' src='../images/logo-uk-geo.png'>
+			</section>
+			<section class='left' data-background-image='https://live.staticflickr.com/65535/48789211076_36cf732bc6_h.jpg'
+                data-background-opacity="0.2">
+                <h3>Challenge</h3>
+                <ul>
+                    <li class='fragment'>
+                        GIS projects are asset-rich
+                        <ul>
+                            <li class='fragment'>many files and directories</li>
+                            <li class='fragment'>with lots of downloaded data</li>
+                            <ul>
+								<li class='plain fragment'>...and we only need a small subset.</li>
+							</ul>
+                        </ul>
+					</li>
+					<li class='fragment'>
+						How do we manage projects?
+					</li>
+                </ul>
+			</section>
+			<section class='left' data-background-image='https://live.staticflickr.com/1821/42233874915_b274295437_o.jpg'
+				data-background-opacity="0.4">
+				<p class='fragment'>Got data but</p>
+                <h5 class='fragment'>where did it go?</h5>
+			</section>
+			<section class='left' data-background-image='https://live.staticflickr.com/65535/48789211076_36cf732bc6_h.jpg'
+                data-background-opacity="0.2">
+                <h3>Code vs. data</h3>
+                <ul>
+                    <li class='fragment'>
+						Downloaded data is redundant
+					</li>
+					<ul>
+						<li class='plain fragment'>don't back it up.</li>
+					</ul>
+					
+					<li class='fragment'>
+						Write code to process it.
+						<ul>
+							<li class='plain fragment'>Keep it! Code is unique.</li>
+						</ul>
+					</li>
+                </ul>
+			</section>
+			<!-- <section data-background-image='https://live.staticflickr.com/65535/48789211076_36cf732bc6_h.jpg'
+                data-background-opacity="0.3">
+                <h1 class="r-fit-text">Goals</h1>
+            </section> -->
+
+			<section class='left' data-background-image='https://live.staticflickr.com/65535/48789211076_36cf732bc6_h.jpg'
+                data-background-opacity="0.2">
+                <h3>Goals</h3>
+                <ul>
+                    <li class='number fragment'>
+						Set up our local workspace
+					</li>
+					<li class='number fragment'>
+						Install and customize our tools
+					</li>
+					<li class='number fragment'>
+						Practicing writing code
+					</li>
+					<li class='number fragment'>
+						Collaborate
+					</li>
+                </ul>
+			</section>
+			
+			<section class='left' data-background-image='https://live.staticflickr.com/65535/48789211076_36cf732bc6_h.jpg'
+                data-background-opacity="0.2">
+                <h3>1. Local workspace</h3>
+                <ul>
+                    <li class='number fragment'>
+						Set up our local workspace
+					</li>
+					<li class='number fragment'>
+						Install and customize our tools
+					</li>
+					<li class='number fragment'>
+						Practicing writing code
+					</li>
+					<li class='number fragment'>
+						Collaborate
+					</li>
+                </ul>
+            </section>
+
+
+
+
+			<section data-markdown data-separator="---" data-transition="fade" data-transition-speed="fast">
+				<textarea data-template>
 						---
 <!-- .slide: data-background-image="https://www.outragegis.com/weather/img/animation/yesterday/LookRock.gif" data-background-opacity="0.2" -->
 # GEO 409
@@ -732,24 +923,31 @@ Open *File > Preferences > Settings > Edit in settings.json*
 [Link](https://www.npr.org/2019/09/03/754044732/as-rising-heat-bakes-u-s-cities-the-poor-often-feel-it-most)
 @snapend
 					</textarea>
-				  </section>
-			</div>
+			</section>
 		</div>
+	</div>
 
-		<script src="/dist/reveal.js"></script>
-		<script src="/plugin/notes/notes.js"></script>
-		<script src="/plugin/markdown/markdown.js"></script>
-		<script src="/plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+	<script src="../../dist/reveal.js"></script>
+	<script src="../../plugin/notes/notes.js"></script>
+	<script src="../../plugin/markdown/markdown.js"></script>
+	<script src="../../plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+			backgroundTransition: 'fade',
+			// Transition style
+			transition: 'fade', // none/fade/slide/convex/concave/zoom
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+			// Transition speed
+			transitionSpeed: 'fast', // default/fast/slow
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+</body>
+
 </html>
