@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<title>GEO 409: Module 01</title>
+	<title>GEO 409: Module 02</title>
 
 	<link rel="stylesheet" href="../../dist/reset.css">
 	<link rel="stylesheet" href="../../dist/reveal.css">
@@ -121,6 +121,10 @@
 			opacity: 0.6;
 			font-weight: 300;
 		}
+
+		.icode {
+			color:#cebe91;
+		}
 	</style>
 </head>
 
@@ -130,8 +134,8 @@
 			<section data-pre-load
 				data-background-image="https://www.outragegis.com/weather/img/animation/yesterday/LookRock.gif"
 				data-background-opacity="0.4">
-				<h5>Module 01</h5>
-				<h3>Building our collaborative workflow</h3>
+				<h5>Module 02</h5>
+				<h3>Python I & ArcGIS Pro</h3>
 
 				<div class='ll'>Yesterday in the Great Smokies<br>Webcam <a
 						href="https://www.outragegis.com/weather/img/animation" target='_blank'>archive</a></div>
@@ -143,53 +147,78 @@
 				data-background-opacity="0.4">
 				<img width='100%' src='../images/logo-uk-geo.png'>
 			</section>
-			<section data-pre-load
-				data-background-image="https://www.outragegis.com/weather/img/animation/yesterday/LookRock.gif"
-				data-background-opacity="0.4">
-				<h1 class='r-fit-text'>UPDATE</h1>
-			</section>
 			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/48789211076_36cf732bc6_h.jpg'
+				data-background-image='https://live.staticflickr.com/726/33418890225_430d5bb4e8_3k.jpg'
 				data-background-opacity="0.2">
-				<h3>Challenge</h3>
+				<h3>Goals</h3>
 				<ul>
 					<li class='fragment'>
-						GIS projects are asset-rich
+						Fire up ArcGIS Pro
+					</li>
+					<li class='fragment'>
+						Run a few Python scripts
+					</li>
+					<li class='fragment'>
+						Learn Python
 						<ul>
-							<li class='fragment'>many files and directories</li>
-							<li class='fragment'>with lots of downloaded data</li>
-							<ul>
-								<li class='plain fragment'>...and we only need a small subset.</li>
-							</ul>
+							<li class='fragment'>data types</li>
+							<li class='fragment'>assign and access variables</li>
+							<li class='fragment'><code class='icode'>if/else</code> statements</li>
 						</ul>
 					</li>
 					<li class='fragment'>
-						How do we manage projects?
+						Application: Filter <a href='https://www.usgs.gov/core-science-systems/ngp/board-on-geographic-names/download-gnis-data'>GNIS data</a>
 					</li>
 				</ul>
 			</section>
 			<section class='left'
-				data-background-image='https://live.staticflickr.com/1821/42233874915_b274295437_o.jpg'
-				data-background-opacity="0.4">
-				<p class='fragment'>Got data but</p>
-				<h5 class='fragment'>where did it go?</h5>
+				data-background-image='https://live.staticflickr.com/726/33418890225_430d5bb4e8_3k.jpg'
+				data-background-opacity="0.2">
+				<h1 class='r-fit-text'>ArcGIS Pro</h1>
 			</section>
 			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/48789211076_36cf732bc6_h.jpg'
+				data-background-image='https://live.staticflickr.com/726/33418890225_430d5bb4e8_3k.jpg'
 				data-background-opacity="0.2">
-				<h3>Another problem</h3>
+				<h3>ArcGIS Pro</h3>
 				<ul>
 					<li class='fragment'>
-						Once you have data
+						Released by Esri 2015 as flagship desktop GIS software
 					</li>
 					<li class='fragment'>
-						how many times have you repeated the same steps in your program's GUI (graphical user
-						interface)?
+						Combines 2D and 3D capabilities
 					</li>
+					<li class='fragment'>
+						Uses Python version 3
+					</li>
+					<li class='fragment'>
+						Replaces ArcMap
+						<ul>
+							<li class='plain fragment'>
+								uses Python version 2, which is no longer developed.
+							</li>
+						</ul>
+					</li>
+					<li class='fragment'>
+						Explore <a href='https://pro.arcgis.com/en/pro-app/latest/get-started/get-started.htm'>interface</a>
+					</li>
+					<li class='fragment'>
+						Open starter <a href='https://nyc3.digitaloceanspaces.com/astoria/geo409/start/startGeo409.ppkx'>project package</a>
+					</li>
+		
 				</ul>
 			</section>
 			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/48789211076_36cf732bc6_h.jpg'
+				data-background-image='https://live.staticflickr.com/7473/15219067213_0e301af9cd_o.jpg'
+				data-background-opacity="0.2">
+				<pre><code data-trim data-noescape>
+					<script type="text/template">
+					town = 'Pertov'
+					type(town)
+					</script></code></pre>
+			</section>
+			
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/726/33418890225_430d5bb4e8_3k.jpg'
 				data-background-opacity="0.2">
 				<h3>Code vs. data</h3>
 				<ul>
@@ -209,7 +238,7 @@
 				</ul>
 			</section>
 			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/48789211076_36cf732bc6_h.jpg'
+				data-background-image='https://live.staticflickr.com/726/33418890225_430d5bb4e8_3k.jpg'
 				data-background-opacity="0.2">
 				<h3>Coding</h3>
 				<ul>
@@ -222,7 +251,7 @@
 				</ul>
 			</section>
 			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/48789211076_36cf732bc6_h.jpg'
+				data-background-image='https://live.staticflickr.com/726/33418890225_430d5bb4e8_3k.jpg'
 				data-background-opacity="0.2">
 				<h3>Advantages of coding</h3>
 				<ul>
@@ -243,13 +272,13 @@
 				<h5>Works on all operating systems</h5>
 			</section>
 
-			<!-- <section data-background-image='https://live.staticflickr.com/65535/48789211076_36cf732bc6_h.jpg'
+			<!-- <section data-background-image='https://live.staticflickr.com/726/33418890225_430d5bb4e8_3k.jpg'
                 data-background-opacity="0.3">
                 <h1 class="r-fit-text">Goals</h1>
             </section> -->
 
 			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/48789211076_36cf732bc6_h.jpg'
+				data-background-image='https://live.staticflickr.com/726/33418890225_430d5bb4e8_3k.jpg'
 				data-background-opacity="0.2">
 				<h3>Goals</h3>
 				<ul>
@@ -269,13 +298,13 @@
 			</section>
 
 			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/48789211076_36cf732bc6_h.jpg'
+				data-background-image='https://live.staticflickr.com/726/33418890225_430d5bb4e8_3k.jpg'
 				data-background-opacity="0.2">
 				<h3>I. Our workspace</h3>
 			</section>
 
 			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/48789211076_36cf732bc6_h.jpg'
+				data-background-image='https://live.staticflickr.com/726/33418890225_430d5bb4e8_3k.jpg'
 				data-background-opacity="0.2">
 				<h3>Your local computer</h3>
 				<ul>
@@ -303,7 +332,7 @@
 				</ul>
 			</section>
 			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/48789211076_36cf732bc6_h.jpg'
+				data-background-image='https://live.staticflickr.com/726/33418890225_430d5bb4e8_3k.jpg'
 				data-background-opacity="0.2">
 				<h3>Example directory structure</h3>
 			</section>
@@ -311,7 +340,7 @@
 				data-background-size="contain" data-background-opacity="1" data-background-color='#fff'>
 			</section>
 			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/48789211076_36cf732bc6_h.jpg'
+				data-background-image='https://live.staticflickr.com/726/33418890225_430d5bb4e8_3k.jpg'
 				data-background-opacity="0.2">
 				<h3>Folder & file naming conventions</h3>
 				<ul>
@@ -334,7 +363,7 @@
 			</section>
 
 			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/48789211076_36cf732bc6_h.jpg'
+				data-background-image='https://live.staticflickr.com/726/33418890225_430d5bb4e8_3k.jpg'
 				data-background-opacity="0.2">
 				<h3>Repo?</h3>
 				<ul>
@@ -344,12 +373,12 @@
 				</ul>
 			</section>
 			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/48789211076_36cf732bc6_h.jpg'
+				data-background-image='https://live.staticflickr.com/726/33418890225_430d5bb4e8_3k.jpg'
 				data-background-opacity="0.2">
 				<h3>II. Our tools</h3>
 			</section>
 			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/48789211076_36cf732bc6_h.jpg'
+				data-background-image='https://live.staticflickr.com/726/33418890225_430d5bb4e8_3k.jpg'
 				data-background-opacity="0.2">
 				<h3>Coding tools ✏️📓🎓</h3>
 				<ul>
@@ -379,7 +408,7 @@
 				</ul>
 			</section>
 			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/48789211076_36cf732bc6_h.jpg'
+				data-background-image='https://live.staticflickr.com/726/33418890225_430d5bb4e8_3k.jpg'
 				data-background-opacity="0.2">
 				<h3>Our editors</h3>
 				<ul>
@@ -397,7 +426,7 @@
 				</ul>
 			</section>
 			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/48789211076_36cf732bc6_h.jpg'
+				data-background-image='https://live.staticflickr.com/726/33418890225_430d5bb4e8_3k.jpg'
 				data-background-opacity="0.2">
 				<h3>Sharing tools</h3>
 				<ul>
@@ -413,7 +442,7 @@
 				</ul>
 			</section>
 			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/48789211076_36cf732bc6_h.jpg'
+				data-background-image='https://live.staticflickr.com/726/33418890225_430d5bb4e8_3k.jpg'
 				data-background-opacity="0.2">
 				<h3>Git</h3>
 				<ul>
@@ -424,7 +453,7 @@
 				</ul>
 			</section>
 			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/48789211076_36cf732bc6_h.jpg'
+				data-background-image='https://live.staticflickr.com/726/33418890225_430d5bb4e8_3k.jpg'
 				data-background-opacity="0.2">
 				<h3>GitHub.com</h3>
 				<ul>
@@ -435,7 +464,7 @@
 				</ul>
 			</section>
 			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/48789211076_36cf732bc6_h.jpg'
+				data-background-image='https://live.staticflickr.com/726/33418890225_430d5bb4e8_3k.jpg'
 				data-background-opacity="0.2">
 				<h3>Git is a DVCS</h3>
 				<ul>
@@ -469,7 +498,7 @@
 				</ul>
 			</section>
 			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/48789211076_36cf732bc6_h.jpg'
+				data-background-image='https://live.staticflickr.com/726/33418890225_430d5bb4e8_3k.jpg'
 				data-background-opacity="0.2">
 				<h3>Git jargon</h3>
 				<ul>
@@ -497,7 +526,7 @@
 				</ul>
 			</section>
 			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/48789211076_36cf732bc6_h.jpg'
+				data-background-image='https://live.staticflickr.com/726/33418890225_430d5bb4e8_3k.jpg'
 				data-background-opacity="0.2">
 				<h3>Git history</h3>
 				<ul>
@@ -508,7 +537,7 @@
 				</ul>
 			</section>
 			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/48789211076_36cf732bc6_h.jpg'
+				data-background-image='https://live.staticflickr.com/726/33418890225_430d5bb4e8_3k.jpg'
 				data-background-opacity="0.2">
 				<h3>Install GitHub Desktop</h3>
 				<ul>
@@ -533,18 +562,18 @@
 				data-background-size="contain">
 			</section>
 			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/48789211076_36cf732bc6_h.jpg'
+				data-background-image='https://live.staticflickr.com/726/33418890225_430d5bb4e8_3k.jpg'
 				data-background-opacity="0.2">
 				<h1 class='r-fit-text'>INSTALL</h3>
 			</section>
 			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/48789211076_36cf732bc6_h.jpg'
+				data-background-image='https://live.staticflickr.com/726/33418890225_430d5bb4e8_3k.jpg'
 				data-background-opacity="0.2">
 				<h3>III. Start coding</h3>
 			</section>
 
 			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/48789211076_36cf732bc6_h.jpg'
+				data-background-image='https://live.staticflickr.com/726/33418890225_430d5bb4e8_3k.jpg'
 				data-background-opacity="0.2">
 				<h3>Our workflow</h3>
 				<ul>
@@ -591,7 +620,7 @@
 			</section>
 
 			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/48789211076_36cf732bc6_h.jpg'
+				data-background-image='https://live.staticflickr.com/726/33418890225_430d5bb4e8_3k.jpg'
 				data-background-opacity="0.2">
 				<h3>Markdown</h3>
 				<ul>
@@ -643,7 +672,7 @@
 				data-background-size="contain" data-background-color='black'>
 			</section>
 			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/48789211076_36cf732bc6_h.jpg'
+				data-background-image='https://live.staticflickr.com/726/33418890225_430d5bb4e8_3k.jpg'
 				data-background-opacity="0.2">
 				<h3>undo</h3>
 				<ul>
@@ -668,7 +697,7 @@
 				</ul>
 			</section>
 			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/48789211076_36cf732bc6_h.jpg'
+				data-background-image='https://live.staticflickr.com/726/33418890225_430d5bb4e8_3k.jpg'
 				data-background-opacity="0.2">
 				<h3>Git tips</h3>
 				<ul>
@@ -690,7 +719,7 @@
 				</ul>
 			</section>
 			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/48789211076_36cf732bc6_h.jpg'
+				data-background-image='https://live.staticflickr.com/726/33418890225_430d5bb4e8_3k.jpg'
 				data-background-opacity="0.2">
 				<h3>Python ✊🐍</h3>
 				<ul>
@@ -709,7 +738,7 @@
 				</ul>
 			</section>
 			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/48789211076_36cf732bc6_h.jpg'
+				data-background-image='https://live.staticflickr.com/726/33418890225_430d5bb4e8_3k.jpg'
 				data-background-opacity="0.2">
 				<h3>Programming goals</h3>
 				<ul>
@@ -721,19 +750,6 @@
 					</li>
 					<li class='fragment'>
 						Watch these short videos from <a href="https://www.py4e.com/lessons/intro">Python for Everybody</a>
-						<li class='fragment'>
-							<a href='https://youtu.be/fvhNadKjE8g'>Part 1</a>
-						</li>
-						<<li class='fragment'>
-							<a href='https://youtu.be/VQZTZsXk8sA'>Part 2</a>
-						</li>
-						<li class='fragment'>
-							<a href='https://youtu.be/LLzFNlCjTSo'>Part 3</a>
-						</li>
-						<li class='fragment'>
-							<a href='https://youtu.be/gsry2SYOFCw'>Part 4</a>
-						</li>
-					</ul>
 					</li>
 					<li class='plain fragment'>
 						for an introduction to why we program.
