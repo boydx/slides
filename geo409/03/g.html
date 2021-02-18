@@ -1,0 +1,709 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>GEO 409: Module 02</title>
+
+	<link rel="stylesheet" href="../../dist/reset.css">
+	<link rel="stylesheet" href="../../dist/reveal.css">
+	<link rel="stylesheet" href="../../dist/theme/league-alt.css" id="theme">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="../../plugin/highlight/tom-night-80.css" id="highlight-theme">
+	<style>
+		/* UK Colors: 
+					 #c7c9c8 light gray 
+					 #63666a dark gray
+					 #15397f dark blue
+					 #009bda light blue
+					 #0033a0 official blue
+				 */
+
+		.revealz::after {
+			content: "";
+			background: url('https://www.outragegis.com/weather/goes16/rgb.jpg') no-repeat fixed center;
+			background-size: cover;
+			opacity: 0.35;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			position: absolute;
+			z-index: -1;
+		}
+
+		.ll {
+			bottom: 0px;
+			left: 0px;
+			position: absolute;
+			z-index: 200;
+			width: 300px;
+			font-size: 0.4em;
+			margin: 0 0 -50px 10px;
+			font-style: italic;
+			font-weight: 300;
+			text-align: left;
+		}
+
+		.lr {
+			bottom: 5px;
+			right: 0px;
+			position: absolute;
+			z-index: 200;
+			width: 300px;
+			font-size: 0.6em;
+			margin: 0 0 -50px 10px;
+			/* font-style: italic; */
+			text-align: right;
+		}
+
+		.ul {
+			top: 0px;
+			left: 0px;
+			position: absolute;
+		}
+
+		.custom-counter {
+			top: 0px;
+			right: 0px;
+			position: absolute;
+		}
+
+		.left {
+			text-align: left;
+		}
+
+		.custom-counter {
+			margin: 0;
+			padding: 0;
+			list-style-type: none;
+		}
+
+		.custom-counter li {
+			counter-increment: step-counter;
+			margin-bottom: 10px;
+		}
+
+		.custom-counter li::before {
+			content: counter(step-counter);
+			margin-right: 5px;
+			font-size: 80%;
+			background-color: #ffbb00;
+			color: white;
+			font-weight: bold;
+			padding: 3px 8px;
+			border-radius: 3px;
+		}
+
+		li {
+			/* list-style-type: "✨ ";  */
+			list-style-image: url('../images/map-pin.png');
+		}
+
+		.plain {
+			/* list-style-type: "✨ ";  */
+			list-style-image: none;
+			list-style-type: none;
+		}
+
+		.number {
+			/* list-style-type: "✨ ";  */
+			list-style-image: none;
+			list-style-type: decimal;
+			/* list-style-position: inside; */
+		}
+
+		.lite {
+			color: #fff;
+			opacity: 0.6;
+			font-weight: 300;
+		}
+
+		.icode {
+			color:#cebe91;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			
+
+			
+			
+			<section 
+				data-background-image='https://live.staticflickr.com/726/33418890225_430d5bb4e8_3k.jpg'
+				data-background-opacity="0.2" data-markdown data-separator="---" data-background-color=#2D2D2D>
+                <textarea data-template>
+					---?image=https://www.outragegis.com/weather/img/animation/yesterday/LookRock.gif&opacity=40
+# GEO 409:03
+## Functions, methods, and loops
+
+---
+## Learning curve
+
+* Moving steeply up curve
+* Watch videos!
+	* [functions](https://www.py4e.com/lessons/functions)
+	* [string methods](https://www.py4e.com/lessons/strings)
+	* [loops and iterations](https://www.py4e.com/lessons/loops)
+
+
+---
+## Payoff coming!
+
+---?image=https://maptimelex.github.io/wildcat-eyes/assets/images/q01.png&opacity=100
+
+---?image=https://maptimelex.github.io/wildcat-eyes/assets/images/q02.png&opacity=100
+
+---?image=https://maptimelex.github.io/wildcat-eyes/assets/images/q06.png&opacity=100
+
+
+---
+## Objectives
+
+* Learn more fundamental Python to process data
+* Work with a Python script
+* Extract raster imagery
+
+
+---?image=https://live.staticflickr.com/4882/44529819000_3487acf8b7_3k.jpg&opacity=100
+## Your lab work
+
+---
+## Lab 2
+
+* Your commit log shows how much work you're doing
+* 19 commits v 1 commit
+* **commit often, perfect later**
+
+
+
+---
+## Lab 2
+
+* Grade tomorrow
+* Everyone submitted, thank you!
+* Chance to fix answers...
+
+
+---
+```py
+x == 1 # returns x undefined
+# how to fix?
+```
+
+---
+```py
+x = True # really? That's cheeky.
+# 🚫👻🤷
+```
+
+---
+## Lab 3
+
+* More Python 🏋️💪🎓
+* Learn to go loopy
+* Manage even larger datasets
+
+
+
+---
+## TOC
+
+* Functions
+* Sequences
+* Loops
+* An application
+
+
+
+---
+# Functions
+
+---
+## Workhorse
+of any programming language
+
+---
+# 📚 ➡ 🔨 ➡ 🌟
+
+---
+## Most important function for you now?
+
+--- 
+```python
+print(someVariable) # What is this variable?
+# Print to find out!
+```
+
+
+---
+## Functions
+
+* Syntax: `functionName()`
+* Block of statements that execute when called
+* Might pass info into function as **arguments**
+* Might **return** data
+
+
+
+
+---
+```python
+# function with two parameters
+functionName(x, y)
+# parameters are 'placeholders' for passing arguments
+```
+
+---
+## Parameters
+
+* Variables inside function
+* Allows us to pass information to the function
+* **SEQUENCE is CRITICAL**
+
+
+---?
+## Example: clip function
+
+* Probably most common GIS tool
+* Extract spatial features by area of interest
+
+
+---?image=https://66.media.tumblr.com/31fbae995fe05a3c19f3bc88d9a78e1e/5fb2e54a0288ab22-41/s500x750/953e49b56ea5c634aadcc12801531a3774bff6a7.gifv
+## What?
+
+* Spatial features: cookie dough
+* AOI: cookie cutter
+
+
+---
+#### Sequence of parameters are critical
+```py
+arcpy.Clip_Management(x, y, z) # what are x, y, and z?
+```
+
+---
+#### Sequence of parameters is critical
+```py
+x = "c:\\data\\KY_Rivers"
+y = "c:\\data\\Bluegrass"
+z = "c:\\project\\Bluegrass_Rivers"
+arcpy.Clip_Management(x, y, z)
+```
+
+---
+# Challenge I
+Build a function
+
+---
+```python
+# What is this function doing?
+function(2, 3)
+# prints 8
+```
+
+---
+## Define function
+
+* Store and reuse statements
+* `def` keyword defines a function
+* followed by unique name and `():`
+* Parameters?
+* Indent function body four spaces
+
+
+---
+@[2]
+@[3]
+@[4]
+@[5]
+```python
+# define function
+def powersXtoY(x, y): # function has arbitrary name
+	z = int(x)**int(y)
+	print(z) # prints to screen
+	return z # when executed, function becomes value of z
+
+powersXtoY(2,3) # Need documentation!
+```
+---
+```python
+def powersXtoY(x, y):
+    """x to y power""" # Docstring provides info
+    z = int(x)**int(y)
+    return z
+
+help(powersXtoY)
+```
+
+---
+# Challenge II
+Build a function that finds the highest elevation in a list of elevations.
+
+---
+elevations = [1232, 452, 1224, 599, 745, 355, 899]
+
+
+---
+```py
+def findStats(dataList):
+    x = 0
+    for number in dataList:
+        if number > x:
+            x = number
+    print(x)
+```
+
+---
+## `return` value
+
+* To access value we need to return it in the function definition
+
+
+---
+```py
+def findStats(dataList):
+    x = 0
+    for number in dataList:
+        if number > x:
+            x = number
+    print(f"{x} is the highest elevation.")
+    return x
+```
+
+---
+## How can you find the average elevation?
+
+---
+```py
+def findStats(dataList):
+    x = 0
+    count = 0
+    total = 0
+    for number in dataList:
+        count += 1
+        total += number
+        if number > x:
+            x = number
+    print(f"{x} is the highest elevation. {total/count} is the average elevation.")
+    return x
+```
+@[1]
+@[2-4]
+@[5-7]
+@[10]
+@[11]
+
+---
+## Built-in functions
+
+* Python comes with about [60 functions](https://docs.python.org/3.8/library/functions.html)
+* Don't need to `import` anything
+
+
+---
+## Round function
+
+```python
+round(x, y)
+# x is float type, y is integer type
+print(round(7.555, 2))
+```
+
+---
+# What!?!
+
+---
+## Adding functions
+
+* Python's sprawling [standard library](https://docs.python.org/3/library/) of modules
+* Adds new functions and data types
+* The `decimal` module to correctly round numbers
+* Use dot notation to address functions
+
+
+---
+```python
+import decimal # use the module's namespace to access its functions
+x = decimal.Decimal('7.555')
+
+from decimal import Decimal # access the module functions directly
+x = Decimal('7.555')
+
+print(round(x, 2))
+```
+@[1-2]
+@[4-5]
+@[7]
+
+---
+## decimal properties
+
+* Control precision and number of significant digits
+* Rounding rules
+* Useful in mapping and money applications
+
+
+---
+## Lat/lon coords
+
+* 38.038015, -84.5046852!
+* 1&deg; of latitude = 69 miles
+* 1.0&deg;  6.9 mi of precision
+* 1.00&deg;  3600 ft
+* 1.000&deg;  360 ft
+* 1.0000&deg;  36 ft
+* 1.000000&deg;  4 in
+
+
+---
+## Objects & methods
+
+* Every object has a 
+    * *value* and *identity*
+    * *type* 🔮🐉
+* **Methods** are functions that operate only on certain objects
+	* object.function()
+    * e.g., `readerObject = csv.reader(csvFile)`
+
+
+---?
+```python
+# same value, different type and identity
+1 == 1.0 # true
+1 is 1.0 # false
+
+# methods on float type
+x = 1.0
+x.is_integer() # true
+```
+
+---
+# Strings
+
+---
+## String methods 
+
+* More common
+* Perform common tasks on strings
+* Find substrings, change case, etc.
+* Most return new values, others return `True` or `False`
+* They **do not change** the original string.
+* [Built-in methods](https://www.w3schools.com/python/python_ref_string.asp)
+
+
+---
+justWords = "If you live to be a hundred, I want to live to be a hundred minus one day so I never have to live without you."
+
+---
+## Try these methods
+```py
+justWords.upper()
+justWords.center(200, "😘")
+justWords.replace("hundred", "seven-hundred") # for elves
+justWords.index("hundred")
+```
+
+
+---
+## String indexes
+
+* Sequence of characters have positions in string starting at zero.
+* Bracket notation to show position.
+
+
+---?image=https:/uky-gis.github.io/support/python-arcgis/graphics/string_indexes.png&opacity=100&size=contain
+
+---
+```python
+"Hello World!"[0] # returns H
+"Hello World!"[-1] # returns !
+"Hello World!"[4] # returns o
+```
+
+---
+## String slice
+
+* Access substring using [*start*:*end*] indexes
+* End index is up-to-but-not-including
+* Address in string v. length of string
+
+
+---
+```python
+len("Hello World!") # returns 12
+"Hello World!"[0] # returns H
+"Hello World!"[11] # !
+"Hello World!"[0:12] # returns all
+"Hello World!"[:12] # returns all
+"Hello World!"[12] # returns error, out of index range
+"Hello World!"[:] # returns all
+"Hello World!"[] # returns syntax error
+"Hello World!"[-1] # returns !
+"Hello World!"[:-1] # returns Hello World
+```
+
+---
+## String stride
+
+* Optional third number in [*start*:*end*:*stride*]
+* Return every nth number
+* negative numbers reverse the string
+
+
+---
+## String index challenge
+Print "Maps, Y'all!" backwards using only string indexes
+
+---
+```py
+y = "Maps, Y'all!"
+print(y[::-1])
+```
+
+---
+# Loops
+
+---
+## while loop
+
+* Runs while true
+* Avoid infinite loop with `break`
+* loop body indented with four spaces
+
+
+
+
+---
+```python
+arch = "Grays Arch"
+archLength = len(arch)
+i = 0
+while i < archLength:
+    print(arch[i])
+    # What's missing?
+```
+
+---
+```python
+arch = "Grays Arch"
+archLength = len(arch)
+i = 0
+while i < archLength:
+    print(arch[i])
+    i += 1
+    if arch[i] == "A":
+        break
+```
+
+---
+## for loop
+
+* Iterates through a sequence, value by value.
+* Iterating variable
+* Indented four spaces
+* Runs a definite number of times
+
+
+---
+```py
+arch = "Grays Arch"
+for i in arch:
+    print(i)
+```
+---
+## Python list
+
+* A collection in a sequence
+* Enclosed in `[ ]`
+* Values separated by commas.
+
+
+---
+```python
+# String
+place = "Welcome to the lost treasures of Silvermine Arch and Hidden Arch in Wolfe county!"
+
+# Split a string into list on each space in string
+listOfWords = place.split(" ") # returns 14 words
+
+# print the contents of listOfWords
+print(listOfWords) # use the print function to see how it works
+```
+
+---
+## `for` loop challenge
+Scan text and print the names of the arches in the text.
+Hint: use the `.index()` method on a sequence.
+
+---
+```py
+help(str.index)
+```
+
+---
+```py
+print(listOfWords)
+x = 0
+for word in listOfWords:
+    if word.lower() == "arch":
+        x = listOfWords.index(word)
+        print(x)
+```
+
+---
+```py
+archesInString = []
+x = 0
+for word in listOfWords:
+    if word.lower() == "arch":
+        print("Before:", x)
+        x = listOfWords.index(word, x + 1)
+        print(" After:", x)
+        archesInString.append(f"{listOfWords[x - 1]} Arch")
+print(archesInString)
+```
+
+---?image=https://farm2.staticflickr.com/1901/44221426354_d8a711a753_h.jpg&opacity=50
+## Application:
+### Extracting remote imagery
+All instructions can be found in Lesson
+					</textarea>
+
+			</section>
+			
+			
+
+		</div>
+	</div>
+
+	<script src="../../dist/reveal.js"></script>
+	<script src="../../plugin/notes/notes.js"></script>
+	<script src="../../plugin/markdown/markdown.js"></script>
+	<script src="../../plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+			backgroundTransition: 'fade',
+			// Transition style
+			transition: 'fade', // none/fade/slide/convex/concave/zoom
+
+			// Transition speed
+			transitionSpeed: 'fast', // default/fast/slow
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+</body>
+
+</html>
