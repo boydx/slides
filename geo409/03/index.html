@@ -196,6 +196,10 @@
                 <!-- <h6 class="r-fit-text">Measuring arches</h6> -->
             </section>
 
+			<section data-background-iframe='https://kuula.co/share/73Frs?fs=1&vr=0&zoom=1&sd=1&thumbs=1&info=1&logo=1' data-background-interactive
+                data-background-opacity="1">
+                <!-- <h6 class="r-fit-text">Measuring arches</h6> -->
+            </section>
 
 			<section data-background-iframe='https://nyc3.digitaloceanspaces.com/astoria/xyz/natbridge/index.html' data-background-interactive
                 data-background-opacity="1">
@@ -240,6 +244,22 @@
 					</li>
 				</ul>
 			</section>
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
+				data-background-opacity="0.2">
+				<h3>If you are on Virtual Den</h3>
+				<ul>
+					<li>
+						Start with this ArcGIS Pro project package
+						<ul>
+							<li>
+								<a href='https://nyc3.digitaloceanspaces.com/astoria/geo409/Lesson-02.ipynb'>mod-03.ppkx</a>
+							</li>
+						
+						</ul>
+					</li>
+				</ul>
+			</section>
 			<section 
 				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
 				data-background-opacity="0.2">
@@ -275,6 +295,25 @@
 			<section class='left'
 				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
 				data-background-opacity="0.2">
+				<h3>So no maps yet?</h3>
+				<ul>
+					<li class='fragment'>
+						Patience.
+					</li>
+					<li class='fragment'>
+						We are data wrangling
+					</li>
+					<li class='fragment'>
+						immense datasets to produce mappable info 
+					</li>
+					<li class='fragment'>
+						for our area of interest.
+					</li>
+				</ul>
+			</section>
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
+				data-background-opacity="0.2">
 				<h3>Lab 3</h3>
 				<ul>
 					<li class='fragment'>
@@ -284,7 +323,7 @@
 						Learn to go loopy
 					</li>
 					<li class='fragment'>
-						Manage even larger datasets
+						Manage even larger datasets (e.g., <a target='_blank' href='ftp://ftp.kymartian.ky.gov'>this FTP site</a> and you might need to install an <a target='_blank' href='https://cyberduck.io/download'>FTP client</a>)
 					</li>
 					<li class='fragment'>
 						and expect a big payoff.
@@ -441,12 +480,46 @@
 						Clips spatial data to an Area of Interest (AOI)
 					</li>
 					<li class='fragment'>
-						Example parameters <code class='icode'>clip(spatial_data, aoi)</code>
+						Requires three parameters
 					</li>
 					<li class='fragment'>
 						Most everyone, initially, gets the parameter order mixed up.
 					</li>
 				</ul>
+			</section>
+			<section 
+				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
+				data-background-opacity="0.2">
+				<h2>ArcGIS Pro example</h2>
+			</section>
+			<section class='left'
+				data-background-image='images/clip-01.jpg' data-background-color="#fff" data-background-size="contain"
+				data-background-opacity="1">
+			</section>
+			<section class='left'
+				data-background-image='images/clip-02.jpg' data-background-color="#fff" data-background-size="contain"
+				data-background-opacity="1">
+			</section>
+			<section class='left'
+				data-background-image='images/clip-03.jpg' data-background-color="#fff" data-background-size="contain"
+				data-background-opacity="1">
+			</section>
+			<section 
+				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
+				data-background-opacity="0.2" data-markdown data-separator="---" data-background-color=#2D2D2D>
+                <textarea data-template>
+
+					```python
+					arcpy.analysis.Clip(x, y, z) # what are x, y, and z?
+					```
+					---
+					```python
+					x = "c:\\data\\KY_Rivers"
+					y = "c:\\data\\Bluegrass"
+					z = "c:\\project\\Bluegrass_Rivers"
+					arcpy.Clip_Management(x, y, z)
+					```
+					</textarea>
 			</section>
 			<section data-background-image='https://66.media.tumblr.com/31fbae995fe05a3c19f3bc88d9a78e1e/5fb2e54a0288ab22-41/s500x750/953e49b56ea5c634aadcc12801531a3774bff6a7.gif' 
                 data-background-opacity="1">
@@ -454,654 +527,287 @@
 			<section 
 				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
 				data-background-opacity="0.2">
-				<h3 class='r-fit-text'>Starting on lab 2</h3>
-			</section>
-			
-			
-			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
-				data-background-opacity="0.2">
-				<h1 class='r-fit-text'>ArcGIS Pro</h1>
-			</section>
-			
-			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
-				data-background-opacity="0.2">
-				<h3>Python in ArcGIS Pro</h3>
+				<h3>Clip function</h3>
 				<ul>
 					<li class='fragment'>
-						uses Jupyter Notebooks
-						<ul>
-							<li class='fragment'>
-								create cells of Markdown content and Python code
-							</li>
-							<li class='fragment'>
-								interactive execution cell by cell
-							</li>
-							<li class='fragment'>
-								saved as a text file with the .ipynb file extension
-							</li>
-						</ul>
+						The spatial data is the cookie dough
+					</li>
+					<li class='fragment'>
+						The AOI is the cookie cutter
+					</li>
+					<li class='fragment'>
+						The output is the cookie
 					</li>
 				</ul>
 			</section>
-			<section class='left'
+			<section 
 				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
 				data-background-opacity="0.2">
-				<h3>If you are on Virtual Den</h3>
-				<ul>
-					<li class='fragment'>
-						Get these files, too
-						<ul>
-							<li class='fragment'>
-								<a href='https://nyc3.digitaloceanspaces.com/astoria/geo409/Lesson-02.ipynb'>Lesson-02.ipynb</a>
-							</li>
-							<li class='fragment'>
-								<a href='https://nyc3.digitaloceanspaces.com/astoria/geo409/Lab-02.ipynb'>Lab-02.ipynb</a>
-							</li>
-						
-						</ul>
-					</li>
-				</ul>
+				<h5>Challenge</h5>
+				<h3>Build a function</h3>
 			</section>
-			
-			<section class='left'
-				data-background-image='images/jupyter.jpg' data-background-color="#ffffff" 
-				data-background-opacity="1">
-			</section>
-			
-			
 			
 			<section class='left'
 				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
 				data-background-opacity="0.2">
-				<h3>Learning to code 🧐</h3>
+				<h3>Build a function</h3>
 				<ul>
 					<li class='fragment'>
-						Use code editor to highlight syntax
+						Store and reuse statements
 					</li>
 					<li class='fragment'>
-						distinguish data, keywords, and comments
+						<code class='icode'>def</code> keyword defines a function
 					</li>
 					<li class='fragment'>
-						always case-sensitive
+						followed by unique name and<code class='icode'>():</code>
 					</li>
 					<li class='fragment'>
-						spacing matters.
+						Parameters? i.e., does the function use data?
+					</li>
+					<li class='fragment'>
+						Indent function body four spaces
 					</li>
 				</ul>
 			</section>
-			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
-				data-background-opacity="0.2">
-				<h1 class="r-fit-text">Python I</h1>
-			</section>
-			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
-				data-background-opacity="0.2">
-				<h3>Practice along</h3>
-				<ul>
-					<li class='fragment'>
-						Open Lesson-02.ipynb notebook in ArcGIS Pro
-					</li>
-					<li class='fragment'>
-						copy and paste examples from lesson README.md
-					</li>
-					<li class='fragment'>
-						tip: keystroke <code class='icode'>SHIFT + ENTER </code>runs the cell.
-					</li>
-				</ul>
-			</section>
-			<section class='left'
-				data-background-image='images/organize-root-8.gif'  data-background-color="#fff" data-background-size="contain"
-				data-background-opacity="1">
-			</section>
-
-			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
-				data-background-opacity="0.2">
-				<h3>Required viewing</h3>
-				<ul>
-					
-					<li class='fragment'>
-						Variables, expressions, and statements <a href="https://www.py4e.com/lessons/memory">P4E</a>
-						<ul>
-						<li class='fragment'>
-							<a href='https://youtu.be/7KHdV6FSpo8'>Part 1</a> and <a href='https://youtu.be/kefrGMAglGs'>Part 2</a>
-						</li>
-						</ul>
-					</li>
-					<li class='fragment'>
-						Conditional Execution <a href="https://www.py4e.com/lessons/logic">P4E</a>
-						<ul>
-						<li class='fragment'>
-							<a href='https://youtu.be/2aA3VBdcl6A'>Part 1</a> and <a href='https://youtu.be/OczkNrHPBps'>Part 2</a>
-						</li>
-						</ul>
-					</li>
-				</ul>
-			</section>
-
-
-			
-			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
-				data-background-opacity="0.2">
-				<h3>Value</h3>
-				<ul>
-					<li class='fragment'>
-						A <i>value</i> is data that we use in our program
-					</li>
-					<li class='fragment'>
-						All values have a <i>type</i>
-					</li>
-					<li class='fragment'>
-						The <i>type</i> of value determines what can be done in the program.
-					</li>
-				</ul>
-			</section>
-			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
-				data-background-opacity="0.2">
-				<h3>Basic types</h3>
-				<ul>
-					<li class='fragment'>
-						String <i class='icode'>(of characters)</i>
-					</li>
-					<li class='fragment'>
-						Number types
-						<ul>
-							<li class='fragment'>
-								Integer <i class='icode'>(1)</i>
-							</li>
-							<li class='fragment'>
-								Float <i class='icode'>(1.0)</i>
-							</li>
-						</ul>
-					</li>
-					<li class='fragment'>
-						Boolean <i class='icode'>(True/False)
-						</li></i>
-					<li class='fragment'>
-						None <i class='icode'>(null)</i>
-					</li>
-				</ul>
-			</section>
-			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
-				data-background-opacity="0.2">
-				<h3>Levels of measurement</h3>
-				<ul>
-					<li class='fragment'>
-						A number doesn't always represent a quantity
-					</li>
-					<li class='fragment'>
-						Nominal <i class='icode'>(zipcode)</i>
-					</li>
-					<li class='fragment'>
-						Ordinal <i class='icode'>(basketball ranking)</i>
-					</li>
-					<li class='fragment'>
-						Interval <i class='icode'>(temperature of gym)</i>
-					</li>
-					<li class='fragment'>
-						Ratio <i class='icode'>(weight of basketball)</i>
-					</li>
-				</ul>
-			</section>
-			<section  class='left'
-				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
-				data-background-opacity="0.2" data-markdown data-separator="---" data-background-color=#2D2D2D>
-                <textarea data-template>
-					### Constants
-					* Literals: the syntax tells us what type it is.
-					---
-					```python
-					"I'm literally a string of characters (the quotes fence me in)"
-					1 # an Integer
-					1.0 # a Float
-					True # speak it loud!
-					None # don't know what it is
-					```
-					---
-					### Objects
-					* Once a value is created, it is an **object** with special powers ⚡ (actually the powers are called **methods**)
-
-					---
-					```python
-					"I am a literally a string of characters".upper()
-					# returns 'I AM A LITERALLY A STRING OF CHARACTERS'
-					```
-
-					---
-					### Variables
-					* Assign value to an arbitrary and limited set of characters. <!-- .element: class="fragment" data-fragment-index="1" -->
-					* variable <=> value <!-- .element: class="fragment" data-fragment-index="2" -->
-					* use meaningful names, can't start with number, uses spaces, etc. <!-- .element: class="fragment" data-fragment-index="3" -->
-					
-					---
-					```python
-					myZipcode = "40588"
-					# type() is a function
-					# Functions have () where we can accept input.
-					type(myZipcode)
-					# returns str because it is a string
-					```
-
-					---
-					### Type
-					- Knowing the type of value tells you methods 🔌 the value has. <!-- .element: class="fragment" data-fragment-index="1" -->
-					- View a list of [string methods](https://www.w3schools.com/python/python_ref_string.asp) <!-- .element: class="fragment" data-fragment-index="2" -->
-
-					---
-					```python
-					myZipcode = "40588"
-					# .find() returns the position of a character in a string
-					# .count() returns the number of times a character is in a string
-					print(myZipcode.find("4")) # outputs 0
-					print(myZipcode.find("5")) # outputs 2
-					print(myZipcode.count("8")) # outputs 2
-					print(myZipcode.count("88")) # outputs 1
-					```
-
-					---
-					### Challenge
-					* Let's place with some text from a classic Hunter S. Thompson quote <!-- .element: class="fragment" data-fragment-index="1" -->
-					* Count how many times he says "I" <!-- .element: class="fragment" data-fragment-index="2" -->
-
-					---
-					I am more than just a serious basketball fan. I am a life-long addict. I was addicted from birth, in fact, because I was born in Kentucky and I learned, early on, that Habitual Domination was a natural way of life. (Hunter S. Thompson)
-
-					---
-					### Operators
-					* Perform [operations](https://www.w3schools.com/python/python_operators.asp) on variables and values <!-- .element: class="fragment" data-fragment-index="1" -->
-					* Context of operation depends on value type, e.g., concatenation vs. math addition <!-- .element: class="fragment" data-fragment-index="2" -->
-					* Operation returns either a value or True/False <!-- .element: class="fragment" data-fragment-index="3" -->
-
-					---
-					### Assignment
-					* <code class='icode'>=</code> assigns value right to left 
-					* <code class='icode'>+=</code> adds value right to left
-
-					---
-					```python [1-3|4-7|8-11|12|13-14]
-					# assingment 
-					x = 10
-					y = 20 
-					print(x, y) # returns 10, 20
-					x += y
-					# same as x = x + y
-					print(x, y) # returns 30, 20
-					a = "Greef"
-					b = 'Karga'
-					a += b 
-					print(a) # returns GreefKarga
-					a += x # throws an error because of mixed types
-					a += str(x) # convert x to a String
-					print(a) # returns GreefKarga10
-					```
-
-					
-
-					---
-					### Comparison and identity
-					* <code class='icode'>==</code> True if same value
-					* <code class='icode'>!=</code> True if different value
-					* <code class='icode'>is</code> True if same object (value and type)
-					* <code class='icode'>is not</code> True if different object
-
-					---
-					```python [1-4|5-7|8-10]
-					# comparison
-					x = 10
-					y = 10.0
-					b = "10"
-					print(x == y) # True
-					print(x == b) # False
-					print(x == int(b)) # True
-					# identity
-					x is y # False
-					print(x is int(b)) # True
-					```
-
-					---
-					### 🔭 into the future!
-					* Combining operators and **looping** through data is an essential concept
-
-					---
-					```python
-					x = 0
-					while x != 7:
-						print(x)
-						x += 1
-					# prints x until it adds up to 7
-					```
-
-					---
-					### Membership
-					* <code class='icode'>in</code> True if substring in string
-					* <code class='icode'>not in</code> True if substring not in string
-
-					---
-					```python
-					place = "Grays Arch"
-					print("Gray" in place) # True
-					print("gray" in place) # False
-					print("gray" not in place) # True
-					```
-
-					---
-					### Logical operators
-					* Combine operators
-					* <code class='icode'>and</code> True if all operations are True
-					* <code class='icode'>or</code> True if any operation is True
-
-					---
-					```python
-					place = "Grays Arch"
-					print("Gray" in place or "gray" in place) # True
-					print("Gray" in place and "arch" in place) # False
-					print("Gray" in place and "Arch" in place) # True
-					```
-
-					---
-					### Challenge
-					It's 2020 Census &  your department needs to check if a two-letter abbreviation for a state is correct. Hint in next slide.
-
-					---
-					states = "AL AK AZ AR CA CO CT DC DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY"
-
-					---
-					```python
-					print("WY" in states) # True
-					print("wy" in states) # False
-					print("wy".upper() in states) # True
-					```
-
-					---
-					### if statement
-					* <code class='icode'>if</code> condition is True execute code body
-					* condition ends with a colon
-					* body indented four spaces
-					* Use pseudocode to write our logic
-
-					---
-					```txt
-					# Example of pseudocode
-					if condition (is true):
-						execute this body
-					```
-
-					---
-					```python
-					nameOfState = "Wy"
-					if nameOfState.upper() in states:
-					    print("Your state abbreviation exists!")
-					```
-
-					---
-					### f-Strings
-					* a string proceeded with a <code class='icode'>f</code>
-					* expands variables and expression enclosed with <code class='icode'>{ }</code> curly brackets
-
-					---
-					```python
-					nameOfState = "Wy"
-					if nameOfState.upper() in states:
-					    print(f"Your state abbreviation of {nameOfState} exists!")
-					```
-
-					---
-					### else statement
-					* <code class='icode'>else</code> condition comes after <code class='icode'>if</code> statement
-					* condition ends with a colon
-					* body indented four spaces
-					* executes when <code class='icode'>if</code> statement is not True
-
-					---
-					```python
-					nameOfState = "Wy"
-					if nameOfState.upper() in states:
-						print(f"Your state abbreviation of {nameOfState} exists!")
-					else:
-						print(f"Your state abbreviation of {nameOfState} does not exist!!")
-					```
-
-					---
-					### elif statement
-					* else if statement
-					* <code class='icode'>elif</code> condition comes after <code class='icode'>if</code> statement
-					* condition ends with a colon
-					* body indented four spaces
-					* executes when <code class='icode'>if</code> statement is not True
-
-					---
-					```python
-					nameOfState = "Wy"
-					if nameOfState in states:
-						print(f"Your state abbreviation of {nameOfState} exists spelled exactly.")
-					elif nameOfState.upper() in states:
-						print(f"Your state abbreviation of {nameOfState} is there but not in uppercase.")
-					else:
-						print(f"Your state abbreviation of {nameOfState} does not exist!!")
-					```
-
-					---
-					### if/elif/else statement
-					* Only one branch is true and executes
-
-					---
-					### if/if/if statement
-					* All branches could be true
-					</textarea>
-
-			</section>
-			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
-				data-background-opacity="0.2">
-				<h3>Errors</h3>
-				<ul>
-					<li class='fragment'>
-						Anticipate and prevent
-					</li>
-					<li class='fragment'>
-						Look at last line in Python error message
-						<img src="images/error.png">
-					</li>
-					<li class='fragment'>
-						Use <code class='icode'>print()</code> function on variables 
-					</li>
-				</ul>
-			</section>
-			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
-				data-background-opacity="0.2">
-				<h3>Syntax errors</h3>
-				<ul>
-					<li class='fragment'>
-						Incorrect sequence of characters
-					</li>
-					<li class='fragment'>
-						Most common when beginning to code
-					</li>
-					<li class='fragment'>
-						Check spelling, everything is case-sensitive
-					</li>
-				</ul>
-			</section>
-			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
-				data-background-opacity="0.2">
-				<h3>Exceptions</h3>
-				<ul>
-					<li class='fragment'>
-						Syntactically correct but still flawed.
-					</li>
-					<li class='fragment'>
-						"John is a married bachelor." Can't be true!
-					</li>
-					<li class='fragment'>
-						Division by zero
-						<img src="images/error-2.png">
-					</li>
-				</ul>
-			</section>
-			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
-				data-background-opacity="0.2">
-				<h3>Logic errors</h3>
-				<ul>
-					<li class='fragment'>
-						Syntactically correct and executes properly.
-					</li>
-					<li class='fragment'>
-						Result is not correct, though not immediately apparent
-					</li>
-					<li class='fragment'>
-						Order of operations in math calculations<br>(10 + 20 + 30) / 3 vs. 10 + 20 + 30/3
-					</li>
-				</ul>
-			</section>
-			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
-				data-background-opacity="0.2">
-				<h1 class='r-fit-text'>Lab 2</h1>
-			</section>
-			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
-				data-background-opacity="0.2">
-				<h3>Review</h3>
-				<ul>
-					<li class='fragment'>
-						Open Lab-02.ipynb Jupyter Notebook in ArcGIS Pro
-					</li>
-					<li class='fragment'>
-						Five code exercises
-					</li>
-					<li class='fragment'>
-						Application to filter GNIS data 
-						<ul>
-							
-							<li class='fragment'>
-								US Place name database (GNIS) 2.5 M records <a href='https://www.usgs.gov/core-science-systems/ngp/board-on-geographic-names/download-gnis-data'>Download National File</a>
-							</li>
-							<li class='fragment'>
-								Import Python <code class='icode'>csv</code> module and work on real data
-							</li>
-							
-						</ul>
-					</li>
-				</ul>
-			</section>
-			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
-				data-background-opacity="0.2">
-				<h3>Python modules</h3>
-				<ul>
-					<li class='fragment'>
-						Import additional functions
-					</li>
-					<li class='fragment'>
-						Extends <a href="https://www.w3schools.com/python/python_ref_functions.asp">built-in functions</a>
-					</li>
-					<li class='fragment'>
-						<code class='icode'>csv</code> module from the <a href='https://docs.python.org/3/library/'>standard library</a> (no need to install anything!)
-					</li>
-				</ul>
-			</section>
-			<section  class='left'
-				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
-				data-background-opacity="0.2" data-markdown data-separator="---" data-background-color=#2D2D2D>
-                <textarea data-template>
-					```python
-					import csv
-					# Now you have csv powers!
-					```
-				</textarea>
-			</section>
-			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
-				data-background-opacity="0.2">
-				<h3>Namespace</h3>
-				<ul>
-					<li class='fragment'>
-						Uniquely identify resources
-					</li>
-					<li class='fragment'>
-						Access functions in module with dot notation
-					</li>
-					<li class='fragment'>
-						E.g., <code class='icode'>csv.reader()</code> to access the read-in function.
-					</li>
-				</ul>
-			</section>
-			<section  class='left'
+			<section 
 				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
 				data-background-opacity="0.2" data-markdown data-separator="---" data-background-color=#2D2D2D>
                 <textarea data-template>
 
-					### Add location of data
-					---
 					```python
-					# Make variable to data location
-					myData = 'C:\\MyGIS\\data\\NationalFile_20210101.txt'
+					# What is this function doing?
+					function(2, 3)
+					# prints 8
 					```
 					---
-					### Inspect data in VS 
-					* look at first row for column names
-					---
-					![Columns in file](images/CSV-diagram.png)
-					---
-					### Open and create CSV object
-					---
-					
 					```python
-					with open(myData, encoding="utf8") as csvFile:
-						# Create the CSV object. 
-						reader = csv.reader(csvFile, delimiter='|')
-						# Loop through records and print them.
-						for row in reader:
-							# Each row is a list of values.
-							print(row[2], row[3])
-							# Use if block to search records
+					# define function
+					def powersXtoY(x, y): # function has arbitrary name
+						z = x**y
+						print(z) # prints to screen
+
+					powersXtoY(2,3) # Need documentation!
 					```
-
 					---
-
 					```python
-					if row[3] == 'KY' and row[2] == 'Arch':
-						print(row)
-					```
+					# define function
+					def powersXtoY(x, y): # function has arbitrary name
+						"""x to y power""" # Docstring provides info
+						z = x**y
+						print(z) # prints to screen
 
+					powersXtoY(2,3) # outputs 8
+
+					# Get docstring
+					help(powersXtoY) # outputs x to y power
+					```
 					---
-					### Write out data
+					##### Challenge
+					Build a function that finds the highest elevation in a list of elevations.
 
 					---
 					```py
-					# Write out file location
-					myOutput = 'C:\\MyGIS\\data\\utah_arches.csv'
-					# Open data
-					with open(myData, encoding="utf8") as csvFile:
-						# Open empty file to write output
-						with open(myOutput, "w") as csvOutput:
-							# Create reader object
-							reader = csv.reader(csvFile, delimiter='|')
-							# Create writer object
-							writer = csv.writer(csvOutput)
-							# Loop through records
-							for row in reader:
-								if row[3] == 'UT':
-									# Write out selected columns
-									writer.writerow(row)
+					elevations = [1232, 452, 1224, 599, 745, 355, 899]
 					```
-					---
-					### Add to map
 
-				</textarea>
+
+					---
+					```py
+					def findStats(dataList):
+						x = 0
+						for number in dataList:
+							if number > x:
+								x = number
+						print(x)
+					```
+
+					---
+					### `return` value
+
+					* To access value we need to return it in the function definition
+
+
+					---
+					```py
+					def findStats(dataList):
+						"""Find the highest number in a list of numbers"""
+						x = 0
+						for number in dataList:
+							if number > x:
+								x = number
+						print(f"{x} is the highest elevation.")
+						return x
+					```
+
+					---
+					```py
+					# Use function on this data 
+					elevations = [1232, 452, 1224, 599, 745, 355, 899]
+					highest = findStats(elevations) # outputs 1232 is the highest elevation.
+
+					# Print variable contents
+					print(highest) # outputs 1232
+					```
+					</textarea>
 			</section>
+
 			<section class='left'
-				data-background-image='images/q02.jpg' data-background-color="#fff"
+				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
+				data-background-opacity="0.2">
+				<h3>Methods</h3>
+				<ul>
+					<li class='fragment'>
+						Functions that only work on certain <b>types</b>. 🔮🐉
+					</li>
+					<li class='fragment'>
+						String type, integer type, csv type, etc.
+					</li>
+					<li class='fragment'>
+						Uses dot notation, i.e., <code class='icode'>myString.upper()</code>
+					</li>
+					
+				</ul>
+			</section>
+
+			<section>
+				<h1 class='r-fit-text'>Strings</h1>
+			</section>
+
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
+				data-background-opacity="0.2">
+				<h3>String Methods</h3>
+				<ul>
+					<li class='fragment'>
+						Perform common tasks on strings
+					</li>
+					<li class='fragment'>
+						Find substrings, change case, etc.
+					</li>
+					<li class='fragment'>
+						Most return new values, others return `True` or `False`
+					</li>
+					<li class='fragment'>
+						They <b>do not change</b> the original string.
+					</li>
+					<li class='fragment'>
+						<a target='_blank' href='https://www.w3schools.com/python/python_ref_string.asp'>Built-in methods</a>
+					</li>
+					
+				</ul>
+			</section>	
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
+				data-background-opacity="0.2">
+				<h3>Example</h3>
+				<p>justWords = "If you live to be a hundred, I want to live to be a hundred minus one day so I never have to live without you."</p>
+			</section>
+
+			<section 
+				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
+				data-background-opacity="0.2" data-markdown data-separator="---" data-background-color=#2D2D2D>
+                <textarea data-template>
+
+					## Try these methods
+					```py
+					justWords.upper()
+					justWords.center(200, "😘")
+					justWords.replace("a hundred", "seven-hundred") # for elves
+					justWords.index("hundred")
+					```
+					
+					---
+					### String indexes
+
+					* Sequence of characters have positions in string starting at zero.
+					* Bracket notation to show position.
+
+					---
+					```python
+					hey = "Let's Hike!"
+					hey[0] # returns L
+					hey[-1] # returns !
+					hey[4] # returns s
+					```
+					</textarea>
+			</section>
+			
+			<section class='left'
+				data-background-image='https://uky-gis.github.io/support/python-arcgis/graphics/string_indexes.png' data-background-color="#ffffff" 
 				data-background-opacity="1">
+			</section>
+			
+			<section>
+				<h1 class='r-fit-text'>STOP</h1>
+			</section>
+
+			<section>
+				<h1 class='r-fit-text'>Addendum</h1>
+			</section>
+			
+			
+			<section 
+				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
+				data-background-opacity="0.2" data-markdown data-separator="---" data-background-color=#2D2D2D>
+                <textarea data-template>
+					### Built-in functions
+
+					* Python comes with about [60 functions](https://docs.python.org/3.8/library/functions.html)
+					* Don't need to `import` anything
+					
+					
+					---
+					### Round function
+					
+					```python
+					round(x, y)
+					# x is float type, y is integer type
+					print(round(7.555, 2))
+					```
+					
+					---
+					# What!?!
+					
+					---
+					### Adding functions
+					
+					* Python's sprawling [standard library](https://docs.python.org/3/library/) of modules
+					* Adds new functions and data types
+					* The `decimal` module to correctly round numbers
+					* Use dot notation to address functions
+					
+					
+					---
+					```python
+					import decimal # use the module's namespace to access its functions
+					x = decimal.Decimal('7.555')
+					
+					from decimal import Decimal # access the module functions directly
+					x = Decimal('7.555')
+					
+					print(round(x, 2))
+					```
+
+					
+					---
+					### decimal properties
+					
+					* Control precision and number of significant digits
+					* Rounding rules
+					* Useful in mapping and money applications
+					
+					
+					---
+					### Lat/lon coords and precision
+					
+					* 38.038015, -84.5046852!
+					* 1&deg; of latitude = 69 miles
+					* 1.0&deg;  6.9 mi of precision
+					* 1.00&deg;  3600 ft
+					* 1.000&deg;  360 ft
+					* 1.0000&deg;  36 ft
+					* 1.000000&deg;  4 in
+					</textarea>
 			</section>
 			<section>
 				<h1 class='r-fit-text'>STOP</h1>
