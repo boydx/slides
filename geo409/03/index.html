@@ -744,6 +744,136 @@
 				data-background-image='https://uky-gis.github.io/support/python-arcgis/graphics/string_indexes.png' data-background-color="#ffffff" 
 				data-background-opacity="1">
 			</section>
+
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
+				data-background-opacity="0.2">
+				<h3>String slice</h3>
+				<ul>
+					<li class='fragment'>
+						Access substring using <code class='icode'>[start : end]</code> indexes
+					</li>
+					<li class='fragment'>
+						Two index values separated by a colon <code class='icode'>:</code> inside bracket <code class='icode'>[]</code> notation
+					</li>
+					<li class='fragment'>
+						End index is up-to-but-not-including
+					</li>
+					<li class='fragment'>
+						<code class='icode'>"Let's Hike"[0:2]</code> returns <code class='icode'>"Le"</code> 
+					</li>
+				</ul>
+			</section>
+
+			<section 
+				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
+				data-background-opacity="0.2" data-markdown data-separator="---" data-background-color=#2D2D2D>
+                <textarea data-template>
+					```python
+					len("Hello World!") # returns 12
+					"Hello World!"[0] # returns H
+					"Hello World!"[11] # !
+					"Hello World!"[0:12] # returns all
+					"Hello World!"[:12] # returns all
+					"Hello World!"[12] # returns error, out of index range
+					"Hello World!"[:] # returns all
+					"Hello World!"[] # returns syntax error
+					"Hello World!"[-1] # returns !
+					"Hello World!"[:-1] # returns Hello World
+					```
+					</textarea>
+			</section>
+
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
+				data-background-opacity="0.2">
+				<h3>String stride</h3>
+				<ul>
+					<li class='fragment'>
+						Optional third number in <code class='icode'>[start:end:stride]</code>
+					</li>
+					<li class='fragment'>
+						Third number returns every nth character
+					</li>
+					<li class='fragment'>
+						By default, 1
+					</li>
+					<li class='fragment'>
+						Negative numbers reverse the string
+					</li>
+				</ul>
+			</section>
+
+			<section 
+				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
+				data-background-opacity="0.2" data-markdown data-separator="---" data-background-color=#2D2D2D>
+                <textarea data-template>
+					```python
+					say = "Maps, Y'all!"
+					sayBack = say[::-1]
+					print(sayBack) # returns !lla'Y ,spaM
+					```
+					</textarea>
+			</section>
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
+				data-background-opacity="0.2">
+				<h5>Challenge</h5>
+				<h3>Slice a URL</h3>
+				<p>A uniform resource locator is the unique address of anything on the Web.</p>
+			</section>
+
+			<section class='left'
+				data-background-image='images/url.png' data-background-color="#ffffff" data-background-size="contain"
+				data-background-opacity="1">
+			</section>
+
+			<section class='left'
+				data-background-image='images/add-grid.jpg' data-background-color="#ffffff" data-background-size="contain"
+				data-background-opacity="1">
+			</section>
+			<section class='left'
+				data-background-image='images/shapefile.jpg' data-background-color="#ffffff" data-background-size="contain"
+				data-background-opacity="1">
+			</section>
+			<section class='left'
+				data-background-image='images/click-grid.jpg' data-background-color="#ffffff" data-background-size="contain"
+				data-background-opacity="1">
+			</section>
+			<section class='left'
+				data-background-image='images/ftp.jpg' data-background-color="#ffffff" data-background-size="contain"
+				data-background-opacity="1">
+			</section>
+
+			<section 
+				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
+				data-background-opacity="0.2" data-markdown data-separator="---" data-background-color=#2D2D2D>
+                <textarea data-template>
+					```python
+					url = "ftp://ftp.kymartian.ky.gov/FSA_NAIP_2018_2FT/ky_2ft_naip_2018_N046E151.zip"
+					url[45:-4] # returns ky_2ft_naip_2018_N046E151
+					```
+
+					---
+					### That's a lot to count
+
+					---
+					### String methods! 🔮🐉
+					* `.rfind()` returns the index value of the right-most occurrence of a character.
+					* `.find()` returns index value of first occurrence.
+
+					---
+					```python
+					url = "ftp://ftp.kymartian.ky.gov/FSA_NAIP_2018_2FT/ky_2ft_naip_2018_N046E151.zip"
+					lastSlash = url.rfind("/") # returns 44
+					lastPeriod = url.rfind(".") # returns 70
+					fileName = url[lastSlash + 1:lastPeriod]
+					print(fileName) # outputs ky_2ft_naip_2018_N046E151
+					```
+					</textarea>
+			</section>
+
+			
 			
 			<section>
 				<h1 class='r-fit-text'>STOP</h1>
