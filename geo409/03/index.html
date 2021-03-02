@@ -873,10 +873,289 @@
 					</textarea>
 			</section>
 
-			
-			
 			<section>
-				<h1 class='r-fit-text'>STOP</h1>
+				<h1 class='r-fit-text'>Loops</h1>
+			</section>
+
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
+				data-background-opacity="0.2">
+				<h3>Loop</h3>
+				<ul>
+					<li class='fragment'>
+						Interrupts sequential execution of code
+					</li>
+					<li class='fragment'>
+						runs same block of code over and over
+					</li>
+					<li class='fragment'>
+						modifying it with each new run
+					</li>
+					<li class='fragment'>
+						until a desired condition is found.
+					</li>
+				</ul>
+			</section>
+
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
+				data-background-opacity="0.2">
+				<h3>Syntax</h3>
+				<ul>
+					<li class='fragment'>
+						Loop statement ends with semicolon <code class='icode'>:</code>
+					</li>
+					<li class='fragment'>
+						loop block is indented four spaces
+					</li>
+				</ul>
+			</section>
+
+			<section 
+				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
+				data-background-opacity="0.2" data-markdown data-separator="---" data-background-color=#2D2D2D>
+                <textarea data-template>
+					```python
+					x = 0
+
+					# loop statement
+					for i in "Geography Y'all!":
+						# loop block
+						print(i)
+						x += 1
+					print(x, i)
+					```
+					</textarea>
+			</section>
+
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
+				data-background-opacity="0.2">
+				<h3><code class='icode'>while</code> loop</h3>
+				<ul>
+					<li class='fragment'>
+						Runs while statement remains true
+					</li>
+					<li class='fragment'>
+						or until a <code class='icode'>break</code> occurs in the block.
+					</li>
+					<li class='fragment'>
+						Can run indefinite number of times.
+					</li>
+				</ul>
+			</section>
+
+			<section 
+				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
+				data-background-opacity="0.2" data-markdown data-separator="---" data-background-color=#2D2D2D>
+                <textarea data-template>
+					```python
+					x = 0
+
+					# loop statement
+					while x < 10:
+						# loop block
+						print(x)
+						x += 1
+					```
+					---
+					```python
+					x = "Geography Y'all!"
+					lenX = len(x)
+					print(x, lenX)
+
+					# loop statement
+					while i < lenX:
+						# loop block
+						print(i, x[i])
+						i += 1
+					```
+					---
+					```python
+					x = "Geography Y'all!"
+					i = 0
+					lenX = len(x)
+					print(x, lenX)
+
+					# loop statement
+					while i < lenX:
+						# loop block
+						print(i, x[0:i])
+						if x[i] == " ":
+							break
+						i += 1
+					```
+					---
+					```python
+					while True:
+						x = input("What is coolest town in Kentucky? ")
+						if x.lower() == 'Lexington':
+							print("Yep!")
+							break
+						elif 'stop' in x.lower():
+							break
+						else:
+							print("Pick the correct town or enter 'stop'")
+					```
+
+					</textarea>
+			</section>
+
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
+				data-background-opacity="0.2">
+				<h3><code class='icode'>for</code> loop</h3>
+				<ul>
+					<li class='fragment'>
+						Iterate over sequence
+					</li>
+					<li class='fragment'>
+						value by value
+					</li>
+					<li class='fragment'>
+						with an iterating variable
+					</li>
+					<li class='fragment'>
+						until all values have been accessed
+					</li>
+					<li class='fragment'>
+					until a <code class='icode'>break</code> occurs in the block.
+					</li>
+				</ul>
+			</section>
+			<section 
+				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
+				data-background-opacity="0.2" data-markdown data-separator="---" data-background-color=#2D2D2D>
+                <textarea data-template>
+					```python
+					x = 0
+
+					# iterating variable i
+					for i in "Geography Y'all!":
+						# loop block
+						print(i)
+						x += 1
+					print(x, i)
+					```
+					</textarea>
+			</section>
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
+				data-background-opacity="0.2">
+				<h3>Python lists</h3>
+				<ul>
+					<li class='fragment'>
+						A collection of values in a sequence.
+					</li>
+					<li class='fragment'>
+						One of the most common data collections.
+					</li>
+					<li class='fragment'>
+						Values enclosed in <code class='icode'>[ ]</code> square brackets
+					</li>
+					<li class='fragment'>
+						and separated by commas.
+					</li>
+				</ul>
+			</section>
+			<section 
+				data-background-image='https://live.staticflickr.com/65535/50451005066_8d39a9f261_k.jpg'
+				data-background-opacity="0.2" data-markdown data-separator="---" data-background-color=#2D2D2D>
+                <textarea data-template>
+					```python
+					x = [3123, 5342, 2432, 5433, 1933, 4322]
+
+					# loop statement
+					for i in x:
+						print(i)
+					```
+					---
+					```python
+					x = [3123, 5342, 2432, 5433, 1933, 4322]
+
+					# loop statement
+					for i in x:
+						if i > 5280:
+							print("We went a mile high!")
+							break
+					```
+					---
+					```python
+					x = [3123, 5342, 2432, 5433, 1933, 4322]
+					lenX = len(x)
+					y = 0
+					z = 0
+
+					# loop statement
+					for i in x:
+						if i > y:
+							y = i
+						z += i
+					print(f"The average elevation is {z/lenX} and the highest is {y}.")
+					```
+					---
+					```python
+					x = [
+					"ftp://ftp.kymartian.ky.gov/kyaped/DEMs_5FT/N091E298_DEM.zip",
+					"ftp://ftp.kymartian.ky.gov/kyaped/DEMs_5FT/N091E299_DEM.zip",
+					"ftp://ftp.kymartian.ky.gov/kyaped/DEMs_5FT/N091E300_DEM.zip",
+					"ftp://ftp.kymartian.ky.gov/kyaped/DEMs_5FT/N091E301_DEM.zip",
+					"ftp://ftp.kymartian.ky.gov/kyaped/DEMs_5FT/N091E302_DEM.zip"]
+
+					for i in x:
+						y = i[43:-4]
+						print (y)
+					```
+
+					</textarea>
+			</section>
+
+			<section class='left'
+				data-background-image='images/dem-01.jpg'
+				data-background-opacity="0.6">
+				<h5>Application</h5>
+				<h3>Explore Kentucky's Digital Elevation Models (DEMs)</h3>
+			</section>
+			<section class='left'
+				data-background-image='images/dem-01.jpg'
+				data-background-opacity="1">
+			</section>
+			<section class='left'
+				data-background-image='images/dem-02.jpg'
+				data-background-opacity="1">
+			</section>
+			<section class='left'
+				data-background-image='images/dem-01.jpg'
+				data-background-opacity="0.4">
+				<h3>Digital elevation models</h3>
+				<ul>
+					<li class='fragment'>
+						Raster data model.
+					</li>
+					<li class='fragment'>
+						Each cell value represents elevation.
+					</li>
+					<li class='fragment'>
+						KY recent DEMs created from lidar.
+					</li>
+					<li class='fragment'>
+						Derivative data from DEMs
+						<ul>
+							<li class='fragment'>
+								Slope, aspect, and contour
+							</li>
+							<li class='fragment'>
+								hillshade, aka shaded relief
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<section class='left'
+				data-background-image='images/dem-02.jpg''
+				data-background-opacity="0.6">
+				<h5>Application</h5>
+				<h4>Continue in lesson README.md</h4>
 			</section>
 
 			<section>
