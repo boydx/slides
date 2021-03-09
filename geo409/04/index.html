@@ -1,0 +1,1259 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>GEO 409: Module 02</title>
+
+	<link rel="stylesheet" href="../../dist/reset.css">
+	<link rel="stylesheet" href="../../dist/reveal.css">
+	<link rel="stylesheet" href="../../dist/theme/league-alt.css" id="theme">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="../../plugin/highlight/tom-night-80.css" id="highlight-theme">
+	<style>
+		/* UK Colors: 
+					 #c7c9c8 light gray 
+					 #63666a dark gray
+					 #15397f dark blue
+					 #009bda light blue
+					 #0033a0 official blue
+				 */
+
+		.revealz::after {
+			content: "";
+			background: url('https://www.outragegis.com/weather/goes16/rgb.jpg') no-repeat fixed center;
+			background-size: cover;
+			opacity: 0.35;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			position: absolute;
+			z-index: -1;
+		}
+
+		.ll {
+			bottom: 0px;
+			left: 0px;
+			position: absolute;
+			z-index: 200;
+			width: 300px;
+			font-size: 0.4em;
+			margin: 0 0 -50px 10px;
+			font-style: italic;
+			font-weight: 300;
+			text-align: left;
+		}
+
+		.lr {
+			bottom: 5px;
+			right: 0px;
+			position: absolute;
+			z-index: 200;
+			width: 300px;
+			font-size: 0.6em;
+			margin: 0 0 -50px 10px;
+			/* font-style: italic; */
+			text-align: right;
+		}
+
+		.ul {
+			top: 0px;
+			left: 0px;
+			position: absolute;
+		}
+
+		.custom-counter {
+			top: 0px;
+			right: 0px;
+			position: absolute;
+		}
+
+		.left {
+			text-align: left;
+		}
+
+		.custom-counter {
+			margin: 0;
+			padding: 0;
+			list-style-type: none;
+		}
+
+		.custom-counter li {
+			counter-increment: step-counter;
+			margin-bottom: 10px;
+		}
+
+		.custom-counter li::before {
+			content: counter(step-counter);
+			margin-right: 5px;
+			font-size: 80%;
+			background-color: #ffbb00;
+			color: white;
+			font-weight: bold;
+			padding: 3px 8px;
+			border-radius: 3px;
+		}
+
+		li {
+			/* list-style-type: "✨ ";  */
+			list-style-image: url('../images/map-pin.png');
+		}
+
+		.plain {
+			/* list-style-type: "✨ ";  */
+			list-style-image: none;
+			list-style-type: none;
+		}
+
+		.number {
+			/* list-style-type: "✨ ";  */
+			list-style-image: none;
+			list-style-type: decimal;
+			/* list-style-position: inside; */
+		}
+
+		.lite {
+			color: #fff;
+			opacity: 0.6;
+			font-weight: 300;
+		}
+
+		.icode {
+			color:#cebe91;
+		}
+	</style>
+</head>
+
+
+
+
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section data-pre-load
+				data-background-image="https://www.outragegis.com/weather/img/animation/yesterday/LookRock.gif"
+				data-background-opacity="0.4">
+				<h5>Module 04</h5>
+				<h3>Advanced data structures & intro to ArcPy</h3>
+
+				<div class='ll'>Yesterday in the Great Smokies<br>Webcam <a
+						href="https://www.outragegis.com/weather/img/animation" target='_blank'>archive</a></div>
+				<!-- <h2>Welcome</h2> -->
+				<div class='lr'>GEO 409: Advanced GIS</div>
+			</section>
+			<section data-pre-load
+				data-background-image="https://www.outragegis.com/weather/img/animation/yesterday/LookRock.gif"
+				data-background-opacity="0.4">
+				<img width='100%' src='../images/logo-uk-geo.png'>
+			</section>
+
+			<section class='left'
+				data-background-iframe='https://uky-gis.github.io/history/maps/1971/01'
+				data-background-opacity="0.2">
+				<h3>Virtual field trip to</h3>
+				<h5>Downtown Lexington</h5>
+				<p>38.046354,-84.495006</p>
+			</section>
+
+			<section data-background-iframe='https://kuula.co/share/7RQcj?fs=1&vr=0&zoom=1&sd=1&thumbs=1&info=1&logo=1' data-background-interactive
+                data-background-opacity="1">
+                <!-- <h6 class="r-fit-text">Measuring arches</h6> -->
+            </section>
+
+			<section data-background-iframe='https://kuula.co/share/7RQZg?fs=1&vr=0&zoom=1&sd=1&thumbs=1&info=1&logo=1' data-background-interactive
+                data-background-opacity="1">
+                <!-- <h6 class="r-fit-text">Measuring arches</h6> -->
+            </section>
+
+			
+
+			<section class='left'
+				data-background-image='images/lx-01.jpg' data-background-color="#000" 
+				data-background-opacity="1">
+			</section>
+
+			<section class='left'
+				data-background-image='images/lx-02.jpg' data-background-color="#000" 
+				data-background-opacity="1">
+			</section>
+
+			<section class='left'
+
+				data-background-image='images/lx-03.jpg' data-background-color="#000" 
+				data-background-opacity="1">
+			</section>
+
+			<section data-background-iframe='https://uky-gis.github.io/maps/lex-tbt-main-st/' 
+				data-background-color="#fff" 
+				data-background-interactive
+                data-background-opacity="1">
+                <!-- <h6 class="r-fit-text">Measuring arches</h6> -->
+            </section>
+
+			<section class='left'
+				data-background-image='images/lx-04.jpg' data-background-color="#000" 
+				data-background-opacity="1">
+			</section>
+
+
+			
+
+			
+
+			<section data-background-iframe='https://nyc3.digitaloceanspaces.com/astoria/xyz/lexparkgarage/index.html' data-background-interactive
+                data-background-opacity="1">
+                <!-- <h6 class="r-fit-text">Measuring arches</h6> -->
+            </section>
+
+
+			<section class='left'
+				data-background-image='https://uky-gis.github.io/history/maps/1971/01'
+				data-background-opacity="0.2">
+				<p>Historic images from <a href='https://exploreuk.uky.edu/'>ExploreUKy.edu</a></p>
+			</section>
+
+			
+
+
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2">
+				<h3>Goals</h3>
+				<ul>
+					<li class='fragment'>
+						Review labs
+					</li>
+					<li class='fragment'>
+						Python II
+						<ul>
+							<li class='fragment'>functions <a target='_blank' href='https://www.py4e.com/lessons/functions'>watch 🎥</a></li>
+							<li class='fragment'>strings <a target='_blank' href='https://www.py4e.com/lessons/strings'>watch 🎥</a></li> 
+							<li class='fragment'><code class='icode'>for</code> and <code class='icode'>while</code> loops <a  target='_blank' href='https://www.py4e.com/lessons/loops'>watch 🎥</a></li> 
+						</ul>
+					</li>
+					<li class='fragment'>
+						Continue ArcGIS Pro
+					</li>
+					<li class='fragment'>
+						Application: Explore <a  target='_blank' href='ftp://ftp.kymartian.ky.gov/'>KY's remote sensing imagery</a> and use a notebook to bulk process the imagery
+					</li>
+				</ul>
+			</section>
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2">
+				<h3>If you are on Virtual Den</h3>
+				<ul>
+					<li>
+						Start with this ArcGIS Pro project package
+						<ul>
+							<li>
+								<a href='https://nyc3.digitaloceanspaces.com/astoria/geo409/Lesson-02.ipynb'>mod-03.ppkx</a>
+							</li>
+						
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<section 
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2">
+				<h1 class='r-fit-text'>Lab review</h3>
+			</section>
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2">
+				<h3>Lab 2</h3>
+				<ul>
+					<li class='fragment'>
+						Your commit log shows how much work you're doing
+						<ul>
+						<li class='fragment'>
+							19 commits vs. 1 commit
+						</li>
+						<li class='fragment'>
+							commit often, perfect later.
+						</li>
+						<li class='fragment'>
+							If you run into problems, push up your work and let me know.
+						</li>
+						<li class='fragment'>
+							If you still find this challenging, let me know ASAP.
+						</li>
+					</ul>
+					</li>
+					<li class='fragment'>
+						Start grading tomorrow
+					</li>
+				</ul>
+			</section>
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2">
+				<h3>So no maps yet?</h3>
+				<ul>
+					<li class='fragment'>
+						Patience.
+					</li>
+					<li class='fragment'>
+						We are data wrangling
+					</li>
+					<li class='fragment'>
+						immense datasets to produce mappable info 
+					</li>
+					<li class='fragment'>
+						for our area of interest.
+					</li>
+				</ul>
+			</section>
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2">
+				<h3>Lab 3</h3>
+				<ul>
+					<li class='fragment'>
+						More Python 🏋️💪🎓
+					</li>
+					<li class='fragment'>
+						Learn to go loopy
+					</li>
+					<li class='fragment'>
+						Manage even larger datasets (e.g., <a target='_blank' href='ftp://ftp.kymartian.ky.gov'>this FTP site</a> and you might need to install an <a target='_blank' href='https://cyberduck.io/download'>FTP client</a>)
+					</li>
+					<li class='fragment'>
+						and expect a big payoff.
+					</li>
+					
+				</ul>
+			</section>
+			<section class='left'
+				data-background-image='images/dir.gif' data-background-color="#000" 
+				data-background-opacity="0.2">
+				<h2>Go from massive amounts of data</h2>
+			</section>
+			<section class='left'
+				data-background-image='images/g13.jpg' data-background-color="#000" 
+				data-background-opacity="0.3">
+				<h2>to analysis and visualization.</h2>
+			</section>
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2">
+				<h1 class='r-fit-text'>Functions</h1>
+			</section>
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2">
+				<h3>Functions</h3>
+				<ul>
+					<li class='fragment'>
+						Block of statements that execute when called.
+					</li>
+					<li class='fragment'>
+						The function might accept input data as <b>arguments</b>.
+					</li>
+					<li class='fragment'>
+						The function might <b>return</b> data.
+					</li>
+					<li class='fragment'>
+						📚 ➡ 🔨 ➡ 🌟
+					</li>
+					
+				</ul>
+			</section>
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2">
+				<h3>Most important function?</h3>
+				<ul>
+					<li class='fragment'>
+						The <code class='icode'>print()</code> function
+					</li>
+					<li class='fragment'>
+						reveals the contents of variables
+					</li>
+					<li class='fragment'>
+						and tells you if a block of code runs.
+					</li>
+					<li class='fragment'>
+						Tip: whenever code is indented, print something!
+					</li>
+					
+				</ul>
+			</section>
+			<section 
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2" data-markdown data-separator="---" data-background-color=#2D2D2D>
+                <textarea data-template>
+					## Syntax
+					---
+					using functions
+					```python
+					# Assign data to a variable
+					x = f"Know what's cool? F-strings can do math: {2 + 2} is 4."
+					# Call the print() function and pass x as an argument
+					print(x)
+					# outputs: Know what's cool? F-strings can do math: 4 is 4.
+					# when print(x) is invoked (called) is becomes the output.
+					```
+					---
+					defining functions
+					```python 
+					def function_name(parameters):
+						"""docstring"""
+						statement(s) using the parameters
+					```
+
+					---
+					```python [1-5|7-8|10-12]
+					# define function
+					def squareMe(x):
+						"""This function squares any number x"""
+						print(x**2)
+						return x**2
+
+					# use function
+					squareMe(5) # outputs 25
+
+					# store output to variable
+					y = squareMe(5)
+					print(y) # outputs 25
+					```
+
+					</textarea>
+
+				</section>
+
+
+			<section 
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2">
+				<h3>Parameters</h3>
+				<ul>
+					<li class='fragment'>
+						Variables inside function
+					</li>
+					<li class='fragment'>
+						which allow us to pass information to the function.
+					</li>
+					<li class='fragment'>
+						Their sequence is critical.
+					</li>
+				</ul>
+			</section>
+			<section 
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2" data-markdown data-separator="---" data-background-color=#2D2D2D>
+                <textarea data-template>
+					## Syntax
+					
+					```python
+					# function with two parameters
+					functionName(x, y)
+					# parameters are 'placeholders' for passing arguments
+					```
+
+					---
+					```python [1-4|6-7|9-11]
+					# define function
+					def myExponentMachine(x, y):
+						"""This function raises x to y"""
+						print(x**y)
+
+					# use function
+					myExponentMachine(5, 2) # outputs 25
+
+					# store output to variable without return statement?
+					y = myExponentMachine(5, 2)
+					print(y, "WHAT???") # outputs None???
+					```
+
+					</textarea>
+
+				</section>
+			<section 
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2">
+				<h3>Clip function</h3>
+				<ul>
+					<li class='fragment'>
+						Perhaps most used GIS function
+					</li>
+					<li class='fragment'>
+						Clips spatial data to an Area of Interest (AOI)
+					</li>
+					<li class='fragment'>
+						Requires three parameters
+					</li>
+					<li class='fragment'>
+						Most everyone, initially, gets the parameter order mixed up.
+					</li>
+				</ul>
+			</section>
+			<section 
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2">
+				<h2>ArcGIS Pro example</h2>
+			</section>
+			<section class='left'
+				data-background-image='images/clip-01.jpg' data-background-color="#fff" data-background-size="contain"
+				data-background-opacity="1">
+			</section>
+			<section class='left'
+				data-background-image='images/clip-02.jpg' data-background-color="#fff" data-background-size="contain"
+				data-background-opacity="1">
+			</section>
+			<section class='left'
+				data-background-image='images/clip-03.jpg' data-background-color="#fff" data-background-size="contain"
+				data-background-opacity="1">
+			</section>
+			<section 
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2" data-markdown data-separator="---" data-background-color=#2D2D2D>
+                <textarea data-template>
+
+					```python
+					arcpy.analysis.Clip(x, y, z) # what are x, y, and z?
+					```
+					---
+					```python
+					x = "c:\\data\\KY_Rivers"
+					y = "c:\\data\\Bluegrass"
+					z = "c:\\project\\Bluegrass_Rivers"
+					arcpy.Clip_Management(x, y, z)
+					```
+					</textarea>
+			</section>
+			<section data-background-image='https://66.media.tumblr.com/31fbae995fe05a3c19f3bc88d9a78e1e/5fb2e54a0288ab22-41/s500x750/953e49b56ea5c634aadcc12801531a3774bff6a7.gif' 
+                data-background-opacity="1">
+            </section>
+			<section 
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2">
+				<h3>Clip function</h3>
+				<ul>
+					<li class='fragment'>
+						The spatial data is the cookie dough
+					</li>
+					<li class='fragment'>
+						The AOI is the cookie cutter
+					</li>
+					<li class='fragment'>
+						The output is the cookie
+					</li>
+				</ul>
+			</section>
+			<section 
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2">
+				<h5>Challenge</h5>
+				<h3>Build a function</h3>
+			</section>
+			
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2">
+				<h3>Build a function</h3>
+				<ul>
+					<li class='fragment'>
+						Store and reuse statements
+					</li>
+					<li class='fragment'>
+						<code class='icode'>def</code> keyword defines a function
+					</li>
+					<li class='fragment'>
+						followed by unique name and<code class='icode'>():</code>
+					</li>
+					<li class='fragment'>
+						Parameters? i.e., does the function use data?
+					</li>
+					<li class='fragment'>
+						Indent function body four spaces
+					</li>
+				</ul>
+			</section>
+			<section 
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2" data-markdown data-separator="---" data-background-color=#2D2D2D>
+                <textarea data-template>
+
+					```python
+					# What is this function doing?
+					function(2, 3)
+					# prints 8
+					```
+					---
+					```python
+					# define function
+					def powersXtoY(x, y): # function has arbitrary name
+						z = x**y
+						print(z) # prints to screen
+
+					powersXtoY(2,3) # Need documentation!
+					```
+					---
+					```python
+					# define function
+					def powersXtoY(x, y): # function has arbitrary name
+						"""x to y power""" # Docstring provides info
+						z = x**y
+						print(z) # prints to screen
+
+					powersXtoY(2,3) # outputs 8
+
+					# Get docstring
+					help(powersXtoY) # outputs x to y power
+					```
+					---
+					##### Challenge
+					Build a function that finds the highest elevation in a list of elevations.
+
+					---
+					```py
+					elevations = [1232, 452, 1224, 599, 745, 355, 899]
+					```
+
+
+					---
+					```py
+					def findStats(dataList):
+						x = 0
+						for number in dataList:
+							if number > x:
+								x = number
+						print(x)
+					```
+
+					---
+					### `return` value
+
+					* To access value we need to return it in the function definition
+
+
+					---
+					```py
+					def findStats(dataList):
+						"""Find the highest number in a list of numbers"""
+						x = 0
+						for number in dataList:
+							if number > x:
+								x = number
+						print(f"{x} is the highest elevation.")
+						return x
+					```
+
+					---
+					```py
+					# Use function on this data 
+					elevations = [1232, 452, 1224, 599, 745, 355, 899]
+					highest = findStats(elevations) # outputs 1232 is the highest elevation.
+
+					# Print variable contents
+					print(highest) # outputs 1232
+					```
+					</textarea>
+			</section>
+
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2">
+				<h3>Methods</h3>
+				<ul>
+					<li class='fragment'>
+						Functions that only work on certain <b>types</b>. 🔮🐉
+					</li>
+					<li class='fragment'>
+						String type, integer type, csv type, etc.
+					</li>
+					<li class='fragment'>
+						Uses dot notation, i.e., <code class='icode'>myString.upper()</code>
+					</li>
+					
+				</ul>
+			</section>
+
+			<section>
+				<h1 class='r-fit-text'>Strings</h1>
+			</section>
+
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2">
+				<h3>String Methods</h3>
+				<ul>
+					<li class='fragment'>
+						Perform common tasks on strings
+					</li>
+					<li class='fragment'>
+						Find substrings, change case, etc.
+					</li>
+					<li class='fragment'>
+						Most return new values, others return `True` or `False`
+					</li>
+					<li class='fragment'>
+						They <b>do not change</b> the original string.
+					</li>
+					<li class='fragment'>
+						<a target='_blank' href='https://www.w3schools.com/python/python_ref_string.asp'>Built-in methods</a>
+					</li>
+					
+				</ul>
+			</section>	
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2">
+				<h3>Example</h3>
+				<p>justWords = "If you live to be a hundred, I want to live to be a hundred minus one day so I never have to live without you."</p>
+			</section>
+
+			<section 
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2" data-markdown data-separator="---" data-background-color=#2D2D2D>
+                <textarea data-template>
+
+					## Try these methods
+					```py
+					justWords.upper()
+					justWords.center(200, "😘")
+					justWords.replace("a hundred", "seven-hundred") # for elves
+					justWords.index("hundred")
+					```
+					
+					---
+					### String indexes
+
+					* Sequence of characters have positions in string starting at zero.
+					* Bracket notation to show position.
+
+					---
+					```python
+					hey = "Let's Hike!"
+					hey[0] # returns L
+					hey[-1] # returns !
+					hey[4] # returns s
+					```
+					</textarea>
+			</section>
+			
+			<section class='left'
+				data-background-image='https://uky-gis.github.io/support/python-arcgis/graphics/string_indexes.png' data-background-color="#ffffff" 
+				data-background-opacity="1">
+			</section>
+
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2">
+				<h3>String slice</h3>
+				<ul>
+					<li class='fragment'>
+						Access substring using <code class='icode'>[start : end]</code> indexes
+					</li>
+					<li class='fragment'>
+						Two index values separated by a colon <code class='icode'>:</code> inside bracket <code class='icode'>[]</code> notation
+					</li>
+					<li class='fragment'>
+						End index is up-to-but-not-including
+					</li>
+					<li class='fragment'>
+						<code class='icode'>"Let's Hike"[0:2]</code> returns <code class='icode'>"Le"</code> 
+					</li>
+				</ul>
+			</section>
+
+			<section 
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2" data-markdown data-separator="---" data-background-color=#2D2D2D>
+                <textarea data-template>
+					```python
+					len("Hello World!") # returns 12
+					"Hello World!"[0] # returns H
+					"Hello World!"[11] # !
+					"Hello World!"[0:12] # returns all
+					"Hello World!"[:12] # returns all
+					"Hello World!"[12] # returns error, out of index range
+					"Hello World!"[:] # returns all
+					"Hello World!"[] # returns syntax error
+					"Hello World!"[-1] # returns !
+					"Hello World!"[:-1] # returns Hello World
+					```
+					</textarea>
+			</section>
+
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2">
+				<h3>String stride</h3>
+				<ul>
+					<li class='fragment'>
+						Optional third number in <code class='icode'>[start:end:stride]</code>
+					</li>
+					<li class='fragment'>
+						Third number returns every nth character
+					</li>
+					<li class='fragment'>
+						By default, 1
+					</li>
+					<li class='fragment'>
+						Negative numbers reverse the string
+					</li>
+				</ul>
+			</section>
+
+			<section 
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2" data-markdown data-separator="---" data-background-color=#2D2D2D>
+                <textarea data-template>
+					```python
+					say = "Maps, Y'all!"
+					sayBack = say[::-1]
+					print(sayBack) # returns !lla'Y ,spaM
+					```
+					</textarea>
+			</section>
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2">
+				<h5>Challenge</h5>
+				<h3>Slice a URL</h3>
+				<p>A uniform resource locator is the unique address of anything on the Web.</p>
+			</section>
+
+			<section class='left'
+				data-background-image='images/url.png' data-background-color="#ffffff" data-background-size="contain"
+				data-background-opacity="1">
+			</section>
+
+			<section class='left'
+				data-background-image='images/add-grid.jpg' data-background-color="#ffffff" data-background-size="contain"
+				data-background-opacity="1">
+			</section>
+			<section class='left'
+				data-background-image='images/shapefile.jpg' data-background-color="#ffffff" data-background-size="contain"
+				data-background-opacity="1">
+			</section>
+			<section class='left'
+				data-background-image='images/click-grid.jpg' data-background-color="#ffffff" data-background-size="contain"
+				data-background-opacity="1">
+			</section>
+			<section class='left'
+				data-background-image='images/ftp.jpg' data-background-color="#ffffff" data-background-size="contain"
+				data-background-opacity="1">
+			</section>
+
+			<section 
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2" data-markdown data-separator="---" data-background-color=#2D2D2D>
+                <textarea data-template>
+					```python
+					url = "ftp://ftp.kymartian.ky.gov/FSA_NAIP_2018_2FT/ky_2ft_naip_2018_N046E151.zip"
+					url[45:-4] # returns ky_2ft_naip_2018_N046E151
+					```
+
+					---
+					### That's a lot to count
+
+					---
+					### String methods! 🔮🐉
+					* `.rfind()` returns the index value of the right-most occurrence of a character.
+					* `.find()` returns index value of first occurrence.
+
+					---
+					```python
+					url = "ftp://ftp.kymartian.ky.gov/FSA_NAIP_2018_2FT/ky_2ft_naip_2018_N046E151.zip"
+					lastSlash = url.rfind("/") # returns 44
+					lastPeriod = url.rfind(".") # returns 70
+					fileName = url[lastSlash + 1:lastPeriod]
+					print(fileName) # outputs ky_2ft_naip_2018_N046E151
+					```
+					</textarea>
+			</section>
+
+			<section>
+				<h1 class='r-fit-text'>Loops</h1>
+			</section>
+
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2">
+				<h3>Loop</h3>
+				<ul>
+					<li class='fragment'>
+						Interrupts sequential execution of code
+					</li>
+					<li class='fragment'>
+						runs same block of code over and over
+					</li>
+					<li class='fragment'>
+						modifying it with each new run
+					</li>
+					<li class='fragment'>
+						until a desired condition is found.
+					</li>
+				</ul>
+			</section>
+
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2">
+				<h3>Syntax</h3>
+				<ul>
+					<li class='fragment'>
+						Loop statement ends with semicolon <code class='icode'>:</code>
+					</li>
+					<li class='fragment'>
+						loop block is indented four spaces
+					</li>
+				</ul>
+			</section>
+
+			<section 
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2" data-markdown data-separator="---" data-background-color=#2D2D2D>
+                <textarea data-template>
+					```python
+					x = 0
+
+					# loop statement
+					for i in "Geography Y'all!":
+						# loop block
+						print(i)
+						x += 1
+					print(x, i)
+					```
+					</textarea>
+			</section>
+
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2">
+				<h3><code class='icode'>while</code> loop</h3>
+				<ul>
+					<li class='fragment'>
+						Runs while statement remains true
+					</li>
+					<li class='fragment'>
+						or until a <code class='icode'>break</code> occurs in the block.
+					</li>
+					<li class='fragment'>
+						Can run indefinite number of times.
+					</li>
+				</ul>
+			</section>
+
+			<section 
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2" data-markdown data-separator="---" data-background-color=#2D2D2D>
+                <textarea data-template>
+					```python
+					x = 0
+
+					# loop statement
+					while x < 10:
+						# loop block
+						print(x)
+						x += 1
+					```
+					---
+					```python
+					x = "Geography Y'all!"
+					lenX = len(x)
+					print(x, lenX)
+
+					# loop statement
+					while i < lenX:
+						# loop block
+						print(i, x[i])
+						i += 1
+					```
+					---
+					```python
+					x = "Geography Y'all!"
+					i = 0
+					lenX = len(x)
+					print(x, lenX)
+
+					# loop statement
+					while i < lenX:
+						# loop block
+						print(i, x[0:i])
+						if x[i] == " ":
+							break
+						i += 1
+					```
+					---
+					```python
+					while True:
+						x = input("What is coolest town in Kentucky? ")
+						if x.lower() == 'Lexington':
+							print("Yep!")
+							break
+						elif 'stop' in x.lower():
+							break
+						else:
+							print("Pick the correct town or enter 'stop'")
+					```
+
+					</textarea>
+			</section>
+
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2">
+				<h3><code class='icode'>for</code> loop</h3>
+				<ul>
+					<li class='fragment'>
+						Iterate over sequence
+					</li>
+					<li class='fragment'>
+						value by value
+					</li>
+					<li class='fragment'>
+						with an iterating variable
+					</li>
+					<li class='fragment'>
+						until all values have been accessed
+					</li>
+					<li class='fragment'>
+					until a <code class='icode'>break</code> occurs in the block.
+					</li>
+				</ul>
+			</section>
+			<section 
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2" data-markdown data-separator="---" data-background-color=#2D2D2D>
+                <textarea data-template>
+					```python
+					x = 0
+
+					# iterating variable i
+					for i in "Geography Y'all!":
+						# loop block
+						print(i)
+						x += 1
+					print(x, i)
+					```
+					</textarea>
+			</section>
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2">
+				<h3>Python lists</h3>
+				<ul>
+					<li class='fragment'>
+						A collection of values in a sequence.
+					</li>
+					<li class='fragment'>
+						One of the most common data collections.
+					</li>
+					<li class='fragment'>
+						Values enclosed in <code class='icode'>[ ]</code> square brackets
+					</li>
+					<li class='fragment'>
+						and separated by commas.
+					</li>
+				</ul>
+			</section>
+			<section 
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2" data-markdown data-separator="---" data-background-color=#2D2D2D>
+                <textarea data-template>
+					```python
+					x = [3123, 5342, 2432, 5433, 1933, 4322]
+
+					# loop statement
+					for i in x:
+						print(i)
+					```
+					---
+					```python
+					x = [3123, 5342, 2432, 5433, 1933, 4322]
+
+					# loop statement
+					for i in x:
+						if i > 5280:
+							print("We went a mile high!")
+							break
+					```
+					---
+					```python
+					x = [3123, 5342, 2432, 5433, 1933, 4322]
+					lenX = len(x)
+					y = 0
+					z = 0
+
+					# loop statement
+					for i in x:
+						if i > y:
+							y = i
+						z += i
+					print(f"The average elevation is {z/lenX} and the highest is {y}.")
+					```
+					---
+					```python
+					x = [
+					"ftp://ftp.kymartian.ky.gov/kyaped/DEMs_5FT/N091E298_DEM.zip",
+					"ftp://ftp.kymartian.ky.gov/kyaped/DEMs_5FT/N091E299_DEM.zip",
+					"ftp://ftp.kymartian.ky.gov/kyaped/DEMs_5FT/N091E300_DEM.zip",
+					"ftp://ftp.kymartian.ky.gov/kyaped/DEMs_5FT/N091E301_DEM.zip",
+					"ftp://ftp.kymartian.ky.gov/kyaped/DEMs_5FT/N091E302_DEM.zip"]
+
+					for i in x:
+						y = i[43:-4]
+						print (y)
+					```
+
+					</textarea>
+			</section>
+
+			<section class='left'
+				data-background-image='images/dem-01.jpg'
+				data-background-opacity="0.6">
+				<h5>Application</h5>
+				<h3>Explore Kentucky's Digital Elevation Models (DEMs)</h3>
+			</section>
+			<section class='left'
+				data-background-image='images/dem-01.jpg'
+				data-background-opacity="1">
+			</section>
+			<section class='left'
+				data-background-image='images/dem-02.jpg'
+				data-background-opacity="1">
+			</section>
+			<section class='left'
+				data-background-image='images/dem-01.jpg'
+				data-background-opacity="0.4">
+				<h3>Digital elevation models</h3>
+				<ul>
+					<li class='fragment'>
+						Raster data model.
+					</li>
+					<li class='fragment'>
+						Each cell value represents elevation.
+					</li>
+					<li class='fragment'>
+						KY recent DEMs created from lidar.
+					</li>
+					<li class='fragment'>
+						Derivative data from DEMs
+						<ul>
+							<li class='fragment'>
+								Slope, aspect, and contour
+							</li>
+							<li class='fragment'>
+								hillshade, aka shaded relief
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<section class='left'
+				data-background-image='images/dem-02.jpg''
+				data-background-opacity="0.6">
+				<h5>Application</h5>
+				<h4>Continue in lesson README.md</h4>
+			</section>
+
+			<section>
+				<h1 class='r-fit-text'>Addendum</h1>
+			</section>
+			
+			
+			<section 
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2" data-markdown data-separator="---" data-background-color=#2D2D2D>
+                <textarea data-template>
+					### Built-in functions
+
+					* Python comes with about [60 functions](https://docs.python.org/3.8/library/functions.html)
+					* Don't need to `import` anything
+					
+					
+					---
+					### Round function
+					
+					```python
+					round(x, y)
+					# x is float type, y is integer type
+					print(round(7.555, 2))
+					```
+					
+					---
+					# What!?!
+					
+					---
+					### Adding functions
+					
+					* Python's sprawling [standard library](https://docs.python.org/3/library/) of modules
+					* Adds new functions and data types
+					* The `decimal` module to correctly round numbers
+					* Use dot notation to address functions
+					
+					
+					---
+					```python
+					import decimal # use the module's namespace to access its functions
+					x = decimal.Decimal('7.555')
+					
+					from decimal import Decimal # access the module functions directly
+					x = Decimal('7.555')
+					
+					print(round(x, 2))
+					```
+
+					
+					---
+					### decimal properties
+					
+					* Control precision and number of significant digits
+					* Rounding rules
+					* Useful in mapping and money applications
+					
+					
+					---
+					### Lat/lon coords and precision
+					
+					* 38.038015, -84.5046852!
+					* 1&deg; of latitude = 69 miles
+					* 1.0&deg;  6.9 mi of precision
+					* 1.00&deg;  3600 ft
+					* 1.000&deg;  360 ft
+					* 1.0000&deg;  36 ft
+					* 1.000000&deg;  4 in
+					</textarea>
+			</section>
+			<section>
+				<h1 class='r-fit-text'>STOP</h1>
+			</section>
+
+		</div>
+	</div>
+
+	<script src="../../dist/reveal.js"></script>
+	<script src="../../plugin/notes/notes.js"></script>
+	<script src="../../plugin/markdown/markdown.js"></script>
+	<script src="../../plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+			backgroundTransition: 'fade',
+			// Transition style
+			transition: 'fade', // none/fade/slide/convex/concave/zoom
+
+			// Transition speed
+			transitionSpeed: 'fast', // default/fast/slow
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+</body>
+
+</html>
