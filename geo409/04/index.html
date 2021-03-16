@@ -619,15 +619,21 @@
 					```
 
 					---
+					### multiple iterators
+					archCoords = [[37.7873, -83.6243], [37.8123, -83.5796], [37.7686, -83.5582]]
+					for x, y in archCoords:
+						print(y, x)
+
+					---
 					## Challenge: 
-					### iterate over each word and letter in the following sequence
+					### Print a sorted list of arches
 					```py
 					archesList = ['Silvermine Arch', 'Castle Arch', 'Rock Bridge Arch']
 					```
 
 					---
 					## Challenge: 
-					### combine, sort, and report on arch names and locations
+					### combine and sort arch names and locations
 					```py
 					archesList = ['Silvermine Arch', 'Castle Arch', 'Rock Bridge Arch']
 					archCoords = [[37.7873, -83.6243], [37.8123, -83.5796], [37.7686, -83.5582]]
@@ -635,12 +641,194 @@
 
 					---
 					## Challenge: 
-					### Sort by west to east
+					### Sort by east to west
 					```py
 					archesList = ['Silvermine Arch', 'Castle Arch', 'Rock Bridge Arch']
 					archCoords = [[37.7873, -83.6243], [37.8123, -83.5796], [37.7686, -83.5582]]
 					```
 
+					---
+					## Solutions
+
+					---
+					```py
+					archesList = ['Silvermine Arch', 'Castle Arch', 'Rock Bridge Arch']
+					archesList.sort()
+					for arch in archesList:
+						print (arch)
+					```
+
+					---
+					```py
+					archesList = ['Silvermine Arch', 'Castle Arch', 'Rock Bridge Arch']
+					archesList.sort()
+					for arch in archesList:
+						print (arch)
+					```
+
+					---
+					```py
+					archesList = ['Silvermine Arch', 'Castle Arch', 'Rock Bridge Arch']
+					archCoords = [[37.7873, -83.6243], [37.8123, -83.5796], [37.7686, -83.5582]]
+
+					aList = []
+					i = 0
+
+					for arch in archesList:
+						aList.append([arch, archCoords[i]])
+						i += 1
+					aList.sort()
+					print(aList)
+					```
+
+					---
+					### a more Pythonic way
+					```py
+					archesList = ['Silvermine Arch', 'Castle Arch', 'Rock Bridge Arch']
+					archCoords = [[37.7873, -83.6243], [37.8123, -83.5796], [37.7686, -83.5582]]
+
+					aList = []
+					i = 0
+
+					# Using zip() function
+					for x, y in zip(archesList, archCoords):
+						aList.append([x, y])
+						i += 1
+					aList.sort()
+					print(aList)
+
+
+					---
+					```py
+					aList = []
+					archesList = ['Silvermine Arch', 'Castle Arch', 'Rock Bridge Arch']
+					archCoords = [[37.7873, -83.6243], [37.8123, -83.5796], [37.7686, -83.5582]]
+					n = 0
+					for i in archesList:
+						aList.append([[archCoords[n][1], archCoords[n][0]], i])
+						n += 1
+					aList.sort(reverse=True) # reverse needed?
+					print(aList)
+					```
+				
+					</textarea>
+
+				</section>
+
+				<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2">
+				<h3>Tuples</h3>
+				<ul>
+					<li class='fragment'>
+						An immutable, <b>sequence</b> of <b>items</b> or <b>elements</b> 
+					</li>
+					<li class='fragment'>
+						separated by a comma
+					</li>
+					<li class='fragment'>
+						and enclosed in round brackets.
+					</li>
+					<li class='fragment'>
+						Items can be any value.
+					</li>
+					
+				</ul>
+				</section>
+				<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2">
+				<h3>Tuples</h3>
+				<ul>
+					<li class='fragment'>
+						Think of tuples like records in a database, 
+					</li>
+					<li class='fragment'>
+						a collection or related information
+					</li>
+					<li class='fragment'>
+						often of a different type.
+					</li>
+					<li class='fragment'>
+						Tuples are fast.
+					</li>
+					
+				</ul>
+				</section>
+
+				<section 
+					data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+					data-background-opacity="0.2" data-markdown data-separator="---" data-background-color=#2D2D2D>
+					<textarea data-template>
+					```python
+					# related info but different type
+					arch = ('Silvermine Arch', [37.7873, -83.6243], 'sandstone', 23)
+					# access like a List
+					print(arch[2]) # outputs sandstone 
+					```
+					---
+					```python
+					arches = [('Silvermine Arch', [37.7873, -83.6243], 'sandstone', 23),
+							  ('Castle Arch', [37.8123, -83.5796], 'sandstone', 15)]
+					# sort like a List
+					arches.sort()
+					print(arches) 
+					```
+					---
+					```python
+					oneArchTuple = ('Silvermine Arch', [37.7873, -83.6243])
+					oneArchTuple[0] = "Castle Arch" # Blows up!
+					oneArchTuple[1][0] = 37.112 # 😀
+					print(oneArchTuple)
+					```
+
+					---
+					### Tuple unpacking
+					```py
+					archCoords = [[37.7873, -83.6243], [37.8123, -83.5796], [37.7686, -83.5582]]
+					for (x, y) in archCoords:
+						print(y, x)
+					```
+
+				
+					</textarea>
+
+				</section>
+
+				<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2">
+				<h3>Dictionaries</h3>
+				<ul>
+					<li class='fragment'>
+						An unordered collection of **items** 
+					</li>
+					<li class='fragment'>
+						stored as key:value pairs
+					</li>
+					<li class='fragment'>
+						separated by a colon 
+					</li>
+					<li class='fragment'>
+						and enclosed in curly brackets.
+					</li>
+					
+				</ul>
+				</section>
+
+				<section 
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2" data-markdown data-separator="---" data-background-color=#2D2D2D>
+                <textarea data-template>
+					```python
+					archesDictionary = {
+						'Castle Arch': [37.8123, -83.5796],
+						'Red-byrd Arch': [37.8148, -83.5504],
+						'Rock Bridge Arch': [37.7686, -83.5582],
+						'Silvermine Arch': [37.7873, -83.6243]
+						}
+					```
+				
 					</textarea>
 
 				</section>
@@ -653,6 +841,29 @@
 				<h1>STOP</h1>
 				
 			</section>
+
+			<section 
+				data-background-image='https://live.staticflickr.com/65535/50101644962_33cddaa529_k.jpg'
+				data-background-opacity="0.2" data-markdown data-separator="---" data-background-color=#2D2D2D>
+                <textarea data-template>
+					```python
+					archesList = ['Silvermine Arch', 'Castle Arch', 'Rock Bridge Arch'] 
+					```
+
+					---
+					### Index bracket notation
+					Address items in sequence with integer, just like strings.
+
+
+					---
+					```py
+					myList[item]
+					# where item is an integer
+					```
+				
+					</textarea>
+
+				</section>
 			
 
 		</div>
