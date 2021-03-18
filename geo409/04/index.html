@@ -76,6 +76,11 @@
 			text-align: left;
 		}
 
+		.left ul {
+			text-align: left;
+			margin-left: 80px;
+		}
+
 		.custom-counter {
 			margin: 0;
 			padding: 0;
@@ -953,16 +958,35 @@
 				<h3>Overview</h3>
 				<ol>
 					<li class='fragment'>
-						Select a desired type from the GNIS
+						Select a desired feature type from the GNIS
 					</li>
 					<li class='fragment'>
-						Choose a distance from the type for 'area of influence'
+						Choose a distance from the feature type for 'area of interest'
 					</li>
 					<li class='fragment'>
 						Buffer on each point and measure total area
 					</li>
 					<li class='fragment'>
 						Make a map!
+					</li>
+				</ol>
+			</section>
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/49754990433_faae5d928c_k.jpg'
+				data-background-opacity="0.2">
+				<h3>GNIS</h3>
+				<ol>
+					<li class='fragment'>
+						Geographic Names Information System (USGS)
+					</li>
+					<li class='fragment'>
+						Official geographic names component of <a href='https://apps.nationalmap.gov/downloader'>The National Map</a>
+					</li>
+					<li class='fragment'>
+						x, y (NAD 83) | z (NAVD 88)
+					</li>
+					<li class='fragment'>
+						Download national file: <a href='https://geonames.usgs.gov/docs/stategaz/NationalFile.zip'>link</a> (80 MB)
 					</li>
 				</ol>
 			</section>
@@ -1009,6 +1033,74 @@
 						<code class='icode'>import arcpy</code>
 					</li>
 				</ol>
+			</section>
+
+			<section data-background-image='https://live.staticflickr.com/65535/49754990433_faae5d928c_k.jpg'
+				class='left' data-background-opacity="0.2" data-markdown data-separator="---" data-background-color=#2D2D2D>
+				<textarea data-template>
+					# arcpy
+					---
+				
+					```python
+					# import the ArcGIS Pro Python powers
+					import arcpy
+
+					# Set environment property
+					arcpy.env.workspace ='path\\to\\my\\geodatabase'
+
+					# Set environment property
+					arcpy.env.overwriteOutput = True
+					```
+					* [env](https://pro.arcgis.com/en/pro-app/latest/arcpy/classes/env.htm)
+
+					---
+					```py
+					# Create spatial reference object using the EPSG code
+					sr = arcpy.SpatialReference(3089)
+
+					# Verify correct CRS is supplied
+					# Print name property
+					print(sr.name) 
+
+					# Now we can transform any layer to our default CRS
+					# Our layers are in the same coordinate system
+					```
+					* [SpatialReference](https://pro.arcgis.com/en/pro-app/latest/arcpy/classes/spatialreference.htm)
+
+					---
+					```py
+					# If a database doesn't exist, create it
+					if arcpy.Exists(f'path\\to\\my\\geodatabase'):
+						print("Database exists!")
+					else:
+						arcpy.CreateFileGDB_management('path\\to\\my', 'databaseName')
+						print(f"Created: path\\to\\my\\geodatabase")
+					```
+					* [Exists](https://pro.arcgis.com/en/pro-app/latest/arcpy/functions/exists.htm)   
+					* [CreateFileGDB](https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/create-file-gdb.htm)
+
+					---
+					```py
+					# Make spatial layer from table that has fields for lat/long
+					arcpy.XYTableToPoint_management(in, out, long, lat, elev)
+					```
+					* [XYTableToPoint](https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/xy-table-to-point.htm)
+
+					---
+					```py
+					# Project layer to our coordinate system
+					arcpy.Project_management(in, out, sr)
+					```
+					* [Project](https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/project.htm)
+				
+					---
+					```py
+					# Buffer points
+					arcpy.Buffer_analysis(in, out, buffer_distance, "#", "#", dissolve_all)
+					```
+					* [Buffer](https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/buffer.htm)
+					</textarea>
+
 			</section>
 
 			
