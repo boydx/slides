@@ -747,8 +747,9 @@
 					# Add a field as a float number
 					layer = "streams_dissolved_name"
 					field = "miles"
-					arcpy.DeleteField_management(layer, field)
 					expression = "!shape.length@miles!"
+
+					arcpy.DeleteField_management(layer, field)
 					arcpy.AddField_management(layer, field, "FLOAT")
 					arcpy.CalculateField_management(layer, field, expression)
 					```
@@ -757,6 +758,18 @@
 					### Complex expressions
 					* Use a function block
 					* wrapped in `"""`
+
+					---
+					Function to replace common names with abbreviations
+					```py
+					cef replaceCreek(name):
+						if name.endswith('Creek'):
+							return name.replace('Creek', 'Cr.')
+						elif name.endswith('River'):
+							return name.replace('River', "R.")
+						else:
+							return name
+					```
 
 					---
 					Function to replace common names with abbreviations
