@@ -1137,184 +1137,61 @@
 			
 			
 
-
-
-			<section data-background-image='https://live.staticflickr.com/65535/49816095502_b911d8549c_k.jpg'
-				data-background-opacity="0.2">
-				<h1>STOP</h1>
-
-			</section>
-
-			
 			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/49754990433_faae5d928c_k.jpg'
+				data-background-image='https://live.staticflickr.com/65535/35901934525_0f071d8443_k.jpg'
 				data-background-opacity="0.3">
 				<h5>Application</h5>
 				<h3>Clipping multiple datasets to an area of interest</h3>
 			</section>
 			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/49754990433_faae5d928c_k.jpg'
-				data-background-opacity="0.3">
-				<h5></h5>
-				<h3></h3>
-			</section>
-			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/49754990433_faae5d928c_k.jpg'
-				data-background-opacity="0.2">
-				<h3>Overview</h3>
-				<ol>
-					<li class='fragment'>
-						
-					</li>
-					<li class='fragment'>
-						
-					</li>
-					<li class='fragment'>
-						
-					</li>
-					<li class='fragment'>
-						
-					</li>
-				</ol>
-			</section>
-			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/49754990433_faae5d928c_k.jpg'
-				data-background-opacity="0.2">
-				<h3></h3>
-				<ol>
-					<li class='fragment'>
-						
-					</li>
-					<li class='fragment'>
-						Official geographic names component of <a href='https://apps.nationalmap.gov/downloader'>The National Map</a>
-					</li>
-					<li class='fragment'>
-						
-					</li>
-					<li class='fragment'>
-						
-					</li>
-				</ol>
-			</section>
-
-			<section class='left' data-background-image='https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/GUID-267CF0D1-DB92-456F-A8FE-F819981F5467-web.png' 
-				data-background-color="#fff"
-				data-background-size='contain'
+				data-background-image='images/ky-data.jpg'
 				data-background-opacity="1">
 			</section>
-
 			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/49754990433_faae5d928c_k.jpg'
-				data-background-opacity="0.2">
-				<h3>ArcPy</h3>
-				<ol>
-					<li class='fragment'>
-						
-					</li>
-					<li class='fragment'>
-						
-					</li>
-					<li class='fragment'>
-						
-					</li>
-
-					<li class='fragment'>
-						
-					</li>
-				</ol>
+				data-background-image='images/ky-basemap.png'
+				data-background-opacity="1">
 			</section>
 			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/49754990433_faae5d928c_k.jpg'
+				data-background-image='https://live.staticflickr.com/65535/35901934525_0f071d8443_k.jpg'
 				data-background-opacity="0.2">
-				<h3>To start...</h3>
+				<h3>Application steps</h3>
 				<ol>
 					<li class='fragment'>
-						Open <b>Application</b> section in lesson
+						Start in lesson
 					</li>
 					<li class='fragment'>
-						Open notebook in <b>application</b> folder
+						Run notebook to process data
 					</li>
-
 					<li class='fragment'>
-						<code class='icode'>import arcpy</code>
+						Design thematic map
+					</li>
+					<li class='fragment'>
+						Exort layout as .jpg image
 					</li>
 				</ol>
 			</section>
 
-			<section data-background-image='https://live.staticflickr.com/65535/49754990433_faae5d928c_k.jpg'
-				class='left' data-background-opacity="0.2" data-markdown data-separator="---" data-background-color=#2D2D2D>
-				<textarea data-template>
-					# arcpy
-					---
-				
-					```python
-					# import the ArcGIS Pro Python powers
-					import arcpy
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/35901934525_0f071d8443_k.jpg'
+				data-background-opacity="0.3">
+				<h5>Addendum</h5>
+				<h3>Animation & design</h3>
+			</section>
 
-					# Set environment property
-					arcpy.env.workspace ='path\\to\\my\\geodatabase'
-
-					# Set environment property
-					arcpy.env.overwriteOutput = True
-					```
-					* [env](https://pro.arcgis.com/en/pro-app/latest/arcpy/classes/env.htm)
-
-					---
-					```py
-					# Create spatial reference object using the EPSG code
-					sr = arcpy.SpatialReference(3089)
-
-					# Verify correct CRS is supplied
-					# Print name property
-					print(sr.name) 
-
-					# Now we can transform any layer to our default CRS
-					# Our layers are in the same coordinate system
-					```
-					* [SpatialReference](https://pro.arcgis.com/en/pro-app/latest/arcpy/classes/spatialreference.htm)
-
-					---
-					```py
-					# If a database doesn't exist, create it
-					if arcpy.Exists(f'path\\to\\my\\geodatabase'):
-						print("Database exists!")
-					else:
-						arcpy.CreateFileGDB_management('path\\to\\my', 'databaseName')
-						print(f"Created: path\\to\\my\\geodatabase")
-					```
-					* [Exists](https://pro.arcgis.com/en/pro-app/latest/arcpy/functions/exists.htm)   
-					* [CreateFileGDB](https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/create-file-gdb.htm)
-
-					---
-					```py
-					# Make spatial layer from table that has fields for lat/long
-					arcpy.XYTableToPoint_management(in, out, long, lat, elev)
-					```
-					* [XYTableToPoint](https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/xy-table-to-point.htm)
-
-					---
-					```py
-					# Project layer to our coordinate system
-					arcpy.Project_management(in, out, sr)
-					```
-					* [Project](https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/project.htm)
-				
-					---
-					```py
-					# Buffer points
-					arcpy.Buffer_analysis(in, out, buffer_distance, "#", "#", dissolve_all)
-					```
-					* [Buffer](https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/buffer.htm)
-					</textarea>
+			<section class='left'
+				data-background-image='images/ad-03.jpg'
+				data-background-opacity="1">
+			</section>
+			
+			
+			<section data-background-iframe='https://player.vimeo.com/video/525652569?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479'
+				data-background-interactive data-background-opacity="1">
+				<!-- <h6 class="r-fit-text">Measuring arches</h6> -->
+			</section>
 
 			</section>
 
 			
-			<section data-background-image='https://live.staticflickr.com/65535/49816095502_b911d8549c_k.jpg'
-				data-background-opacity="0.2">
-				<h1>STOP</h1>
-
-			</section>
 
 			<section data-background-image='https://live.staticflickr.com/65535/49816095502_b911d8549c_k.jpg'
 				data-background-opacity="0.2" data-markdown data-separator="---" data-background-color=#2D2D2D>
