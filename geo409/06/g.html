@@ -140,110 +140,293 @@
 				data-background-opacity="0.2" data-markdown data-separator="---" data-background-color=#2D2D2D>
                 <textarea data-template>
 					
-					---?image=https://www.outragegis.com/weather/img/animation/yesterday/LookRock.gif&opacity=40
-					# GEO 409:05
-					## Automated geoprocessing & intro to ArcGIS Pro
-					
-					---
-					## Online Class
-					@ul[squares]
-					* Canvas [course content and new videos](https://uk.instructure.com/courses/1966559)
-					* Zoom [screen sharing](https://uky.zoom.us/my/boyd.shearer)
-					* ArcGIS Pro [download & install](https://uk.instructure.com/courses/1966559/files/93580698/download)
-					* Virtual Den [remote applications](https://appstore.uky.edu/)
-					@ulend
-					
-					---
-					## Lab 4
-					@ul[squares]
-					* Get familiar with the tool documentation
-						* Don't have to know all settings all the time
-					* Get comfortable moving data, running code, examining output
-					@ulend
-					
-					---
-					## Lab 5
-					@ul[squares]
-					* Clipping data to an AOI with ArcPy
-						* Need to work through lesson
-					* Write new script from lesson example
-					* Fire up ArcGIS Pro to publish a base map
-					@ulend
-					
-					---?image=images/ky-basemap.png&opacity=100
-					
-					---
-					## Problem 🧱
-					Data is not perfectly isolated for your area of interest. The extra load can become an obstacle to efficient mapping.
-					
-					---
-					## Solution
-					## ✂️ 🗺️
-					
-					---
-					## Clip tool
-					@ul[squares]
-					* Isolate data to area of interest
-					* Input > function() > Output
-					* `arcpy.Clip_analysis(in, clip, out)`
-					* What happens if you have 100 layers?
-					@ulend
-					
-					
-					---
-					## Automate tools
-					```py
-					import arcpy
-					# set default workspace
-					arcpy.env.workspace = "z:\\myGIS\\data\\myProject.gdb"
-					# get list of data in the geodatabase
-					listOfData = arcpy.ListFeatureClasses()
-					# loop through list
-					for layer in listOfData:
-						# ✂️ 🗺️
-						arcpy.Clip_analysis(layer, "area_of_interest", f"{outputDB}\\layer")
-					```
-					@[1]
-					@[2-3]
-					@[4-5]
-					@[6-9]
-					
-					---
-					## Geoprocessing
-					"A framework and set of tools for processing geographic and related data."
-					
-					---
-					## Automate at scale
-					@ul[squares]
-					* Tools chained together
-						* Programmatically run an entire workflow
-					* Operate on unlimited amounts of data
-					* Once coded, work on same data but from different area
-					@ulend
-					
-					---?image=images/tools.png&opacity=100
-					
-					---
-					## Example
-					Imagine if you needed to know the variety and acreage of land use and land cover for all counties in US?
-					
-					---?image=images/lclu-ky.jpg&opacity=100
-					
-					---?image=images/lclu-us.jpg&opacity=100
-					
-					---
-					## Solution?
-					@ul[squares]
-					* for loop [Clip Raster > Export Table]
-						* Doesn't get name of county in table
-					* RasterToVector > Intersect > for loop [Clip Raster > Export Table]
-					@ulend
-					
-					---?image=images/lclu-us-total.jpg&opacity=100
-					
-					---
-					# 🛑
-					Read lesson!
+					------?image=https://www.outragegis.com/weather/img/animation/yesterday/LookRock.gif&opacity=40
+# GEO 409
+## Module 06: 
+### Cartography (and Field mapping)
+
+---?image=https://live.staticflickr.com/4345/35932585353_86b4720238_k.jpg&opacity=40
+<h2 style="text-shadow:0 0 2px #333, 0 0 5px #333;color:white">Take a walk in the woods</h2>
+
+
+---
+## Spring 2020
+@ul[squares]
+* Field Trip!
+* Plan your own trip
+* Make your own map
+* Measure your space
+@ulend
+
+
+---?image=&opacity=40
+## Adopt a landform
+
+---?image=https://live.staticflickr.com/8185/29282811394_acffec2f45_o.jpg&opacity=40
+## or a building, skyline, etc.
+
+---?image=https://farm2.staticflickr.com/1922/43128933340_d6d61a6bb2_h.jpg&opacity=40
+## Explore a big space
+
+---
+## Example
+### Red River Gorge
+
+---
+# Step 1
+
+---
+## Make RRG base map
+@ul[squares]
+*
+@ulend
+
+---?image=&opacity=100
+
+---
+## Use map in the field
+### on phone with no cell data?
+# 🤯
+
+---?image=images/avenza-1.jpg&opacity=100
+
+---
+# Step 2
+
+---
+## Publish map
+@ul[squares]
+* 
+@ulend
+
+
+---
+# Step 3
+
+---
+
+
+---
+## Example map
+
+---?image=images/rrg.jpg&opacity=100&&size=auto 90%
+
+---?image=images/a17.jpg&opacity=100&&size=auto 95%
+
+---?image=https://farm2.staticflickr.com/1959/43128931410_daceab6096_h.jpg&opacity=100
+
+---
+# Step 4
+
+---
+## Visit site
+@ul[squares]
+* Photograph
+* Measure
+* Drop pin
+@ulend
+
+---
+@quote[I took a walk in the woods and came out taller than the trees](Henry David Thoreau)
+
+
+
+---
+# Addendum
+## Making base map in ArcGIS Pro
+
+---
+## Add clipped layers
+@ul[squares]
+* Adjust Land cover layer
+    * transparency and 
+    * lightness
+    * try to show hillshade beneath
+@ulend
+
+---?image=images/a00.jpg&opacity=100&&size=auto 95%
+
+---
+## Edit arch layer
+@ul[squares]
+* Change default symbol
+* Label with FEATURE_NAME field
+* Make symbol stand out against background
+@ulend
+
+---?image=images/a01.jpg&opacity=100&&size=auto 95%
+
+---
+## Edit arch layer
+@ul[squares]
+* Add halo
+* Use color that is similar to background
+@ulend
+
+---?image=images/a02.jpg&opacity=100&&size=auto 95%
+
+---
+## Insert > New Layout
+@ul[squares]
+* Select a size roughly 20" x 20"
+* Target scale for map is between 1:30k and 1:40k
+@ulend
+
+---?image=images/a03.jpg&opacity=100&&size=auto 95%
+
+---
+## Insert > Map Frame
+@ul[squares]
+* Add Map
+* Tip: use Spatial Bookmarks for exact view
+@ulend
+
+---?image=images/a04.jpg&opacity=100&&size=auto 95%
+
+---
+## Edit map frame
+@ul[squares]
+* Right-click the map frame to **Activate**
+* Pan and zoom your map to fit frame
+* Exit map frame when finished
+@ulend
+
+---?image=images/a05.jpg&opacity=100&&size=auto 95%
+
+---
+## Check scale in Map Layout
+@ul[squares]
+* Use lower-left settings to check
+    1. scale of map
+    2. text is easily read at 400%
+@ulend
+
+---?image=images/a06.jpg&opacity=100&&size=auto 95%
+
+---
+## Label streams
+@ul[squares]
+* Right-click the layer for **Label Properties**
+* Create Python expression to replace "Branch" with "Br"
+@ulend
+
+---
+## Expression
+```python
+[GNIS_NAME].replace("Branch", " Br")
+```
+
+---?image=images/a07.jpg&opacity=100&&size=auto 95%
+
+---
+## Label streams
+@ul[squares]
+* Increase **Word Spacing** to add space between words
+@ulend
+
+---?image=images/a08.jpg&opacity=100&&size=auto 95%
+
+---
+## Navigate layout
+@ul[squares]
+* Use **Navigate tools** to move around page
+* Use **Select tools** to select/edit map elements
+@ulend
+
+---?image=images/a09.jpg&opacity=100&&size=auto 95%
+
+---
+## Label streams
+@ul[squares]
+* Use Position > Offset curved
+* Explore/edit other properties
+@ulend
+
+---?image=images/a10.jpg&opacity=100&&size=auto 95%
+
+---
+## Label streams
+@ul[squares]
+* Add halo
+* Use transparency
+@ulend
+
+---?image=images/a11.jpg&opacity=100&&size=auto 95%
+
+---
+## Insert map elements
+@ul[squares]
+* Use **Rectangle** text tool
+* Add title, author, etc.
+@ulend
+
+---?image=images/a12.jpg&opacity=100&&size=auto 95%
+
+---
+## Insert map elements
+@ul[squares]
+* Use **Picture** tool
+* Add image of land cover legend
+* Link: [Download image](https://www.mrlc.gov/sites/default/files/NLCD_Colour_Classification_Update.jpg)
+@ulend
+
+---?image=images/a13.jpg&opacity=100&&size=auto 95%
+
+---
+## Insert map elements
+@ul[squares]
+* Use **Scale Bar** tool
+* Add other elements as desired...
+@ulend
+
+---
+## Bonus technique
+@ul[squares]
+* Add **Legend** tool
+* *Break* legend into component parts
+* Use graphic design methods to balance layout
+@ulend
+
+---?image=images/a14.jpg&opacity=100&&size=auto 95%
+
+---
+## Edit custom legend
+@ul[squares]
+* **Covert To Graphics**
+* Unlinks legend and makes it editable
+* Can be fun!
+@ulend
+
+---?image=images/a15.jpg&opacity=100&&size=auto 95%
+
+---
+## Edit map elements
+@ul[squares]
+* Right-click element
+* Use **Group**, **Ungroup**, and **Align** tools for layout/design
+@ulend
+
+---?image=images/a16.jpg&opacity=100&&size=auto 95%
+
+---
+## Example
+@ul[squares]
+* Finished map?
+* Add photos, logos, etc.
+* Tweak colors, transparency, etc.
+* Maps are never done!
+@ulend
+
+---?image=images/a17.jpg&opacity=100&&size=auto 95%
+
+---
+## Need a map?
+@ul[squares]
+* if you can't get a map finished by field trip
+* add this URL to your Avenza Map app
+* https://tastyfreeze.github.io/rrg/basemap/rrg.pdf
+@ulend
+
 
 
 					</textarea>
