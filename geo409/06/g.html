@@ -1,0 +1,281 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>GEO 409: Module 02</title>
+
+	<link rel="stylesheet" href="../../dist/reset.css">
+	<link rel="stylesheet" href="../../dist/reveal.css">
+	<link rel="stylesheet" href="../../dist/theme/league-alt.css" id="theme">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="../../plugin/highlight/tom-night-80.css" id="highlight-theme">
+	<style>
+		/* UK Colors: 
+					 #c7c9c8 light gray 
+					 #63666a dark gray
+					 #15397f dark blue
+					 #009bda light blue
+					 #0033a0 official blue
+				 */
+
+		.revealz::after {
+			content: "";
+			background: url('https://www.outragegis.com/weather/goes16/rgb.jpg') no-repeat fixed center;
+			background-size: cover;
+			opacity: 0.35;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			position: absolute;
+			z-index: -1;
+		}
+
+		.ll {
+			bottom: 0px;
+			left: 0px;
+			position: absolute;
+			z-index: 200;
+			width: 300px;
+			font-size: 0.4em;
+			margin: 0 0 -50px 10px;
+			font-style: italic;
+			font-weight: 300;
+			text-align: left;
+		}
+
+		.lr {
+			bottom: 5px;
+			right: 0px;
+			position: absolute;
+			z-index: 200;
+			width: 300px;
+			font-size: 0.6em;
+			margin: 0 0 -50px 10px;
+			/* font-style: italic; */
+			text-align: right;
+		}
+
+		.ul {
+			top: 0px;
+			left: 0px;
+			position: absolute;
+		}
+
+		.custom-counter {
+			top: 0px;
+			right: 0px;
+			position: absolute;
+		}
+
+		.left {
+			text-align: left;
+		}
+
+		.custom-counter {
+			margin: 0;
+			padding: 0;
+			list-style-type: none;
+		}
+
+		.custom-counter li {
+			counter-increment: step-counter;
+			margin-bottom: 10px;
+		}
+
+		.custom-counter li::before {
+			content: counter(step-counter);
+			margin-right: 5px;
+			font-size: 80%;
+			background-color: #ffbb00;
+			color: white;
+			font-weight: bold;
+			padding: 3px 8px;
+			border-radius: 3px;
+		}
+
+		li {
+			/* list-style-type: "✨ ";  */
+			list-style-image: url('../images/map-pin.png');
+		}
+
+		.plain {
+			/* list-style-type: "✨ ";  */
+			list-style-image: none;
+			list-style-type: none;
+		}
+
+		.number {
+			/* list-style-type: "✨ ";  */
+			list-style-image: none;
+			list-style-type: decimal;
+			/* list-style-position: inside; */
+		}
+
+		.lite {
+			color: #fff;
+			opacity: 0.6;
+			font-weight: 300;
+		}
+
+		.icode {
+			color:#cebe91;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			
+
+			
+			
+			<section 
+				data-background-image='https://live.staticflickr.com/726/33418890225_430d5bb4e8_3k.jpg'
+				data-background-opacity="0.2" data-markdown data-separator="---" data-background-color=#2D2D2D>
+                <textarea data-template>
+					
+					---?image=https://www.outragegis.com/weather/img/animation/yesterday/LookRock.gif&opacity=40
+					# GEO 409:05
+					## Automated geoprocessing & intro to ArcGIS Pro
+					
+					---
+					## Online Class
+					@ul[squares]
+					* Canvas [course content and new videos](https://uk.instructure.com/courses/1966559)
+					* Zoom [screen sharing](https://uky.zoom.us/my/boyd.shearer)
+					* ArcGIS Pro [download & install](https://uk.instructure.com/courses/1966559/files/93580698/download)
+					* Virtual Den [remote applications](https://appstore.uky.edu/)
+					@ulend
+					
+					---
+					## Lab 4
+					@ul[squares]
+					* Get familiar with the tool documentation
+						* Don't have to know all settings all the time
+					* Get comfortable moving data, running code, examining output
+					@ulend
+					
+					---
+					## Lab 5
+					@ul[squares]
+					* Clipping data to an AOI with ArcPy
+						* Need to work through lesson
+					* Write new script from lesson example
+					* Fire up ArcGIS Pro to publish a base map
+					@ulend
+					
+					---?image=images/ky-basemap.png&opacity=100
+					
+					---
+					## Problem 🧱
+					Data is not perfectly isolated for your area of interest. The extra load can become an obstacle to efficient mapping.
+					
+					---
+					## Solution
+					## ✂️ 🗺️
+					
+					---
+					## Clip tool
+					@ul[squares]
+					* Isolate data to area of interest
+					* Input > function() > Output
+					* `arcpy.Clip_analysis(in, clip, out)`
+					* What happens if you have 100 layers?
+					@ulend
+					
+					
+					---
+					## Automate tools
+					```py
+					import arcpy
+					# set default workspace
+					arcpy.env.workspace = "z:\\myGIS\\data\\myProject.gdb"
+					# get list of data in the geodatabase
+					listOfData = arcpy.ListFeatureClasses()
+					# loop through list
+					for layer in listOfData:
+						# ✂️ 🗺️
+						arcpy.Clip_analysis(layer, "area_of_interest", f"{outputDB}\\layer")
+					```
+					@[1]
+					@[2-3]
+					@[4-5]
+					@[6-9]
+					
+					---
+					## Geoprocessing
+					"A framework and set of tools for processing geographic and related data."
+					
+					---
+					## Automate at scale
+					@ul[squares]
+					* Tools chained together
+						* Programmatically run an entire workflow
+					* Operate on unlimited amounts of data
+					* Once coded, work on same data but from different area
+					@ulend
+					
+					---?image=images/tools.png&opacity=100
+					
+					---
+					## Example
+					Imagine if you needed to know the variety and acreage of land use and land cover for all counties in US?
+					
+					---?image=images/lclu-ky.jpg&opacity=100
+					
+					---?image=images/lclu-us.jpg&opacity=100
+					
+					---
+					## Solution?
+					@ul[squares]
+					* for loop [Clip Raster > Export Table]
+						* Doesn't get name of county in table
+					* RasterToVector > Intersect > for loop [Clip Raster > Export Table]
+					@ulend
+					
+					---?image=images/lclu-us-total.jpg&opacity=100
+					
+					---
+					# 🛑
+					Read lesson!
+
+
+					</textarea>
+
+			</section>
+			
+			
+
+		</div>
+	</div>
+
+	<script src="../../dist/reveal.js"></script>
+	<script src="../../plugin/notes/notes.js"></script>
+	<script src="../../plugin/markdown/markdown.js"></script>
+	<script src="../../plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+			backgroundTransition: 'fade',
+			// Transition style
+			transition: 'fade', // none/fade/slide/convex/concave/zoom
+
+			// Transition speed
+			transitionSpeed: 'fast', // default/fast/slow
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+</body>
+
+</html>
