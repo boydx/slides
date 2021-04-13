@@ -160,6 +160,25 @@
 			<section class='left'
 				data-background-image='https://live.staticflickr.com/65535/50100862808_0c1e51719f_k.jpg'
 				data-background-opacity="0.2">
+				<h3>Data location</h3>
+				<ul>
+					<li class='fragment'>
+						On FTP (File Transfer Protocol) sever
+						<ul>
+							<li class='fragment'>
+								<a href='ftp.kymartian.ky.gov'>ftp.kymartian.ky.gov</a>
+							</li>
+							<li class='fragment'>
+								Need an FTP client 
+								<a href='https://cyberduck.io/'>Cyberduck</a> and <a href='https://filezilla-project.org/'>Filezilla</a>
+							</li>
+						</ul>
+					</li>
+			</section>
+
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50100862808_0c1e51719f_k.jpg'
+				data-background-opacity="0.2">
 				<h3>GEO 509</h3>
 				<ul>
 					<li class='fragment'>
@@ -262,6 +281,11 @@
 				data-background-opacity="1">
 			</section>
 
+			<section data-background-iframe='https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/237017090&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true'
+			data-background-color="#fff" data-background-interactive data-background-opacity="1">Play 1-10 Chained Rock
+			<!-- <h6 class="r-fit-text">Measuring arches</h6> -->
+		</section>
+
 			<section class='left' data-background-image='images/vt03.jpg' data-background-color="#fff"
 				data-background-opacity="1">
 			</section>
@@ -269,6 +293,9 @@
 			<section class='left' data-background-image='images/pine-mountain.jpg' data-background-color="#fff"
 				data-background-opacity="1">
 			</section>
+
+
+			
 
 			<section data-background-iframe='https://nyc3.digitaloceanspaces.com/astoria/xyz/chained-rock/index.html'
 				data-background-color="#fff" data-background-interactive data-background-opacity="1">
@@ -632,7 +659,7 @@
 						Explore tiles and download data
 						<ul>
 							<li class='fragment'>
-								<a href='https://kygeonet.maps.arcgis.com/home/webmap/viewer.html?webmap=b5ff91df6309491090c20333c8f58f52'>KyFromAbove site ftp.kymartian.ky.gov</a>
+								<a href='https://kygeonet.maps.arcgis.com/home/webmap/viewer.html?webmap=b5ff91df6309491090c20333c8f58f52'>KyFromAbove sit</a>
 							</li>
 						</ul>
 					</li>				
@@ -692,9 +719,31 @@
 						Treat multiple tiles as a single layer.
 					</li>
 					<li class='fragment'>
-					
+						Enter Python and the Lesson-07.ipynb
 					</li>			
 				</ul>
+			</section>
+
+			<section  data-background-image='https://live.staticflickr.com/65535/50100862808_0c1e51719f_k.jpg'
+				data-background-opacity="0.2" data-markdown data-separator="---" data-background-color=#2D2D2D>
+				<textarea data-template>
+
+					[Create LAS dataset](https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/create-las-dataset.htm)
+					```py
+					# Create LAS dataset
+					arcpy.CreateLasDataset_management (input_las_files, output_dataset)
+					```
+
+					
+					</textarea>
+
+			</section>
+
+
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50100862808_0c1e51719f_k.jpg'
+				data-background-opacity="0.2">
+				<h1 class='r-fit-text'>STOP</h1>
 			</section>
 
 
