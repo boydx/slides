@@ -733,19 +733,178 @@
 					# Create LAS dataset
 					arcpy.CreateLasDataset_management (input_las_files, output_dataset)
 					```
-
-					
 					</textarea>
 
 			</section>
 
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50100862808_0c1e51719f_k.jpg'
+				data-background-opacity="0.2">
+				<h2 class='r-fit-text'>Point cloud Derivatives</h2>
+				Airborne point clouds can be reduced to high-resolution raster imagery.
+				
+			</section>
+
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50100862808_0c1e51719f_k.jpg'
+				data-background-opacity="0.2">
+				<h3>DEM</h3>
+				<ul>
+					<li class='fragment'>
+						Digital Elevation Model
+					</li>
+					<li class='fragment'>
+						Most often bare-earth surface
+					</li>	
+					<li class='fragment'>
+						Point cloud class code 2
+					</li>		
+				</ul>
+			</section>
+
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50100862808_0c1e51719f_k.jpg'
+				data-background-opacity="0.2">
+				<h3>DSM</h3>
+				<ul>
+					<li class='fragment'>
+						Digital Surface Model
+					</li>
+					<li class='fragment'>
+						Includes the reflected surface
+						<ul>
+							<li class='fragment'>
+								buildings, trees, bridges, etc.
+							</li>
+						</ul>
+					</li>
+					<li class='fragment'>
+						Point cloud class codes 1, 2, 9, 17
+					</li>				
+				</ul>
+			</section>
+
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50100862808_0c1e51719f_k.jpg'
+				data-background-opacity="0.2">
+				<h3>DSM</h3>
+				<ul>
+					<li class='fragment'>
+						Digital Terrain Model
+					</li>
+					<li class='fragment'>
+						bare-earth surface
+					</li>
+					<li class='fragment'>
+						with vector features to model surface features
+						<ul>
+							<li class='fragment'>
+								lines for streams, polygons for lakes, etc.
+							</li>
+						</ul>
+					</li>
+					<li class='fragment'>
+						Point cloud class codes 2 and digitized features
+					</li>				
+				</ul>
+			</section>
+
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50100862808_0c1e51719f_k.jpg'
+				data-background-opacity="0.2">
+				<h3>Steps in model creation</h3>
+				<ul>
+					<li class='fragment'>
+						Filter point cloud
+					</li>
+					<li class='fragment'>
+						Make LAS dataset layer (temporary)
+					</li>
+					<li class='fragment'>
+						Rasterize LAS dataset layer
+					</li>			
+				</ul>
+			</section>
+			<section  data-background-image='https://live.staticflickr.com/65535/50100862808_0c1e51719f_k.jpg'
+				data-background-opacity="0.2" data-markdown data-separator="---" data-background-color=#2D2D2D>
+				<textarea data-template>
+
+					[Make LAS dataset layer](https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/make-las-dataset-layer.htm)
+					```py
+					# Make LAS dataset layer
+					arcpy.MakeLasDatasetLayer_management (in_Dataset, out_Dataset, list_of_points)
+					```
+					</textarea>
+			</section>
+			<section  data-background-image='https://live.staticflickr.com/65535/50100862808_0c1e51719f_k.jpg'
+				data-background-opacity="0.2" data-markdown data-separator="---" data-background-color=#2D2D2D>
+				<textarea data-template>
+
+					[LAS Dataset To Raster](https://pro.arcgis.com/en/pro-app/latest/tool-reference/conversion/las-dataset-to-raster.htm)
+					```py
+					# LAS Dataset To Raster
+					arcpy.MakeLasDatasetLayer_management (in_Dataset, out_image, "#", "#", "#", "#", cell_size)
+					```
+					</textarea>
+			</section>
+
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50100862808_0c1e51719f_k.jpg'
+				data-background-opacity="0.2">
+				<h3>Colorize point cloud</h3>
+				<ul>
+					<li class='fragment'>
+						Apply color from overlapping imagery.
+					</li>
+					<li class='fragment'>
+						Can create realistic view of area of interest.
+					</li>
+					<li class='fragment'>
+						Creates new LAS files
+						<ul>
+							<li class='fragment'>
+								Doubling your project size.
+							</li>
+						</ul>
+					</li>				
+				</ul>
+			</section>
+
+			<section  data-background-image='https://live.staticflickr.com/65535/50100862808_0c1e51719f_k.jpg'
+				data-background-opacity="0.2" data-markdown data-separator="---" data-background-color=#2D2D2D>
+				<textarea data-template>
+
+					[Colorize LAS](https://pro.arcgis.com/en/pro-app/latest/tool-reference/3d-analyst/colorize-las.htm)
+					```py
+					# Colorize LAS files
+					bands = 'RED Band_1; GREEN Band_2; BLUE Band_3'
+					arcpy.ColorizeLas_3d (in_dataset, in_raster, bands, out_dir)
+					```
+					</textarea>
+			</section>
+
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50100862808_0c1e51719f_k.jpg'
+				data-background-opacity="0.2">
+				<h3>Load imagery</h3>
+				<ul>
+					<li class='fragment'>
+						Connect Kentucky ArcGIS Server
+					</li>
+					<li class='fragment'>
+						https://kyraster.ky.gov/arcgis/services
+					</li>
+					<li class='fragment'>
+						Add server to new ArcGIS Pro projects
+					</li>				
+				</ul>
+			</section>
 
 			<section class='left'
 				data-background-image='https://live.staticflickr.com/65535/50100862808_0c1e51719f_k.jpg'
 				data-background-opacity="0.2">
 				<h1 class='r-fit-text'>STOP</h1>
 			</section>
-
 
 			<section class='left'
 				data-background-image='https://live.staticflickr.com/65535/50100862808_0c1e51719f_k.jpg'
