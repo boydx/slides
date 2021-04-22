@@ -960,83 +960,26 @@
 				</ul>
 			</section>
 
-			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/50100862808_0c1e51719f_k.jpg'
-				data-background-opacity="0.2">
-				<h1 class='r-fit-text'>STOP</h1>
-			</section>
-
-			<section class='left'
-				data-background-image='https://live.staticflickr.com/65535/50100862808_0c1e51719f_k.jpg'
-				data-background-opacity="0.2">
-				<h1 class='r-fit-text'>Addendum</h1>
-			</section>
-
-			<section  data-background-image='https://live.staticflickr.com/65535/50100862808_0c1e51719f_k.jpg'
-				data-background-opacity="0.2" data-markdown data-separator="---" data-background-color=#2D2D2D>
-				<textarea data-template>
-
-					Where are locations over 1,000 feet in elevation?
-					```py
-					# Create raster object
-					elev = arcpy.sa.Raster('DEM_120_M')
-
-					# Find elevations over 1,000 feet
-					# Group all queries in ()
-					z = (elev > 1000)
-					```
-
-					---
-
-					```
-					z.save('elevOver1000')
-					```
-
-					---
-					```
-					# Load the layer with Spatial Analyst
-					# Note the different syntax compared to the 3D Analyst tools
-					# Load slope
-					s = arcpy.sa.Slope('DEM_120_M', 'PERCENT_RISE')
-
-					# Load aspect
-					a = arcpy.sa.Aspect('DEM_120_M')
-
-					# Find cells where slope is greater 30%
-					# and aspect is below 67 or above 292
-					t = (s > 30) & ((a < 67) | (a > 292))
-					```
-
-					
-					---
-					# Load National Land Cover data
-					y = arcpy.sa.Raster("NLCD_2016_land_cover")
-
-					# Add the query to find north facing steep slopes 
-					# that are primarily in evergreen canopy cover
-					t = (s > 30) & ((a < 67) | (a > 292)) & (y == 42)
-					```
-					
-					</textarea>
-
-			</section>
-
 			
-			
+
 
 			<section class='left'
 				data-background-image='https://live.staticflickr.com/65535/35901934525_0f071d8443_k.jpg'
 				data-background-opacity="0.3">
 				<h5>Application</h5>
-				<h3>Clipping multiple datasets to an area of interest</h3>
+				<h3>Explore 3D Kentucky</h3>
 			</section>
 			<section class='left'
-				data-background-image='images/ky-data.jpg'
-				data-background-opacity="1">
+				data-background-image='https://boydx.github.io/rrg/images/ChimneyTop3D.jpg'
+				data-background-opacity="1"
+				data-background-size="contain"
+				data-background-color="#fff">
 			</section>
 			<section class='left'
-				data-background-image='images/ky-basemap.png'
-				data-background-opacity="1">
+				data-background-image='https://boydx.github.io/rrg/images/ChimneyTopVideo.jpg'
+				data-background-opacity="1"
+				data-background-size="contain"
+				data-background-color="#fff">
 			</section>
 			<section class='left'
 				data-background-image='https://live.staticflickr.com/65535/35901934525_0f071d8443_k.jpg'
@@ -1050,12 +993,57 @@
 						Run notebook to process data
 					</li>
 					<li class='fragment'>
-						Design thematic map
+						Design 3D map and animation
 					</li>
 					<li class='fragment'>
-						Exort layout as .jpg image
+						Export and add to RRG repo
 					</li>
 				</ol>
+			</section>
+
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/35901934525_0f071d8443_k.jpg'
+				data-background-opacity="0.2">
+				<h3>Bonus</h3>
+				<ol>
+					<li class='fragment'>
+						Create Potree point cloud render
+					</li>
+					<li class='fragment'>
+						Add to RRG repo
+					</li>
+					<li class='fragment'>
+						⚠️⚠️ Make sure folder is not over 100 MB ⚠️⚠️
+					</li>
+
+				</ol>
+			</section>
+
+			<section class='left'
+				data-background-image='https://boydx.github.io/rrg/images/potree.jpg'
+				data-background-opacity="1"
+				data-background-size="contain"
+				data-background-color="#111">
+			</section>
+
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/35901934525_0f071d8443_k.jpg'
+				data-background-opacity="0.2">
+				<h3>Publish</h3>
+				<ol>
+					<li class='fragment'>
+						to the world.
+					</li>
+					<li class='fragment'>
+						URL: <a href='https://boydx.github.io/rrg/'>boydx.github.io/rrg</a>
+					</li>
+				</ol>
+			</section>
+
+			<section class='left'
+				data-background-image='https://live.staticflickr.com/65535/50100862808_0c1e51719f_k.jpg'
+				data-background-opacity="0.2">
+				<h1 class='r-fit-text'>STOP</h1>
 			</section>
 
 			<section class='left'
