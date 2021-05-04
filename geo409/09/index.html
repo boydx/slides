@@ -1,0 +1,249 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>GEO 409: Module 08</title>
+
+	<link rel="stylesheet" href="../../dist/reset.css">
+	<link rel="stylesheet" href="../../dist/reveal.css">
+	<link rel="stylesheet" href="../../dist/theme/league-alt.css" id="theme">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="../../plugin/highlight/tom-night-80.css" id="highlight-theme">
+	<style>
+		/* UK Colors: 
+					 #c7c9c8 light gray 
+					 #63666a dark gray
+					 #15397f dark blue
+					 #009bda light blue
+					 #0033a0 official blue
+				 */
+
+		.revealz::after {
+			content: "";
+			background: url('https://www.outragegis.com/weather/goes16/rgb.jpg') no-repeat fixed center;
+			background-size: cover;
+			opacity: 0.35;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			position: absolute;
+			z-index: -1;
+		}
+
+		.ll {
+			bottom: 0px;
+			left: 0px;
+			position: absolute;
+			z-index: 200;
+			width: 300px;
+			font-size: 0.4em;
+			margin: 0 0 -50px 10px;
+			font-style: italic;
+			font-weight: 300;
+			text-align: left;
+		}
+
+		.lr {
+			bottom: 5px;
+			right: 0px;
+			position: absolute;
+			z-index: 200;
+			width: 300px;
+			font-size: 0.6em;
+			margin: 0 0 -50px 10px;
+			/* font-style: italic; */
+			text-align: right;
+		}
+
+		.ul {
+			top: 0px;
+			left: 0px;
+			position: absolute;
+		}
+
+		.custom-counter {
+			top: 0px;
+			right: 0px;
+			position: absolute;
+		}
+
+		.left {
+			text-align: left;
+		}
+
+		.left ul {
+			text-align: left;
+			margin-left: 80px;
+		}
+
+		.custom-counter {
+			margin: 0;
+			padding: 0;
+			list-style-type: none;
+		}
+
+		.custom-counter li {
+			counter-increment: step-counter;
+			margin-bottom: 10px;
+		}
+
+		.custom-counter li::before {
+			content: counter(step-counter);
+			margin-right: 5px;
+			font-size: 80%;
+			background-color: #ffbb00;
+			color: white;
+			font-weight: bold;
+			padding: 3px 8px;
+			border-radius: 3px;
+		}
+
+		li {
+			/* list-style-type: "✨ ";  */
+			list-style-image: url('../images/map-pin.png');
+		}
+
+		.plain {
+			/* list-style-type: "✨ ";  */
+			list-style-image: none;
+			list-style-type: none;
+		}
+
+		.number {
+			/* list-style-type: "✨ ";  */
+			list-style-image: none;
+			list-style-type: decimal;
+			/* list-style-position: inside; */
+		}
+
+		.lite {
+			color: #fff;
+			opacity: 0.6;
+			font-weight: 300;
+		}
+
+		.icode {
+			color: #cebe91;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section data-pre-load
+				data-background-image="https://www.outragegis.com/weather/img/animation/yesterday/LookRock.gif"
+				data-background-opacity="0.4">
+				<h5>Final day</h5>
+				<h3>Portfolios</h3>
+
+				<div class='ll'>Yesterday in the Great Smokies<br>Webcam <a
+						href="https://www.outragegis.com/weather/img/animation" target='_blank'>archive</a></div>
+				<!-- <h2>Welcome</h2> -->
+				<div class='lr'>GEO 409: Advanced GIS</div>
+			</section>
+			<section data-pre-load
+				data-background-image="https://www.outragegis.com/weather/img/animation/yesterday/LookRock.gif"
+				data-background-opacity="0.4">
+				<img width='100%' src='../images/logo-uk-geo.png'>
+			</section>
+
+			<section class='left' data-background-image='https://live.staticflickr.com/825/41122407024_41d6d485df_k.jpg'
+				data-background-opacity="0.2">
+				<h3>Final class</h3>
+				<ul>
+					<li class="fragment">
+						Create portfolio of maps that explore your area of interest in Kentucky.
+					</li>
+					<li class='fragment'>
+						Basic requirements
+						<ul>
+							<li class='fragment'>
+								Make two visualizations
+							</li>
+							<li class='fragment'>
+								serve them on a Markdown or HTML
+							</li>
+							<li class='fragment'>
+								in a new GitHub Pages repo.
+							</li>
+							<li class='fragment'>
+								Exact requirements in lesson docs.
+							</li>
+						</ul>
+					</li>
+			</section>
+
+			<section class='left' data-background-image='https://live.staticflickr.com/825/41122407024_41d6d485df_k.jpg'
+				data-background-opacity="0.2">
+				<h3>Examples</h3>
+				<span class="fragment">(that shows more than required)</span>
+				<ul>
+					<li class='fragment'>
+						Mammoth Cave NP <a target="_blank" href='https://github.com/tastyfreeze/maca'>(HTML version)</a>
+					</li>
+					<li class='fragment'>
+						Mammoth Cave NP <a target="_blank" href='https://tastyfreeze.github.io/maca/'>(Markdown version)</a>
+					</li>
+					
+					<li class='fragment'>
+						<a href='https://boydx.github.io/go-see-trees/'>Go see trees, Lexington!</a>
+					</li>
+				</ul>
+			</section>
+
+			<section class='left' data-background-image='https://live.staticflickr.com/825/41122407024_41d6d485df_k.jpg'
+				data-background-opacity="0.2">
+				<h3>Support</h3>
+				<ul>
+					<li class='fragment'>
+						Start with templates in module repository
+					</li>
+					<li class='fragment'>
+						HTML, the structure of a web page: <a target="_blank" href='https://www.w3schools.com/html/'>tutorial</a>
+					</li>
+					<li class='fragment'>
+						CSS, the appearance of a web page: <a target="_blank" href='https://www.w3schools.com/css'>tutorial</a>
+					</li>
+					
+					<li class='fragment'>
+						Markdown, limited in design opportunity but complete: <a href='https://guides.github.com/features/mastering-markdown/'>tutorial</a>
+					</li>
+				</ul>
+			</section>
+
+			
+
+
+		</div>
+	</div>
+
+	<script src="../../dist/reveal.js"></script>
+	<script src="../../plugin/notes/notes.js"></script>
+	<script src="../../plugin/markdown/markdown.js"></script>
+	<script src="../../plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+			backgroundTransition: 'fade',
+			// Transition style
+			transition: 'fade', // none/fade/slide/convex/concave/zoom
+
+			// Transition speed
+			transitionSpeed: 'fast', // default/fast/slow
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+</body>
+
+</html>
