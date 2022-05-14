@@ -48,9 +48,9 @@
         // add geolocation control to top right window position (Leaflet can handle multiple top-right elements)
         // L.control.locate(locate_options).addTo(map);
 
-        const locationx = map.locate(locate_options)
-        console.log(map)
-        navigator.geolocation.getCurrentPosition(function (success) { console.log(success) }, function (success) { console.log(success) })
+        // const locationx = map.locate(locate_options)
+        // console.log(map)
+        // navigator.geolocation.getCurrentPosition(function (success) { console.log(success) }, function (success) { console.log(success) })
 
         const scale_options = {
             metric: false,
@@ -438,13 +438,16 @@
             const positionStyle = { radius: 20, color: 'red', fillOpacity: 0.1 }
             const locateOptions = { radius: 20, color: 'red', fillOpacity: 0.5 }
             let current = L.circle(null, positionStyle)
+            let polyline = L.polyline([], { color: 'red' }).addTo(map);
             const initialPosition = function (position) {
                 const lat = position.coords.latitude;
                 const lng = position.coords.longitude;
                 const latlng = L.latLng(lat, lng);
                 console.log(latlng)
                 map.setView(latlng, 16);
+                map.removeLayer(current);
                 current = L.circle(latlng, positionStyle).addTo(map);
+                polyline.addLatLng(latlng);
             }
             const updatePosition = function (position) {
                 const latlng = L.latLng(position.coords.latitude, position.coords.longitude);
@@ -458,11 +461,11 @@
             if (!navigator.geolocation) {
                 console.log("Your browser doesn't support geolocation feature!")
             } else {
-                navigator.geolocation.getCurrentPosition(initialPosition)
-                setInterval(() => {
-                    navigator.geolocation.getCurrentPosition(updatePosition) 
+                navigator.geolocation.watchPosition(initialPosition)
+                // setInterval(() => {
+                //     navigator.geolocation.getCurrentPosition(updatePosition) 
 
-                }, 1000);
+                // }, 1000);
             };
 
 
