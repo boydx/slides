@@ -75,6 +75,8 @@
 
         const shade2 = 'https://nyc3.digitaloceanspaces.com/astoria/tiles/rrg/{z}/{x}/{y}.jpg'
 
+        const shade3 = 'https://nyc3.digitaloceanspaces.com/astoria/tiles/dsm-lex/{z}/{x}/{y}.jpg'
+
         // Get basemap attributes from Leaflet Providers
         const topo_attributes = {
             attribution: '&copy; 2022 <a href="https://outrageGIS.com">outrageGIS mapping</a>',
@@ -106,6 +108,14 @@
 
         };
 
+        const shade3_attributes = {
+            attribution: '&copy; 2022 <a href="https://outrageGIS.com">outrageGIS mapping</a>',
+            maxZoom: 18,
+            minZoom: 11,
+            opacity: 1,
+
+        };
+
         // Get basemap attributes from Leaflet Providers
         const photo_attributes = {
             attribution: '&copy; 2022 <a href="https://outrageGIS.com">outrageGIS mapping</a>',
@@ -130,6 +140,7 @@
             "photo": L.tileLayer(photo, photo_attributes),
             "shaded": L.tileLayer(hillshade, photo_attributes),
             "shaded2": L.tileLayer(shade2, shade2_attributes),
+            "lex-dsm": L.tileLayer(shade3, shade3_attributes),
             "3d": L.tileLayer(threed, threed_attributes)
             // "Tile Layer 3": L.tileLayer(/* ... */)
         };
@@ -442,10 +453,10 @@
                 current = L.circle(latlng, positionStyle).addTo(map);
                 polyline.addLatLng(latlng);
                 const coordLength = polyline.getLatLngs();
-                let length = 0;
-                if (length == 0 ) {
+                if (coordLength.length == 1 ) {
                     map.setView(latlng, 16);
                 }
+                let length = 0;
                 for (let i = 0; i < coordLength.length - 1; i++) {
                     length += coordLength[i].distanceTo(coordLength[i + 1]);
                 }
