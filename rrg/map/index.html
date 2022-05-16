@@ -437,13 +437,15 @@
                 const lng = position.coords.longitude;
                 const latlng = L.latLng(lat, lng);
                 console.log(latlng)
-                map.setView(latlng, 16);
                 map.removeLayer(current);
                 positionStyle.radius = position.coords.accuracy
                 current = L.circle(latlng, positionStyle).addTo(map);
                 polyline.addLatLng(latlng);
                 const coordLength = polyline.getLatLngs();
                 let length = 0;
+                if (length == 0 ) {
+                    map.setView(latlng, 16);
+                }
                 for (let i = 0; i < coordLength.length - 1; i++) {
                     length += coordLength[i].distanceTo(coordLength[i + 1]);
                 }
@@ -451,10 +453,19 @@
 
             }
 
+            const error = function (err) {
+                console.log(err)
+                const a = document.querySelector('travel-info')
+                a.innerHTML = `No geolocation`
+            }
+
             if (!navigator.geolocation) {
                 console.log("Your browser doesn't support geolocation feature!")
             } else {
-                navigator.geolocation.watchPosition(nowPosition)
+                navigator.geolocation.watchPosition(nowPosition, error, {
+                    enableHighAccuracy: true,
+                    maximumAge: 900000,
+                })
             };
         }
 
