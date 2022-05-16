@@ -453,7 +453,7 @@
                 current = L.circle(latlng, positionStyle).addTo(map);
                 polyline.addLatLng(latlng);
                 const coordLength = polyline.getLatLngs();
-                if (coordLength.length == 1 ) {
+                if (coordLength.length == 1) {
                     map.setView(latlng, 16);
                 }
                 let length = 0;
@@ -474,8 +474,8 @@
                 console.log("Your browser doesn't support geolocation feature!")
             } else {
                 navigator.geolocation.watchPosition(nowPosition, error, {
-                    enableHighAccuracy: true,
-                    maximumAge: 900000,
+                    // enableHighAccuracy: true,
+                    // maximumAge: 900000,
                 })
             };
         }
@@ -484,12 +484,11 @@
             const a = document.querySelector(`#${id}`)
             let y = p.coords.latitude.toFixed(6),
                 x = p.coords.longitude.toFixed(6),
-                z, s, h, w, l;
-            if (d * 3.281 / 5280 >= 1000) {
-                l = `${(d * 3.281 / 5280).toFixed(1)} mi`
-            } else {
-                l = `${(d * 3.281).toFixed(0)} ft`
-            }
+                v = (p.coords.accuracy * 3.281).toFixed(1),
+                z, s, h, l;
+            (d * 3.281) / 5280 >= 1000 ? l = `${(d * 3.281 / 5280).toFixed(1)} mi`
+                : l = `${(d * 3.281).toFixed(0)} ft`
+
             const append = function () {
                 p.coords.altitude ? z = (p.coords.altitude * 3.281).toFixed(0) : z = null
                 p.coords.speed ? s = p.coords.speed.toFixed(1) : s = null
@@ -503,8 +502,8 @@
                 lng: p.coords.longitude
             }, 'en')
                 .then(function (response) {
-                    w = response.words
-                    a.innerHTML = `${y},${x}</br>${w}, ${l}</br>`
+                    const w = response.words
+                    a.innerHTML = `${y},${x}</br>${w}</br>Within ${v} ft, Travel ${l}`
                     append()
                 });
         }
