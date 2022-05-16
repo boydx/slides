@@ -10,6 +10,18 @@ body {
   width: 100%;
   background-color: white; }
 
+#travel-info {
+  position: absolute;
+  left: 6px;
+  bottom: 30px;
+  /* width: 300px; */
+  padding: 5px;
+  font-size: 0.8em;
+  background-color: white;
+  opacity: 0.8;
+  z-index: 1000; 
+}
+
 a {
   color: #005daa;
   text-decoration: none; }

@@ -15,9 +15,11 @@
 
 <body>
     <div id='map'></div>
+    <div id="travel-info"></div>
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.72.2/src/L.Control.Locate.min.js"></script>
+    <script src="https://assets.what3words.com/sdk/v3/what3words.js?key=TP1F98P4"></script>
     <script src="libs/snogylop.js"></script>
     <script src="libs/modal.js"></script>
     <script src="libs/svg/title.js"></script>
@@ -27,15 +29,6 @@
             zoom: 11,
             zoomControl: false,
             zoomSnap: 0
-        }
-
-        const locate_options = {
-            position: 'topright',
-            watch: true,
-            enableHighAccuracy: true,
-            strings: {
-                title: "Show me where I am!"
-            }
         }
 
         const map = L.map('map', options);
@@ -91,8 +84,8 @@
         };
 
         const threedBounds = new L.LatLngBounds(
-              new L.LatLng(37.75891702, -83.7363012),
-              new L.LatLng(37.89261653, -83.53844486));
+            new L.LatLng(37.75891702, -83.7363012),
+            new L.LatLng(37.89261653, -83.53844486));
 
         // Get basemap attributes from Leaflet Providers
         const threed_attributes = {
@@ -101,7 +94,7 @@
             minZoom: 10,
             opacity: 1,
             bounds: threedBounds
- 
+
         };
 
         const shade2_attributes = {
@@ -110,7 +103,7 @@
             minZoom: 10,
             opacity: 1,
             bounds: threedBounds
- 
+
         };
 
         // Get basemap attributes from Leaflet Providers
@@ -439,37 +432,59 @@
             const locateOptions = { radius: 20, color: 'red', fillOpacity: 0.5 }
             let current = L.circle(null, positionStyle)
             let polyline = L.polyline([], { color: 'red' }).addTo(map);
-            const initialPosition = function (position) {
+            const nowPosition = function (position) {
                 const lat = position.coords.latitude;
                 const lng = position.coords.longitude;
                 const latlng = L.latLng(lat, lng);
                 console.log(latlng)
                 map.setView(latlng, 16);
                 map.removeLayer(current);
+                positionStyle.radius = position.coords.accuracy
                 current = L.circle(latlng, positionStyle).addTo(map);
                 polyline.addLatLng(latlng);
-            }
-            const updatePosition = function (position) {
-                const latlng = L.latLng(position.coords.latitude, position.coords.longitude);
-                map.removeLayer(current);
-                current = L.circle(latlng, positionStyle).addTo(map);
-            }
+                const coordLength = polyline.getLatLngs();
+                let length = 0;
+                for (let i = 0; i < coordLength.length - 1; i++) {
+                    length += coordLength[i].distanceTo(coordLength[i + 1]);
+                }
+                travelInfo(position, 'travel-info', length)
 
-            
-            
+            }
 
             if (!navigator.geolocation) {
                 console.log("Your browser doesn't support geolocation feature!")
             } else {
-                navigator.geolocation.watchPosition(initialPosition)
-                // setInterval(() => {
-                //     navigator.geolocation.getCurrentPosition(updatePosition) 
-
-                // }, 1000);
+                navigator.geolocation.watchPosition(nowPosition)
             };
+        }
 
-
-
+        function travelInfo(p, id, d) {
+            const a = document.querySelector(`#${id}`)
+            let y = p.coords.latitude.toFixed(6),
+                x = p.coords.longitude.toFixed(6),
+                z, s, h, w, l;
+            if (d * 3.281 / 5280 >= 1000) {
+                l = `${(d * 3.281 / 5280).toFixed(1)} mi`
+            } else {
+                l = `${(d * 3.281).toFixed(0)} ft`
+            }
+            const append = function () {
+                p.coords.altitude ? z = (p.coords.altitude * 3.281).toFixed(0) : z = null
+                p.coords.speed ? s = p.coords.speed.toFixed(1) : s = null
+                p.coords.heading ? h = p.coords.heading.toFixed(0) : h = null
+                z ? a.innerHTML += `${z} ft asl ` : z
+                s ? a.innerHTML += `${s} mph ` : s
+                h ? a.innerHTML += `${h}°` : h
+            }
+            what3words.api.convertTo3wa({
+                lat: p.coords.latitude,
+                lng: p.coords.longitude
+            }, 'en')
+                .then(function (response) {
+                    w = response.words
+                    a.innerHTML = `${y},${x}</br>${w}, ${l}</br>`
+                    append()
+                });
         }
 
 
