@@ -1,20 +1,30 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset=utf-8 />
+  <head>
+    <meta charset="utf-8" />
     <title>Experimental base maps</title>
-    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.72.2/dist/L.Control.Locate.css" />
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.72.2/dist/L.Control.Locate.css"
+    />
 
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
 
-</head>
-
-<body>
-    <div id='map'></div>
+  <body>
+    <div id="map"></div>
     <div id="travel-info"></div>
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
@@ -24,509 +34,525 @@
     <script src="libs/modal.js"></script>
     <script src="libs/svg/title.js"></script>
     <script>
-        const options = {
-            center: [38.1858376, -83.4399067],
-            zoom: 11,
-            zoomControl: false,
-            zoomSnap: 0
+      const options = {
+        center: [38.1858376, -83.4399067],
+        zoom: 11,
+        zoomControl: false,
+        zoomSnap: 0,
+      };
+
+      const map = L.map("map", options);
+
+      // add zoom control to top right window position
+      L.control
+        .zoom({
+          position: "topright",
+        })
+        .addTo(map);
+
+      // add geolocation control to top right window position (Leaflet can handle multiple top-right elements)
+      // L.control.locate(locate_options).addTo(map);
+
+      // const locationx = map.locate(locate_options)
+      // console.log(map)
+      // navigator.geolocation.getCurrentPosition(function (success) { console.log(success) }, function (success) { console.log(success) })
+
+      const scale_options = {
+        metric: false,
+        maxWidth: 200,
+      };
+
+      L.control.scale(scale_options).addTo(map);
+
+      // Get basemap URL from Leaflet Providers
+      const basemap_url =
+        "https://nyc3.digitaloceanspaces.com/astoria/tiles/rrg/{z}/{x}/{y}.jpg";
+
+      const topo =
+        "https://kygisserver.ky.gov/arcgis/rest/services/WGS84WM_Services/Ky_KyTopo_Map_Series_WGS84WM/MapServer/tile/{z}/{y}/{x}";
+
+      // const usfs = 'tiles/usfs/{z}/{x}/{y}.png'
+
+      const title = "tiles/title/{z}/{x}/{y}.png";
+
+      const photo =
+        "https://kygisserver.ky.gov/arcgis/rest/services/WGS84WM_Services/Ky_Imagery_2019_6IN_WGS84WM/MapServer/tile/{z}/{y}/{x}";
+
+      // basemap_url2 = 'https://kygisserver.ky.gov/arcgis/rest/services/WGS84WM_Services/Ky_Landcover_NLCD19_WGS84WM/MapServer/tile/{z}/{y}/{x}'
+
+      const hillshade =
+        "https://kygisserver.ky.gov/arcgis/rest/services/WGS84WM_Services/Ky_MultiDirectional_Hillshade_WGS84WM/MapServer/tile/{z}/{y}/{x}";
+
+      // basemap_url2 = 'https://kygisserver.ky.gov/arcgis/rest/services/WGS84WM_Services/Ky_10_Digit_Hyrdologic_Unit_WGS84WM /MapServer/tile/{z}/{y}/{x}'
+
+      const threed =
+        "https://nyc3.digitaloceanspaces.com/astoria/tiles/3d-rrg/projected/{z}/{x}/{y}.png";
+
+      const shade2 =
+        "https://nyc3.digitaloceanspaces.com/astoria/tiles/rrg/{z}/{x}/{y}.jpg";
+
+      const shade3 =
+        "https://nyc3.digitaloceanspaces.com/astoria/tiles/dsm-lex/{z}/{x}/{y}.jpg";
+
+      // Get basemap attributes from Leaflet Providers
+      const topo_attributes = {
+        attribution:
+          '&copy; 2022 <a href="https://outrageGIS.com">outrageGIS mapping</a>',
+        maxZoom: 20.5,
+        minZoom: 6,
+        opacity: 1,
+      };
+
+      const threedBounds = new L.LatLngBounds(
+        new L.LatLng(37.75891702, -83.7363012),
+        new L.LatLng(37.89261653, -83.53844486)
+      );
+
+      // Get basemap attributes from Leaflet Providers
+      const threed_attributes = {
+        attribution:
+          '&copy; 2022 <a href="https://outrageGIS.com">outrageGIS mapping</a>',
+        maxZoom: 16,
+        minZoom: 10,
+        opacity: 1,
+        bounds: threedBounds,
+      };
+
+      const shade2_attributes = {
+        attribution:
+          '&copy; 2022 <a href="https://outrageGIS.com">outrageGIS mapping</a>',
+        maxZoom: 19,
+        minZoom: 10,
+        opacity: 1,
+        bounds: threedBounds,
+      };
+
+      const shade3_attributes = {
+        attribution:
+          '&copy; 2022 <a href="https://outrageGIS.com">outrageGIS mapping</a>',
+        maxZoom: 18,
+        minZoom: 11,
+        opacity: 1,
+      };
+
+      // Get basemap attributes from Leaflet Providers
+      const photo_attributes = {
+        attribution:
+          '&copy; 2022 <a href="https://outrageGIS.com">outrageGIS mapping</a>',
+        maxZoom: 20.5,
+        minZoom: 6,
+        opacity: 1,
+      };
+
+      // Get basemap attributes from Leaflet Providers
+      const title_attributes = {
+        attribution:
+          '&copy; 2022 <a href="https://outrageGIS.com">outrageGIS mapping</a>',
+        // maxZoom: 12,
+        minZoom: 1,
+        opacity: 1,
+      };
+      // requests some map tiles
+      // const tiles = L.tileLayer(basemap_url2, basemap_attributes);
+      // const usfs_tiles = L.tileLayer(usfs);
+
+      var baselayers = {
+        topo: L.tileLayer(topo, topo_attributes),
+        photo: L.tileLayer(photo, photo_attributes),
+        shaded: L.tileLayer(hillshade, photo_attributes),
+        shaded2: L.tileLayer(shade2, shade2_attributes),
+        "lex-dsm": L.tileLayer(shade3, shade3_attributes),
+        "3d": L.tileLayer(threed, threed_attributes),
+        // "Tile Layer 3": L.tileLayer(/* ... */)
+      };
+
+      const overlays = {};
+
+      const layerOptions = {
+        position: "topleft",
+        collapsed: true,
+      };
+
+      L.control.layers(baselayers, overlays, layerOptions).addTo(map);
+
+      baselayers["topo"].addTo(map);
+
+      // const legendControl = L.control({
+      //     position: "topright",
+      // });
+
+      // // when the legend is added to the map:
+      // legendControl.onAdd = function () {
+      //     //select a div element with an id attribute of legend
+      //     const legend = L.DomUtil.get("control");
+
+      //     //disable scroll and click/touch on map when on legend
+      //     L.DomEvent.disableScrollPropagation(legend);
+      //     L.DomEvent.disableClickPropagation(legend);
+
+      //     //return the selection to the method:
+      //     return legend;
+      // };
+
+      // //add the empty legend div to the map:
+      // legendControl.addTo(map);
+
+      // const hikesControl = L.control({
+      //     position: "topleft",
+      // });
+
+      // // when the legend is added to the map:
+      // hikesControl.onAdd = function () {
+      //     //select a div element with an id attribute of legend
+      //     const legend = L.DomUtil.get("hikes");
+
+      //     //disable scroll and click/touch on map when on legend
+      //     L.DomEvent.disableScrollPropagation(legend);
+      //     L.DomEvent.disableClickPropagation(legend);
+
+      //     //return the selection to the method:
+      //     return legend;
+      // };
+
+      //add the empty legend div to the map:
+      // hikesControl.addTo(map);
+
+      // const usfs = fetch("geojson/usfs.json")
+      //     .then(function (r) {
+      //         return r.json();
+      //     });
+      // const trails = fetch("geojson/trails.json")
+      //     .then(function (r) {
+      //         return r.json();
+      //     });
+      // const county = fetch("geojson/county.json")
+      //     .then(function (r) {
+      //         return r.json();
+      //     });
+
+      // const sites = fetch("geojson/sites.geojson")
+      //     .then(function (r) {
+      //         return r.json();
+      //     });
+
+      // const bnd = fetch("geojson/bnd.geojson")
+      //     .then(function (r) {
+      //         return r.json();
+      //     });
+
+      // Promise.all([usfs, trails, county, sites, bnd])
+
+      //     .then(function (response) {
+
+      //         const land = L.geoJson(response[0], {
+      //             style: function (feature) {
+      //                 return {
+      //                     color: 'green',
+      //                     weight: 2,
+      //                     fillOpacity: 0.1,
+      //                     opacity: 0.5
+
+      //                 };
+      //             }
+      //         })//.addTo(map)
+
+      //         const countyInvert = L.geoJson(response[2], {
+      //             style: function (feature) {
+      //                 return {
+      //                     fillColor: '#ccc',
+      //                     weight: 2,
+      //                     fillOpacity: 0.8,
+      //                     color: 'black',
+
+      //                 };
+      //             },
+      //             invert: true,
+      //             // renderer: L.svg({ padding: 1 })
+      //         }).addTo(map)
+
+      //         const county = L.geoJson(response[2], {
+      //             style: function (feature) {
+      //                 return {
+      //                     weight: 2,
+      //                     color: 'black',
+
+      //                 };
+      //             },
+      //             // renderer: L.svg({ padding: 1 })
+      //         })//.addTo(map)
+
+      //         const trail = L.geoJson(response[1], {
+      //             style: function (feature) {
+      //                 return trailStyle(feature)
+      //             },
+      //             onEachFeature: function (feature, layer) {
+      //                 const props = feature.properties;
+      //                 const popup = `<h3>${props.NAME}</h3>
+      //                     ${props.TYPE}
+      //                     <br>${props.mi} miles
+      //                     <br>${props.SURFACE} Surface`
+      //                 layer.bindPopup(popup)
+      //                 layer.on('mouseover', function (e) {
+      //                     this.setStyle(
+      //                         {
+      //                             color: '#FA7C91',
+      //                             weight: 5,
+      //                             fillOpacity: 1,
+      //                             opacity: 1
+      //                         }
+      //                     )
+
+      //                 });
+      //                 layer.on('mouseout', function (e) {
+      //                     trail.resetStyle()
+
+      //                 });
+      //             }
+      //         })//.addTo(map)
+
+      //         const sites = L.geoJson(response[3], {
+      //             pointToLayer: function (feature, latlng) {
+      //                 icon = placeIcon(feature.properties.icon)
+      //                 return L.marker(latlng, {
+      //                     icon: icon
+      //                 });
+      //             },
+      //             onEachFeature: function (feature, layer) {
+      //                 const props = feature.properties;
+      //                 const popup = `<h3>${props.NAME}</h3>
+      //                     ${props.TYPE}`
+
+      //                 layer.bindPopup(popup)
+      //                 layer.on('mouseover', function (e) {
+      //                     this.openPopup();
+      //                 });
+      //                 layer.on('mouseout', function (e) {
+      //                     trail.resetStyle()
+
+      //                 });
+      //             }
+      //         })//.addTo(map);
+
+      //         const bnd = L.geoJson(response[4], {
+
+      //         })//.addTo(map);
+
+      //         const groups = {
+      //             "Land": land,
+      //             "County": county,
+      //             "Invert": countyInvert,
+      //             "Trails": trail,
+      //             "Sites": sites,
+      //             "Titles": makeTitles()
+      //         }
+      //         watchZoom(groups)
+
+      //         const bounds = [
+      //             [38.449, -83.806], [37.966, -83.059]
+      //         ]
+
+      //         map.fitBounds(bnd.getBounds(), {
+      //             // padding: [10, 10],
+      //             animate: false
+      //         });
+
+      //     })
+      //     .catch(function (error) {
+      //         console.log(error);
+      //     });
+
+      geoLocate();
+
+      const styles = {
+        NRT: {
+          color: "#c80000",
+          weight: 6,
+          opacity: 0.9,
+        },
+        Trail: {
+          color: "#c800ff",
+          weight: 3,
+          opacity: 0.9,
+        },
+        "Old Forest Service Road": {
+          color: "#c800ff",
+          weight: 3,
+          opacity: 0.9,
+          dashArray: "5, 4",
+        },
+      };
+
+      function trailStyle(feature) {
+        const type = feature.properties.TYPE;
+        return type === "NRT"
+          ? styles.NRT
+          : type === "Trail" || type === "Walking Tour"
+          ? styles.Trail
+          : type === "Old Forest Service Road"
+          ? styles["Old Forest Service Road"]
+          : styles["Old Forest Service Road"];
+      }
+
+      function titleCase(str) {
+        return str
+          .toLowerCase()
+          .split(" ")
+          .map((word) => {
+            return word.replace(word[0], word[0].toUpperCase());
+          })
+          .join(" ");
+      }
+
+      function placeIcon(name) {
+        const icon = L.icon({
+          iconUrl: `libs/svg/${name}.svg`,
+          iconSize: [30, 30],
+          iconAnchor: [15, 15],
+          popupAnchor: [0, -15],
+        });
+        return icon;
+      }
+
+      function watchZoom(g) {
+        const infoSites = L.layerGroup().addTo(map);
+        g.Sites.eachLayer(function (layer) {
+          const props = layer.feature.properties;
+          if (props.NAME === "Morehead Visitor Center") {
+            infoSites.addLayer(layer);
+            layer.openPopup();
+          }
+        });
+        map.on("zoomend", function (e) {
+          if (map.getZoom() > 12) {
+            g.Land.addTo(map);
+            g.Trails.addTo(map);
+            g.County.removeFrom(map);
+            g.Sites.addTo(map);
+            // infoSites.remove()
+          } else {
+            infoSites.addTo(map);
+            g.Sites.removeFrom(map);
+            g.Land.removeFrom(map);
+            g.Trails.removeFrom(map);
+          }
+        });
+      }
+
+      function makeTitles() {
+        const svgTitle = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "svg"
+        );
+        svgTitle.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+        svgTitle.setAttribute("viewBox", "0 0 1366 768");
+        svgTitle.innerHTML = titleText;
+        const svgTitleBounds = [
+          [38.7, -84.15],
+          [37.9, -83.15],
+        ];
+        const svgTitleOptions = {
+          zIndex: 9999,
+        };
+
+        return L.svgOverlay(svgTitle, svgTitleBounds).addTo(map);
+      }
+
+      function geoLocate() {
+        // map.locate({
+        //     setView: true,
+        //     maxZoom: 16
+        // })
+
+        const positionStyle = { radius: 20, color: "red", fillOpacity: 0.1 };
+        const locateOptions = { radius: 20, color: "red", fillOpacity: 0.5 };
+        let current = L.circle(null, positionStyle);
+        let polyline = L.polyline([], { color: "red" }).addTo(map);
+        const nowPosition = function (position) {
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+          const latlng = L.latLng(lat, lng);
+          console.log(latlng);
+          map.removeLayer(current);
+          positionStyle.radius = position.coords.accuracy;
+          current = L.circle(latlng, positionStyle).addTo(map);
+          polyline.addLatLng(latlng);
+          const coordLength = polyline.getLatLngs();
+          if (coordLength.length == 1) {
+            map.setView(latlng, 16);
+          }
+          let length = 0;
+          for (let i = 0; i < coordLength.length - 1; i++) {
+            length += coordLength[i].distanceTo(coordLength[i + 1]);
+          }
+          travelInfo(position, "travel-info", length);
+        };
+
+        const error = function (err) {
+          console.log(err);
+          const a = document.querySelector("travel-info");
+          a.innerHTML = `No geolocation`;
+        };
+
+        if (!navigator.geolocation) {
+          console.log("Your browser doesn't support geolocation feature!");
+        } else {
+          navigator.geolocation.watchPosition(nowPosition, error, {
+            // enableHighAccuracy: true,
+            // maximumAge: 900000,
+          });
         }
+      }
 
-        const map = L.map('map', options);
+      function travelInfo(p, id, d) {
+        const a = document.querySelector(`#${id}`);
+        let y = p.coords.latitude.toFixed(6),
+          x = p.coords.longitude.toFixed(6),
+          v = (p.coords.accuracy * 3.281).toFixed(1),
+          z,
+          s,
+          h,
+          l;
+        (d * 3.281) / 5280 >= 1000
+          ? (l = `${((d * 3.281) / 5280).toFixed(1)} mi`)
+          : (l = `${(d * 3.281).toFixed(0)} ft`);
 
-        // add zoom control to top right window position
-        L.control.zoom({
-            position: 'topright'
-        }).addTo(map);
-
-        // add geolocation control to top right window position (Leaflet can handle multiple top-right elements)
-        // L.control.locate(locate_options).addTo(map);
-
-        // const locationx = map.locate(locate_options)
-        // console.log(map)
-        // navigator.geolocation.getCurrentPosition(function (success) { console.log(success) }, function (success) { console.log(success) })
-
-        const scale_options = {
-            metric: false,
-            maxWidth: 200,
-        }
-
-        L.control.scale(scale_options).addTo(map);
-
-
-
-        // Get basemap URL from Leaflet Providers
-        const basemap_url = 'https://nyc3.digitaloceanspaces.com/astoria/tiles/rrg/{z}/{x}/{y}.jpg'
-
-        const topo = 'https://kygisserver.ky.gov/arcgis/rest/services/WGS84WM_Services/Ky_KyTopo_Map_Series_WGS84WM/MapServer/tile/{z}/{y}/{x}'
-
-        // const usfs = 'tiles/usfs/{z}/{x}/{y}.png'
-
-        const title = 'tiles/title/{z}/{x}/{y}.png'
-
-        const photo = 'https://kygisserver.ky.gov/arcgis/rest/services/WGS84WM_Services/Ky_Imagery_2019_6IN_WGS84WM/MapServer/tile/{z}/{y}/{x}'
-
-        // basemap_url2 = 'https://kygisserver.ky.gov/arcgis/rest/services/WGS84WM_Services/Ky_Landcover_NLCD19_WGS84WM/MapServer/tile/{z}/{y}/{x}'
-
-        const hillshade = 'https://kygisserver.ky.gov/arcgis/rest/services/WGS84WM_Services/Ky_MultiDirectional_Hillshade_WGS84WM/MapServer/tile/{z}/{y}/{x}'
-
-        // basemap_url2 = 'https://kygisserver.ky.gov/arcgis/rest/services/WGS84WM_Services/Ky_10_Digit_Hyrdologic_Unit_WGS84WM /MapServer/tile/{z}/{y}/{x}'
-
-        const threed = 'https://nyc3.digitaloceanspaces.com/astoria/tiles/3d-rrg/projected/{z}/{x}/{y}.png'
-
-        const shade2 = 'https://nyc3.digitaloceanspaces.com/astoria/tiles/rrg/{z}/{x}/{y}.jpg'
-
-        const shade3 = 'https://nyc3.digitaloceanspaces.com/astoria/tiles/dsm-lex/{z}/{x}/{y}.jpg'
-
-        // Get basemap attributes from Leaflet Providers
-        const topo_attributes = {
-            attribution: '&copy; 2022 <a href="https://outrageGIS.com">outrageGIS mapping</a>',
-            maxZoom: 20.5,
-            minZoom: 6,
-            opacity: 1
+        const append = function () {
+          p.coords.altitude
+            ? (z = (p.coords.altitude * 3.281).toFixed(0))
+            : (z = null);
+          p.coords.speed ? (s = p.coords.speed.toFixed(1)) : (s = null);
+          p.coords.heading ? (h = p.coords.heading.toFixed(0)) : (h = null);
+        //   z ? (a.innerHTML += `${z} ft asl `) : z;
+        //   s ? (a.innerHTML += `${s} mph `) : s;
+        //   h ? (a.innerHTML += `${h}°`) : h;
         };
-
-        const threedBounds = new L.LatLngBounds(
-            new L.LatLng(37.75891702, -83.7363012),
-            new L.LatLng(37.89261653, -83.53844486));
-
-        // Get basemap attributes from Leaflet Providers
-        const threed_attributes = {
-            attribution: '&copy; 2022 <a href="https://outrageGIS.com">outrageGIS mapping</a>',
-            maxZoom: 16,
-            minZoom: 10,
-            opacity: 1,
-            bounds: threedBounds
-
-        };
-
-        const shade2_attributes = {
-            attribution: '&copy; 2022 <a href="https://outrageGIS.com">outrageGIS mapping</a>',
-            maxZoom: 19,
-            minZoom: 10,
-            opacity: 1,
-            bounds: threedBounds
-
-        };
-
-        const shade3_attributes = {
-            attribution: '&copy; 2022 <a href="https://outrageGIS.com">outrageGIS mapping</a>',
-            maxZoom: 18,
-            minZoom: 11,
-            opacity: 1,
-
-        };
-
-        // Get basemap attributes from Leaflet Providers
-        const photo_attributes = {
-            attribution: '&copy; 2022 <a href="https://outrageGIS.com">outrageGIS mapping</a>',
-            maxZoom: 20.5,
-            minZoom: 6,
-            opacity: 1
-        };
-
-        // Get basemap attributes from Leaflet Providers
-        const title_attributes = {
-            attribution: '&copy; 2022 <a href="https://outrageGIS.com">outrageGIS mapping</a>',
-            // maxZoom: 12,
-            minZoom: 1,
-            opacity: 1
-        };
-        // requests some map tiles
-        // const tiles = L.tileLayer(basemap_url2, basemap_attributes);
-        // const usfs_tiles = L.tileLayer(usfs);
-
-        var baselayers = {
-            "topo": L.tileLayer(topo, topo_attributes),
-            "photo": L.tileLayer(photo, photo_attributes),
-            "shaded": L.tileLayer(hillshade, photo_attributes),
-            "shaded2": L.tileLayer(shade2, shade2_attributes),
-            "lex-dsm": L.tileLayer(shade3, shade3_attributes),
-            "3d": L.tileLayer(threed, threed_attributes)
-            // "Tile Layer 3": L.tileLayer(/* ... */)
-        };
-
-        const overlays = {};
-
-        const layerOptions = {
-            position: 'topleft',
-            collapsed: true
-        };
-
-        L.control.layers(baselayers, overlays, layerOptions).addTo(map);
-
-        baselayers["topo"].addTo(map);
-
-
-        // const legendControl = L.control({
-        //     position: "topright",
-        // });
-
-        // // when the legend is added to the map:
-        // legendControl.onAdd = function () {
-        //     //select a div element with an id attribute of legend
-        //     const legend = L.DomUtil.get("control");
-
-        //     //disable scroll and click/touch on map when on legend
-        //     L.DomEvent.disableScrollPropagation(legend);
-        //     L.DomEvent.disableClickPropagation(legend);
-
-        //     //return the selection to the method:
-        //     return legend;
-        // };
-
-        // //add the empty legend div to the map:
-        // legendControl.addTo(map);
-
-        // const hikesControl = L.control({
-        //     position: "topleft",
-        // });
-
-        // // when the legend is added to the map:
-        // hikesControl.onAdd = function () {
-        //     //select a div element with an id attribute of legend
-        //     const legend = L.DomUtil.get("hikes");
-
-        //     //disable scroll and click/touch on map when on legend
-        //     L.DomEvent.disableScrollPropagation(legend);
-        //     L.DomEvent.disableClickPropagation(legend);
-
-        //     //return the selection to the method:
-        //     return legend;
-        // };
-
-        //add the empty legend div to the map:
-        // hikesControl.addTo(map);
-
-        // const usfs = fetch("geojson/usfs.json")
-        //     .then(function (r) {
-        //         return r.json();
-        //     });
-        // const trails = fetch("geojson/trails.json")
-        //     .then(function (r) {
-        //         return r.json();
-        //     });
-        // const county = fetch("geojson/county.json")
-        //     .then(function (r) {
-        //         return r.json();
-        //     });
-
-        // const sites = fetch("geojson/sites.geojson")
-        //     .then(function (r) {
-        //         return r.json();
-        //     });
-
-        // const bnd = fetch("geojson/bnd.geojson")
-        //     .then(function (r) {
-        //         return r.json();
-        //     });
-
-        // Promise.all([usfs, trails, county, sites, bnd])
-
-        //     .then(function (response) {
-
-        //         const land = L.geoJson(response[0], {
-        //             style: function (feature) {
-        //                 return {
-        //                     color: 'green',
-        //                     weight: 2,
-        //                     fillOpacity: 0.1,
-        //                     opacity: 0.5
-
-        //                 };
-        //             }
-        //         })//.addTo(map)
-
-        //         const countyInvert = L.geoJson(response[2], {
-        //             style: function (feature) {
-        //                 return {
-        //                     fillColor: '#ccc',
-        //                     weight: 2,
-        //                     fillOpacity: 0.8,
-        //                     color: 'black',
-
-        //                 };
-        //             },
-        //             invert: true,
-        //             // renderer: L.svg({ padding: 1 })
-        //         }).addTo(map)
-
-        //         const county = L.geoJson(response[2], {
-        //             style: function (feature) {
-        //                 return {
-        //                     weight: 2,
-        //                     color: 'black',
-
-        //                 };
-        //             },
-        //             // renderer: L.svg({ padding: 1 })
-        //         })//.addTo(map)
-
-        //         const trail = L.geoJson(response[1], {
-        //             style: function (feature) {
-        //                 return trailStyle(feature)
-        //             },
-        //             onEachFeature: function (feature, layer) {
-        //                 const props = feature.properties;
-        //                 const popup = `<h3>${props.NAME}</h3>
-        //                     ${props.TYPE}
-        //                     <br>${props.mi} miles
-        //                     <br>${props.SURFACE} Surface`
-        //                 layer.bindPopup(popup)
-        //                 layer.on('mouseover', function (e) {
-        //                     this.setStyle(
-        //                         {
-        //                             color: '#FA7C91',
-        //                             weight: 5,
-        //                             fillOpacity: 1,
-        //                             opacity: 1
-        //                         }
-        //                     )
-
-        //                 });
-        //                 layer.on('mouseout', function (e) {
-        //                     trail.resetStyle()
-
-        //                 });
-        //             }
-        //         })//.addTo(map)
-
-
-
-        //         const sites = L.geoJson(response[3], {
-        //             pointToLayer: function (feature, latlng) {
-        //                 icon = placeIcon(feature.properties.icon)
-        //                 return L.marker(latlng, {
-        //                     icon: icon
-        //                 });
-        //             },
-        //             onEachFeature: function (feature, layer) {
-        //                 const props = feature.properties;
-        //                 const popup = `<h3>${props.NAME}</h3>
-        //                     ${props.TYPE}`
-
-        //                 layer.bindPopup(popup)
-        //                 layer.on('mouseover', function (e) {
-        //                     this.openPopup();
-        //                 });
-        //                 layer.on('mouseout', function (e) {
-        //                     trail.resetStyle()
-
-        //                 });
-        //             }
-        //         })//.addTo(map);
-
-        //         const bnd = L.geoJson(response[4], {
-
-        //         })//.addTo(map);
-
-
-        //         const groups = {
-        //             "Land": land,
-        //             "County": county,
-        //             "Invert": countyInvert,
-        //             "Trails": trail,
-        //             "Sites": sites,
-        //             "Titles": makeTitles()
-        //         }
-        //         watchZoom(groups)
-
-        //         const bounds = [
-        //             [38.449, -83.806], [37.966, -83.059]
-        //         ]
-
-        //         map.fitBounds(bnd.getBounds(), {
-        //             // padding: [10, 10],
-        //             animate: false
-        //         });
-
-        //     })
-        //     .catch(function (error) {
-        //         console.log(error);
-        //     });
-
-        geoLocate()
-
-
-
-        const styles = {
-            NRT: {
-                color: '#c80000',
-                weight: 6,
-                opacity: 0.9
+        what3words.api
+          .convertTo3wa(
+            {
+              lat: p.coords.latitude,
+              lng: p.coords.longitude,
             },
-            Trail: {
-                color: '#c800ff',
-                weight: 3,
-                opacity: 0.9
-            },
-            "Old Forest Service Road": {
-                color: '#c800ff',
-                weight: 3,
-                opacity: 0.9,
-                dashArray: '5, 4'
+            "en"
+          )
+          .then(function (response) {
+            const w = response.words;
+            a.innerHTML = `${y},${x}</br>${w}</br>Within ${v} ft, Travel ${l}`;
+            append();
+          });
+      }
 
-            },
-        }
+      // Get basemap URL from Leaflet Providers
+      // 		var basemap_url = 'https://nyc3.digitaloceanspaces.com/astoria/tiles/rrg/{z}/{x}/{y}.jpg'
 
-        function trailStyle(feature) {
-            const type = feature.properties.TYPE;
-            return type === 'NRT' ? styles.NRT
-                : type === 'Trail' || type === 'Walking Tour' ? styles.Trail
-                    : type === 'Old Forest Service Road' ? styles["Old Forest Service Road"]
-                        : styles["Old Forest Service Road"];
-        }
+      // var basemap_url2 = 'https://kygisserver.ky.gov/arcgis/rest/services/WGS84WM_Services/Ky_KyTopo_Map_Series_WGS84WM/MapServer/tile/{z}/{y}/{x}'
 
-        function titleCase(str) {
-            return str.toLowerCase().split(' ').map(word => {
-                return word.replace(word[0], word[0].toUpperCase());
-            }).join(' ');
-        }
+      // basemap_url2 = 'https://kygisserver.ky.gov/arcgis/rest/services/WGS84WM_Services/Ky_Imagery_2019_6IN_WGS84WM/MapServer/tile/{z}/{y}/{x}'
 
-        function placeIcon(name) {
-            const icon = L.icon({
-                iconUrl: `libs/svg/${name}.svg`,
-                iconSize: [30, 30],
-                iconAnchor: [15, 15],
-                popupAnchor: [0, -15]
-            });
-            return icon;
-        }
+      // basemap_url2 = 'https://kygisserver.ky.gov/arcgis/rest/services/WGS84WM_Services/Ky_Landcover_NLCD19_WGS84WM/MapServer/tile/{z}/{y}/{x}'
 
-        function watchZoom(g) {
-            const infoSites = L.layerGroup().addTo(map);
-            g.Sites.eachLayer(function (layer) {
-                const props = layer.feature.properties;
-                if (props.NAME === 'Morehead Visitor Center') {
-                    infoSites.addLayer(layer)
-                    layer.openPopup()
-                }
-            })
-            map.on('zoomend', function (e) {
-                if (map.getZoom() > 12) {
+      // basemap_url2 = 'https://kygisserver.ky.gov/arcgis/rest/services/WGS84WM_Services/Ky_MultiDirectional_Hillshade_WGS84WM/MapServer/tile/{z}/{y}/{x}'
 
-                    g.Land.addTo(map)
-                    g.Trails.addTo(map)
-                    g.County.removeFrom(map)
-                    g.Sites.addTo(map)
-                    // infoSites.remove()
-                }
-                else {
-                    infoSites.addTo(map)
-                    g.Sites.removeFrom(map)
-                    g.Land.removeFrom(map)
-                    g.Trails.removeFrom(map)
-
-                }
-            })
-        }
-
-        function makeTitles() {
-            const svgTitle = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-            svgTitle.setAttribute('xmlns', "http://www.w3.org/2000/svg");
-            svgTitle.setAttribute('viewBox', "0 0 1366 768");
-            svgTitle.innerHTML = titleText;
-            const svgTitleBounds = [[38.7, -84.15], [37.9, -83.15]];
-            const svgTitleOptions = {
-                zIndex: 9999
-            }
-
-            return L.svgOverlay(svgTitle, svgTitleBounds).addTo(map);
-        }
-
-        function geoLocate() {
-            // map.locate({
-            //     setView: true,
-            //     maxZoom: 16
-            // })
-
-            const positionStyle = { radius: 20, color: 'red', fillOpacity: 0.1 }
-            const locateOptions = { radius: 20, color: 'red', fillOpacity: 0.5 }
-            let current = L.circle(null, positionStyle)
-            let polyline = L.polyline([], { color: 'red' }).addTo(map);
-            const nowPosition = function (position) {
-                const lat = position.coords.latitude;
-                const lng = position.coords.longitude;
-                const latlng = L.latLng(lat, lng);
-                console.log(latlng)
-                map.removeLayer(current);
-                positionStyle.radius = position.coords.accuracy
-                current = L.circle(latlng, positionStyle).addTo(map);
-                polyline.addLatLng(latlng);
-                const coordLength = polyline.getLatLngs();
-                if (coordLength.length == 1) {
-                    map.setView(latlng, 16);
-                }
-                let length = 0;
-                for (let i = 0; i < coordLength.length - 1; i++) {
-                    length += coordLength[i].distanceTo(coordLength[i + 1]);
-                }
-                travelInfo(position, 'travel-info', length)
-
-            }
-
-            const error = function (err) {
-                console.log(err)
-                const a = document.querySelector('travel-info')
-                a.innerHTML = `No geolocation`
-            }
-
-            if (!navigator.geolocation) {
-                console.log("Your browser doesn't support geolocation feature!")
-            } else {
-                navigator.geolocation.watchPosition(nowPosition, error, {
-                    // enableHighAccuracy: true,
-                    // maximumAge: 900000,
-                })
-            };
-        }
-
-        function travelInfo(p, id, d) {
-            const a = document.querySelector(`#${id}`)
-            let y = p.coords.latitude.toFixed(6),
-                x = p.coords.longitude.toFixed(6),
-                v = (p.coords.accuracy * 3.281).toFixed(1),
-                z, s, h, l;
-            (d * 3.281) / 5280 >= 1000 ? l = `${(d * 3.281 / 5280).toFixed(1)} mi`
-                : l = `${(d * 3.281).toFixed(0)} ft`
-
-            const append = function () {
-                p.coords.altitude ? z = (p.coords.altitude * 3.281).toFixed(0) : z = null
-                p.coords.speed ? s = p.coords.speed.toFixed(1) : s = null
-                p.coords.heading ? h = p.coords.heading.toFixed(0) : h = null
-                z ? a.innerHTML += `${z} ft asl ` : z
-                s ? a.innerHTML += `${s} mph ` : s
-                h ? a.innerHTML += `${h}°` : h
-            }
-            what3words.api.convertTo3wa({
-                lat: p.coords.latitude,
-                lng: p.coords.longitude
-            }, 'en')
-                .then(function (response) {
-                    const w = response.words
-                    a.innerHTML = `${y},${x}</br>${w}</br>Within ${v} ft, Travel ${l}`
-                    append()
-                });
-        }
-
-
-        // Get basemap URL from Leaflet Providers
-// 		var basemap_url = 'https://nyc3.digitaloceanspaces.com/astoria/tiles/rrg/{z}/{x}/{y}.jpg'
-
-// var basemap_url2 = 'https://kygisserver.ky.gov/arcgis/rest/services/WGS84WM_Services/Ky_KyTopo_Map_Series_WGS84WM/MapServer/tile/{z}/{y}/{x}'
-
-// basemap_url2 = 'https://kygisserver.ky.gov/arcgis/rest/services/WGS84WM_Services/Ky_Imagery_2019_6IN_WGS84WM/MapServer/tile/{z}/{y}/{x}'
-
-// basemap_url2 = 'https://kygisserver.ky.gov/arcgis/rest/services/WGS84WM_Services/Ky_Landcover_NLCD19_WGS84WM/MapServer/tile/{z}/{y}/{x}'
-
-// basemap_url2 = 'https://kygisserver.ky.gov/arcgis/rest/services/WGS84WM_Services/Ky_MultiDirectional_Hillshade_WGS84WM/MapServer/tile/{z}/{y}/{x}'
-
-// basemap_url2 = 'https://kygisserver.ky.gov/arcgis/rest/services/WGS84WM_Services/Ky_10_Digit_Hyrdologic_Unit_WGS84WM /MapServer/tile/{z}/{y}/{x}'
-
-
-
-
+      // basemap_url2 = 'https://kygisserver.ky.gov/arcgis/rest/services/WGS84WM_Services/Ky_10_Digit_Hyrdologic_Unit_WGS84WM /MapServer/tile/{z}/{y}/{x}'
     </script>
-
-</body>
-
+  </body>
 </html>
