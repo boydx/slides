@@ -496,12 +496,20 @@
         if (!navigator.geolocation) {
           console.log("Your browser doesn't support geolocation feature!");
         } else {
-          navigator.geolocation.watchPosition(nowPosition, error, {
+
+          navigator.geolocation.getCurrentPosition(nowPosition, error, {
             // enableHighAccuracy: true,
             // maximumAge: 900000,
-          });
-        }
+          })
+
+          setInterval(function (){
+            navigator.geolocation.getCurrentPosition(nowPosition, error, {
+            // enableHighAccuracy: true,
+            // maximumAge: 900000,
+          })
+         }, 5000);
       }
+    }
 
       function travelInfo(p, id, d) {
         const a = document.querySelector(`#${id}`);
@@ -512,7 +520,7 @@
           s,
           h,
           l;
-        (d * 3.281) / 5280 >= 1000
+        (d * 3.281) >= 1000
           ? (l = `${((d * 3.281) / 5280).toFixed(1)} mi`)
           : (l = `${(d * 3.281).toFixed(0)} ft`);
 
